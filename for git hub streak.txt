@@ -7,3 +7,11 @@ if number % 2 == 0:
     print(f"{number} is Even.")
 else:
     print(f"{number} is Odd.")
+# Calculates the factorial of a non-negative integer using a recursive function
+def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    return n * factorial(n - 1)
+
+num = 5
+print(f"The factorial of {num} is {factorial(num)}.")
