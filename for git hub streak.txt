@@ -30,4 +30,7 @@ class Solution:
                 # If taking 'sq' stones leaves the opponent in a losing position (dp[i - sq] == False),
                 # then the current player can force a win.
                 if not dp[i - sq]:
-            
+                    dp[i] = True
+                    break
+                    
+        return dp[n]
