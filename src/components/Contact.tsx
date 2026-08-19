@@ -3,10 +3,11 @@ import { createClient } from '@supabase/supabase-js';
 import { Mail, MapPin, Send, CheckCircle2, AlertCircle, Loader2, Github, Linkedin } from 'lucide-react';
 import { useReveal } from '../hooks/useReveal';
 
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY,
-);
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+// Only initialize Supabase if variables are configured to prevent crash
+const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : null;
 
 type Status = 'idle' | 'loading' | 'success' | 'error';
 
@@ -22,6 +23,12 @@ export default function Contact() {
 
     setStatus('loading');
     setErrorMsg('');
+
+    if (!supabase) {
+      setStatus('error');
+      setErrorMsg('Supabase is not configured. Please add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to your .env file.');
+      return;
+    }
 
     const { error } = await supabase.from('contact_messages').insert({
       name: form.name.trim(),
