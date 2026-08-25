@@ -122,3 +122,6 @@ All notable changes to this project will be documented in this file.
 
 ## [0.0.42] - 2026-08-25
 - Using provided PAT for version 0.0.42 update.
+
+## [0.0.43] - 2026-08-25
+- Using provided PAT for version 0.0.43 update.
