@@ -65,3 +65,6 @@ All notable changes to this project will be documented in this file.
 
 ## [0.0.22] - 2026-08-25
 - Fixed email attribution for version 0.0.22 update.
+
+## [0.0.23] - 2026-08-25
+- Fixed email attribution for version 0.0.23 update.
