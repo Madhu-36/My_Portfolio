@@ -29,3 +29,6 @@ All notable changes to this project will be documented in this file.
 
 ## [0.0.9] - 2026-08-25
 - Placeholder for version 0.0.9 update.
+
+## [0.0.10] - 2026-08-25
+- Placeholder for version 0.0.10 update.
