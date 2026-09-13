@@ -2,42 +2,39 @@ import { useReveal } from '../hooks/useReveal';
 
 const experiences = [
   {
-    role: 'Cybersecurity & Ethical Hacking Training',
-    company: 'Acmegrade',
-    period: '2024 — 2025',
+    role: 'Open Source Developer',
+    company: 'Independent',
+    period: '2024 — Present',
     description:
-      'Hands-on training in ethical hacking, vulnerability assessment, malware analysis, and penetration testing. Worked on real-world security scenarios and identity management system design.',
+      'Developing and maintaining tools like DevIgnite (Rust CLI) and ASTra (Python). Focused on performance optimization and system engineering.',
     highlights: [
-      'Vulnerability analysis & reporting',
-      'Identity management system design',
-      'Malware analysis & reverse engineering',
-      'Network security & packet inspection',
+      'Built a high-performance cross-platform dev environment manager in Rust.',
+      'Developed tools for analyzing and modifying Python Abstract Syntax Trees.',
+      'Contributed to open source and built a strong GitHub portfolio.',
     ],
   },
   {
-    role: 'B.E. in Computer Science / AI & DS',
+    role: 'B.E. in Computer Science',
     company: 'East West Institute of Technology',
     period: '2022 — Present',
     description:
-      'Pursuing engineering with a focus on Artificial Intelligence and Data Science. Coursework spans machine learning, data structures, algorithms, and software engineering.',
+      'Pursuing engineering with a focus on core computer science fundamentals, system programming, AI, and software engineering.',
     highlights: [
-      'ML & deep learning projects',
-      'Data science & analytics',
-      'Strong CS fundamentals',
-      'Active in technical communities',
+      'Developed AI-driven applications like an adaptive firewall.',
+      'Strong grasp of data structures and algorithms.',
+      'Active in technical communities and self-driven projects.',
     ],
   },
   {
-    role: 'Game Development Projects',
+    role: 'Web & Game Development Projects',
     company: 'Independent / Self-taught',
     period: '2023 — Present',
     description:
-      'Building games in Unity and Godot as a passion-driven pursuit. Created 3D adventure prototypes and 2D platformers with custom physics, AI, and level design.',
+      'Building responsive web applications and complex game systems. Created Annam Farm App and Game Complex.',
     highlights: [
-      'Unity 3D adventure prototype',
-      'Godot 2D platformer with level editor',
-      'Shader & particle effects',
-      'Game physics & enemy AI',
+      'Built interactive JavaScript games with complex mechanics.',
+      'Developed responsive frontend web apps (React, Vite, HTML/CSS).',
+      'Experimented with AI integration in web applications.',
     ],
   },
 ];

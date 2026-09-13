@@ -10,19 +10,25 @@ const stats = [
 
 const pillars = [
   {
-    icon: Shield,
-    title: 'Cybersecurity & Ethical Hacking',
-    desc: 'Vulnerability analysis, identity management systems, malware analysis, and penetration testing.',
-  },
-  {
     icon: Brain,
-    title: 'AI & Data Science',
+    title: 'AI Engineer',
     desc: 'Building intelligent systems with ML models, neural networks, and data-driven decision making.',
+    animationClass: 'animate-float-fast',
+    color: 'text-blue-400 bg-blue-500/10',
   },
   {
     icon: Gamepad2,
-    title: 'Game Development',
-    desc: 'Crafting immersive game worlds and interactive experiences with Unity and game engines.',
+    title: 'Game Developer',
+    desc: 'Crafting immersive game worlds and interactive experiences with complex physics and game engines.',
+    animationClass: 'animate-bounce-custom',
+    color: 'text-green-400 bg-green-500/10',
+  },
+  {
+    icon: Shield,
+    title: 'Cyber Security / Ethical Hacker',
+    desc: 'Vulnerability analysis, adaptive firewalls, malware analysis, and penetration testing.',
+    animationClass: 'animate-glitch-fast',
+    color: 'text-red-400 bg-red-500/10',
   },
 ];
 
@@ -41,10 +47,13 @@ export default function About() {
             About
           </span>
 
-          <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
+          <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-20 items-center">
             <div>
+              <div className="mb-8 w-32 h-32 rounded-full overflow-hidden border-2 border-accent-500/30">
+                <img src="https://avatars.githubusercontent.com/u/212555608?v=4" alt="Madhu S" className="w-full h-full object-cover" />
+              </div>
               <h2 className="heading-lg text-balance">
-                Hacker mindset,
+                Problem solver,
                 <br />
                 <span className="text-ink-400">builder spirit.</span>
               </h2>
@@ -52,25 +61,13 @@ export default function About() {
 
             <div className="space-y-6">
               <p className="text-lg leading-relaxed text-ink-300">
-                I&apos;m Madhu S, an aspiring AI &amp; Data Science engineer
-                based in Bengaluru. My journey lives at the intersection of
-                three worlds — cybersecurity, artificial intelligence, and game
-                development. I believe each domain makes the others stronger:
-                security thinking sharpens my AI systems, AI powers smarter
-                games, and game engines teach me creative problem-solving.
+                I&apos;m Madhu S, a passionate software engineer and developer tool builder. My journey lives at the intersection of AI, robust system programming, and modern web applications. I believe building better tools empowers better software.
               </p>
               <p className="text-lg leading-relaxed text-ink-300">
-                I have hands-on experience identifying vulnerabilities and
-                designing identity management systems. I&apos;ve explored
-                malware analysis and penetration testing through real-world
-                exercises. On the AI side, I build with ML models and data
-                pipelines. And in game development, I turn ideas into
-                interactive worlds.
+                I have hands-on experience building environments like DevIgnite in Rust, implementing adaptive AI firewalls in Python, and crafting web applications. I love diving into Abstract Syntax Trees (AST) and performance optimizations to make things run faster and smarter.
               </p>
               <p className="text-lg leading-relaxed text-ink-300">
-                When I&apos;m not coding, you&apos;ll find me exploring new
-                security tools, reading up on AI research, or prototyping my
-                next game concept.
+                When I&apos;m not coding, you&apos;ll find me exploring new technologies, experimenting with complex logic in game engines, or contributing to the open-source community.
               </p>
             </div>
           </div>
@@ -80,9 +77,9 @@ export default function About() {
             {pillars.map((p) => (
               <div
                 key={p.title}
-                className="card card-hover p-6"
+                className="card card-hover p-6 group"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent-500/10 text-accent-400">
+                <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${p.color} ${p.animationClass}`}>
                   <p.icon size={24} />
                 </div>
                 <h3 className="mt-5 font-display text-lg font-semibold text-white">

@@ -1,4 +1,7 @@
-import { ArrowDown, Github, Linkedin, Mail, Terminal } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
+import Scene from './Scene';
+import InteractiveTerminal from './InteractiveTerminal';
+import MagneticButton from './MagneticButton';
 
 export default function Hero() {
   return (
@@ -6,17 +9,7 @@ export default function Hero() {
       id="top"
       className="relative flex min-h-screen items-center overflow-hidden pt-16"
     >
-      {/* Background grid */}
-      <div className="grid-pattern absolute inset-0 opacity-60" />
-
-      {/* Floating orbs */}
-      <div className="absolute -left-32 top-1/4 h-72 w-72 rounded-full bg-accent-500/20 blur-[120px] animate-pulse-slow" />
-      <div className="absolute right-0 top-1/3 h-96 w-96 rounded-full bg-gold-500/10 blur-[140px] animate-pulse-slow" />
-
-      {/* Scan line effect */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute left-0 h-32 w-full bg-gradient-to-b from-accent-500/5 to-transparent animate-scan" />
-      </div>
+      <Scene />
 
       <div className="container-px relative z-10 mx-auto w-full max-w-7xl">
         <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr] lg:items-center">
@@ -28,59 +21,29 @@ export default function Hero() {
             >
               <span className="eyebrow mb-6">
                 <span className="h-px w-8 bg-accent-400" />
-                AI &amp; DS Engineer · Ethical Hacker · Game Developer
+                AI Engineer · Game Developer · Cyber Security
               </span>
             </div>
 
-            <h1
-              className="heading-xl animate-fade-up text-balance opacity-0"
-              style={{ animationDelay: '0.2s' }}
-            >
-              Securing the{' '}
-              <span className="relative inline-block">
-                <span className="bg-gradient-to-r from-accent-400 via-accent-300 to-gold-400 bg-clip-text text-transparent text-glow">
-                  digital world
-                </span>
-                <svg
-                  className="absolute -bottom-2 left-0 w-full"
-                  viewBox="0 0 300 12"
-                  fill="none"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="M2 9C70 3 200 2 298 7"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    className="text-accent-500/40"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </span>
-              <br />
-              one byte at a time.
-            </h1>
 
             <p
               className="mt-8 max-w-xl animate-fade-up text-lg leading-relaxed text-ink-300 opacity-0"
               style={{ animationDelay: '0.35s' }}
             >
-              I&apos;m Madhu S — an aspiring AI &amp; Data Science engineer
-              passionate about ethical hacking, game development, and building
-              intelligent systems. From vulnerability analysis to neural
-              networks and immersive game worlds, I turn curiosity into code.
+              I&apos;m Madhu S — a software engineer passionate about AI, developer tools, and web development. From intelligent firewalls to high-performance CLI environments, I turn curiosity into robust code.
             </p>
 
             <div
               className="mt-10 flex animate-fade-up flex-wrap items-center gap-4 opacity-0"
               style={{ animationDelay: '0.5s' }}
             >
-              <a href="#work" className="btn-primary">
+              <MagneticButton href="#work" className="btn-primary">
                 View my work
                 <ArrowDown size={16} />
-              </a>
-              <a href="#contact" className="btn-ghost">
+              </MagneticButton>
+              <MagneticButton href="#contact" className="btn-ghost">
                 Get in touch
-              </a>
+              </MagneticButton>
             </div>
 
             <div
@@ -106,51 +69,12 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right: terminal card */}
+          {/* Right: interactive terminal */}
           <div
             className="animate-fade-up opacity-0"
             style={{ animationDelay: '0.8s' }}
           >
-            <div className="terminal border-glow overflow-hidden">
-              {/* Title bar */}
-              <div className="flex items-center gap-2 border-b border-ink-800 bg-ink-900/80 px-4 py-3">
-                <div className="flex gap-1.5">
-                  <span className="h-3 w-3 rounded-full bg-red-500/70" />
-                  <span className="h-3 w-3 rounded-full bg-yellow-500/70" />
-                  <span className="h-3 w-3 rounded-full bg-green-500/70" />
-                </div>
-                <span className="ml-2 flex items-center gap-1.5 text-xs text-ink-400">
-                  <Terminal size={12} />
-                  madhu@portfolio:~$
-                </span>
-              </div>
-              {/* Body */}
-              <div className="space-y-1.5 p-5 text-sm leading-relaxed">
-                <p className="text-ink-400">
-                  <span className="text-accent-400">$</span> whoami
-                </p>
-                <p className="text-ink-200">Madhu S — Bengaluru, India</p>
-                <p className="text-ink-400">
-                  <span className="text-accent-400">$</span> cat skills.txt
-                </p>
-                <p className="text-ink-200">
-                  &gt; Ethical Hacking &amp; Pen Testing
-                </p>
-                <p className="text-ink-200">
-                  &gt; AI / Data Science / ML
-                </p>
-                <p className="text-ink-200">
-                  &gt; Game Development (Unity / Godot)
-                </p>
-                <p className="text-ink-400">
-                  <span className="text-accent-400">$</span> status --current
-                </p>
-                <p className="text-green-400">
-                  &gt; Learning &amp; building continuously
-                  <span className="animate-blink">_</span>
-                </p>
-              </div>
-            </div>
+            <InteractiveTerminal />
           </div>
         </div>
       </div>

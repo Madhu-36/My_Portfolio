@@ -2,22 +2,7 @@ import { useReveal } from '../hooks/useReveal';
 
 const skills = [
   {
-    category: 'Cybersecurity & Ethical Hacking',
-    items: [
-      'Penetration Testing',
-      'Vulnerability Analysis',
-      'Malware Analysis',
-      'Identity Management',
-      'Network Security',
-      'Burp Suite',
-      'Wireshark',
-      'Metasploit',
-      'Nmap',
-      'OWASP Top 10',
-    ],
-  },
-  {
-    category: 'AI & Data Science',
+    category: 'AI Engineer',
     items: [
       'Python',
       'Machine Learning',
@@ -32,38 +17,50 @@ const skills = [
     ],
   },
   {
-    category: 'Game Development',
+    category: 'Cyber Security / Ethical Hacker',
     items: [
-      'Unity',
-      'C#',
-      'Godot',
-      'Game Physics',
-      'Level Design',
-      '3D Modeling',
-      'Blender',
-      'Shader Programming',
+      'Penetration Testing',
+      'Vulnerability Analysis',
+      'Malware Analysis',
+      'Network Security',
+      'Adaptive Firewalls',
+      'Burp Suite',
+      'Wireshark',
+      'Metasploit',
     ],
   },
   {
-    category: 'Tools & Languages',
+    category: 'Game Developer',
+    items: [
+      'JavaScript / TypeScript',
+      'React',
+      'HTML5 Canvas',
+      'Tailwind CSS',
+      'Game Engine Architecture',
+      'Game Physics',
+      'Interactive Design',
+    ],
+  },
+  {
+    category: 'Tools & Ecosystem',
     items: [
       'Git & GitHub',
       'Linux',
-      'Docker',
+      'Vite',
       'VS Code',
-      'C++',
-      'JavaScript',
-      'SQL',
+      'Cargo',
+      'SQL / Supabase',
       'Bash Scripting',
+      'DevOps',
     ],
   },
 ];
 
 const marqueeItems = [
-  'Python', 'C#', 'C++', 'Linux', 'Burp Suite', 'Wireshark',
-  'Metasploit', 'Nmap', 'Unity', 'Godot', 'TensorFlow',
-  'Pandas', 'NumPy', 'Scikit-learn', 'Docker', 'Git',
-  'OWASP', 'Malware Analysis', 'Neural Networks',
+  'Python', 'Rust', 'TypeScript', 'Linux', 'Vite', 'Tailwind',
+  'React', 'Node.js', 'AI', 'Machine Learning', 'TensorFlow',
+  'Pandas', 'NumPy', 'Cargo', 'DevOps', 'Git',
+  'Cybersecurity', 'Web Development', 'Systems',
 ];
 
 export default function Expertise() {
