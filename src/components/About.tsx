@@ -1,4 +1,4 @@
-import { Shield, Brain, Gamepad2, Cpu } from 'lucide-react';
+import { Shield, Brain, Gamepad2, Cpu, ExternalLink } from 'lucide-react';
 import { useReveal } from '../hooks/useReveal';
 
 const stats = [
@@ -8,27 +8,60 @@ const stats = [
   { value: '∞', label: 'Curiosity' },
 ];
 
+const certifications = [
+  {
+    title: 'Cyber Security Analyst',
+    issuer: 'TATA STRIVE',
+    link: '/certificates/tata_cybersecurity.pdf',
+    icon: Shield,
+  },
+  {
+    title: 'AWS Certified Cloud Practitioner',
+    issuer: 'Amazon Web Services',
+    link: '/certificates/aws_cloud.pdf',
+    icon: Cpu,
+  },
+  {
+    title: 'Deloitte Cybersecurity',
+    issuer: 'Deloitte',
+    link: '/certificates/deloitte_cybersecurity.pdf',
+    icon: Shield,
+  },
+  {
+    title: 'AI Fluency',
+    issuer: 'Claude / Anthropic',
+    link: '/certificates/claude_ai_fluency.pdf',
+    icon: Brain,
+  },
+  {
+    title: 'Unity Junior Programmer',
+    issuer: 'Unity',
+    link: '/certificates/unity_junior_programmer.pdf',
+    icon: Gamepad2,
+  },
+  {
+    title: 'Cyber Security Operations',
+    issuer: 'Forage Job Simulation',
+    link: '/certificates/cyber_security_operations.pdf',
+    icon: Shield,
+  },
+];
+
 const pillars = [
   {
+    icon: Shield,
+    title: 'Cybersecurity & Ethical Hacking',
+    desc: 'Vulnerability analysis, identity management systems, malware analysis, and penetration testing.',
+  },
+  {
     icon: Brain,
-    title: 'AI Engineer',
+    title: 'AI & Data Science',
     desc: 'Building intelligent systems with ML models, neural networks, and data-driven decision making.',
-    animationClass: 'animate-float-fast',
-    color: 'text-blue-400 bg-blue-500/10',
   },
   {
     icon: Gamepad2,
-    title: 'Game Developer',
-    desc: 'Crafting immersive game worlds and interactive experiences with complex physics and game engines.',
-    animationClass: 'animate-bounce-custom',
-    color: 'text-green-400 bg-green-500/10',
-  },
-  {
-    icon: Shield,
-    title: 'Cyber Security / Ethical Hacker',
-    desc: 'Vulnerability analysis, adaptive firewalls, malware analysis, and penetration testing.',
-    animationClass: 'animate-glitch-fast',
-    color: 'text-red-400 bg-red-500/10',
+    title: 'Game Development',
+    desc: 'Crafting immersive game worlds and interactive experiences with Unity and game engines.',
   },
 ];
 
@@ -47,13 +80,10 @@ export default function About() {
             About
           </span>
 
-          <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-20 items-center">
+          <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
             <div>
-              <div className="mb-8 w-32 h-32 rounded-full overflow-hidden border-2 border-accent-500/30">
-                <img src="https://avatars.githubusercontent.com/u/212555608?v=4" alt="Madhu S" className="w-full h-full object-cover" />
-              </div>
               <h2 className="heading-lg text-balance">
-                Problem solver,
+                Hacker mindset,
                 <br />
                 <span className="text-ink-400">builder spirit.</span>
               </h2>
@@ -61,13 +91,25 @@ export default function About() {
 
             <div className="space-y-6">
               <p className="text-lg leading-relaxed text-ink-300">
-                I&apos;m Madhu S, a passionate software engineer and developer tool builder. My journey lives at the intersection of AI, robust system programming, and modern web applications. I believe building better tools empowers better software.
+                I&apos;m Madhu S, an aspiring AI &amp; Data Science engineer
+                based in Bengaluru. My journey lives at the intersection of
+                three worlds — cybersecurity, artificial intelligence, and game
+                development. I believe each domain makes the others stronger:
+                security thinking sharpens my AI systems, AI powers smarter
+                games, and game engines teach me creative problem-solving.
               </p>
               <p className="text-lg leading-relaxed text-ink-300">
-                I have hands-on experience building environments like DevIgnite in Rust, implementing adaptive AI firewalls in Python, and crafting web applications. I love diving into Abstract Syntax Trees (AST) and performance optimizations to make things run faster and smarter.
+                I have hands-on experience identifying vulnerabilities and
+                designing identity management systems. I&apos;ve explored
+                malware analysis and penetration testing through real-world
+                exercises. On the AI side, I build with ML models and data
+                pipelines. And in game development, I turn ideas into
+                interactive worlds.
               </p>
               <p className="text-lg leading-relaxed text-ink-300">
-                When I&apos;m not coding, you&apos;ll find me exploring new technologies, experimenting with complex logic in game engines, or contributing to the open-source community.
+                When I&apos;m not coding, you&apos;ll find me exploring new
+                security tools, reading up on AI research, or prototyping my
+                next game concept.
               </p>
             </div>
           </div>
@@ -77,9 +119,9 @@ export default function About() {
             {pillars.map((p) => (
               <div
                 key={p.title}
-                className="card card-hover p-6 group"
+                className="card card-hover p-6"
               >
-                <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${p.color} ${p.animationClass}`}>
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent-500/10 text-accent-400">
                   <p.icon size={24} />
                 </div>
                 <h3 className="mt-5 font-display text-lg font-semibold text-white">
@@ -108,6 +150,41 @@ export default function About() {
                 <div className="mt-2 text-sm text-ink-400">{stat.label}</div>
               </div>
             ))}
+          </div>
+
+          {/* Certifications & Badges */}
+          <div className="mt-24">
+            <span className="eyebrow mb-6">
+              <span className="h-px w-8 bg-accent-400" />
+              Credentials
+            </span>
+            <h2 className="heading-lg text-balance mb-12">
+              Certifications & Badges
+            </h2>
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {certifications.map((cert) => (
+                <a
+                  key={cert.title}
+                  href={cert.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="card card-hover group p-5 flex items-start gap-4"
+                >
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent-500/10 text-accent-400">
+                    <cert.icon size={20} />
+                  </div>
+                  <div className="flex flex-col flex-grow">
+                    <h4 className="font-display text-base font-semibold text-white group-hover:text-accent-400 transition-colors">
+                      {cert.title}
+                    </h4>
+                    <span className="mt-1 text-sm text-ink-400">
+                      {cert.issuer}
+                    </span>
+                  </div>
+                  <ExternalLink size={16} className="text-ink-500 group-hover:text-accent-400 shrink-0 mt-1 transition-colors" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>

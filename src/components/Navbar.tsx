@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Menu, X, Terminal } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import MSLogo from './MSLogo';
+import { Magnetic } from './Magnetic';
 
 const links = [
   { label: 'About', href: '#about' },
   { label: 'Work', href: '#work' },
   { label: 'Expertise', href: '#expertise' },
-  { label: 'GitHub', href: '#github' },
   { label: 'Journey', href: '#experience' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -30,28 +31,31 @@ export default function Navbar() {
       }`}
     >
       <nav className="container-px mx-auto flex h-16 max-w-7xl items-center justify-between md:h-20">
-        <a href="#top" className="group flex items-center gap-2.5">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent-500 font-display text-lg font-bold text-ink-950 transition-transform duration-300 group-hover:scale-110">
-            <Terminal size={18} />
-          </span>
-          <span className="font-display text-lg font-semibold tracking-tight text-white">
-            Madhu S
-          </span>
-        </a>
+        <Magnetic>
+          <a href="#top" className="group flex items-center gap-2.5">
+            <MSLogo size={36} className="text-accent-500 transition-transform duration-300 group-hover:scale-110" />
+            <span className="font-display text-lg font-semibold tracking-tight text-white">
+              Madhu S
+            </span>
+          </a>
+        </Magnetic>
 
         <div className="hidden items-center gap-8 md:flex">
           {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="link-underline"
-            >
-              {link.label}
-            </a>
+            <Magnetic key={link.href}>
+              <a
+                href={link.href}
+                className="link-underline"
+              >
+                {link.label}
+              </a>
+            </Magnetic>
           ))}
-          <a href="#contact" className="btn-primary !py-2 !px-5">
-            Let&apos;s talk
-          </a>
+          <Magnetic>
+            <a href="#contact" className="btn-primary !py-2 !px-5">
+              Let&apos;s talk
+            </a>
+          </Magnetic>
         </div>
 
         <button

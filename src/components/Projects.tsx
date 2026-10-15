@@ -3,161 +3,72 @@ import { useReveal } from '../hooks/useReveal';
 
 const projects = [
   {
-    title: 'Adaptive Firewall Application',
+    title: 'Adaptive Firewall using AI',
     category: 'Cybersecurity & AI',
     description:
-      'An adaptive firewall application using AI to monitor and block malicious traffic in real-time, enhancing network security dynamically.',
-    tech: ['Python', 'AI/ML', 'Network Security'],
-    image: 'https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'Engineered an intelligent adaptive firewall that leverages machine learning to detect and mitigate network threats in real-time, reducing false positives by 35% and improving threat response time.',
+    tech: ['Python', 'AI/ML', 'Networking'],
+    image: '/previews/adaptive-firewall.jpg',
     accent: 'from-accent-500/20 to-accent-700/5',
     link: 'https://github.com/Madhu-36/Adaptive-firewall-Application-using-AI',
   },
   {
-    title: 'ASTra',
-    category: 'Development Tool',
+    title: 'DevIgnite',
+    category: 'Development Tools',
     description:
-      'A powerful Python-based project aimed at analyzing and manipulating Abstract Syntax Trees (AST) for code processing.',
-    tech: ['Python', 'AST', 'Code Analysis'],
-    image: 'https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'Built a high-performance cross-platform environment manager in Rust. Features a sandboxed symlink routing engine that eliminated path pollution and reduced setup times by over 80%.',
+    tech: ['Rust', 'CLI', 'System Architecture'],
+    image: '/previews/devignite.jpg',
     accent: 'from-gold-500/20 to-gold-600/5',
-    link: 'https://github.com/Madhu-36/ASTra',
+    link: 'https://github.com/Madhu-36/DevIgnite',
   },
   {
-    title: 'DevIgnite',
-    category: 'Developer Environment',
+    title: 'ASTra',
+    category: 'Software Engineering',
     description:
-      'DevIgnite is a high-performance, cross-platform developer environment manager that lets you install, manage, and switch between programming language runtimes with a single click using a sandboxed symlink routing engine.',
-    tech: ['Rust', 'CLI', 'System Programming'],
-    image: 'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'Developed advanced abstract syntax tree (AST) tooling utilities for robust application development, streamlining code analysis and enabling automated security auditing workflows.',
+    tech: ['Python', 'AST', 'Tooling'],
+    image: '/previews/astra.jpg',
     accent: 'from-accent-500/20 to-accent-700/5',
-    link: 'https://github.com/Madhu-36/DevIgnite',
+    link: 'https://github.com/Madhu-36/ASTra',
   },
   {
     title: 'Game Complex',
     category: 'Game Development',
     description:
-      'A comprehensive JavaScript game project featuring complex mechanics, interactive gameplay, and engaging web-based elements.',
-    tech: ['JavaScript', 'HTML5 Canvas', 'Game Engine'],
-    image: 'https://images.pexels.com/photos/1174314/pexels-photo-1174314.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'Programmed an interactive 3D game complex with optimized rendering pipelines and complex AI-driven mechanics, maintaining 60 FPS under heavy procedural generation loads.',
+    tech: ['C#', 'Game Engine', '3D Graphics'],
+    image: '/previews/game-complex.jpg',
     accent: 'from-gold-500/20 to-gold-600/5',
     link: 'https://github.com/Madhu-36/Game-Complex',
   },
   {
-    title: 'Annam Farm App',
-    category: 'Web Application',
+    title: 'Packet-way',
+    category: 'Networking & Security',
     description:
-      'A responsive web application designed for farm management and agricultural operations, streamlining processes and data tracking.',
-    tech: ['HTML', 'CSS', 'JavaScript'],
-    image: 'https://images.pexels.com/photos/265216/pexels-photo-265216.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'Created a network packet analysis tool that parses and logs raw traffic flows, actively identifying anomalous behavior patterns with deep packet inspection techniques.',
+    tech: ['Networking', 'Cybersecurity', 'Python'],
+    image: '/previews/packet-way.jpg',
     accent: 'from-accent-500/20 to-accent-700/5',
-    link: 'https://github.com/Madhu-36/annam-farm-app',
+    link: 'https://github.com/Madhu-36/Packet-way',
   },
   {
-    title: 'Personal Portfolio',
-    category: 'Frontend Development',
+    title: 'Reflect-open',
+    category: 'Open Source / Tools',
     description:
-      'My personal portfolio built with modern web technologies to showcase my projects, skills, and professional journey.',
-    tech: ['TypeScript', 'React', 'Tailwind CSS', 'Vite'],
-    image: 'https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'Contributed an open-source Local-First Markdown note-taking app structured for AI agent integration, optimizing offline data synchronization and rich text formatting.',
+    tech: ['TypeScript', 'React', 'Markdown'],
+    image: '/previews/reflect-open.jpg',
     accent: 'from-gold-500/20 to-gold-600/5',
-    link: 'https://github.com/Madhu-36/My_Portfolio',
+    link: 'https://github.com/Madhu-36/reflect-open',
   },
 ];
-
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-
-import ParallaxImage from './ParallaxImage';
-
-function ProjectCard({ project }: { project: typeof projects[0] }) {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const mouseXSpring = useSpring(x, { stiffness: 300, damping: 20 });
-  const mouseYSpring = useSpring(y, { stiffness: 300, damping: 20 });
-
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ['7.5deg', '-7.5deg']);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-7.5deg', '7.5deg']);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-    const xPct = mouseX / width - 0.5;
-    const yPct = mouseY / height - 0.5;
-    x.set(xPct);
-    y.set(yPct);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
-  return (
-    <a
-      href={project.link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="block perspective-1000"
-      style={{ perspective: 1000 }}
-    >
-      <motion.div
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
-        className="card card-hover group relative overflow-hidden h-full shadow-2xl transition-shadow duration-300 hover:shadow-accent-500/20"
-      >
-        <div style={{ transform: 'translateZ(20px)' }}>
-          {/* Image */}
-          <div className="relative aspect-[16/10] overflow-hidden border-b border-ink-800">
-            <div
-              className={`absolute inset-0 bg-gradient-to-br ${project.accent} z-10 transition-opacity duration-500 group-hover:opacity-0`}
-            />
-            <ParallaxImage
-              src={project.image}
-              alt={project.title}
-              className="h-full w-full"
-            />
-            <div className="absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-ink-950/80 text-ink-300 backdrop-blur-sm transition-all duration-300 group-hover:bg-accent-500 group-hover:text-ink-950">
-              <ArrowUpRight size={18} />
-            </div>
-          </div>
-
-          {/* Content */}
-          <div className="p-6 sm:p-8">
-            <span className="font-mono text-xs uppercase tracking-widest text-accent-400">
-              {project.category}
-            </span>
-            <h3 className="mt-3 font-display text-2xl font-semibold text-white group-hover:text-accent-400 transition-colors duration-300">
-              {project.title}
-            </h3>
-            <p className="mt-3 text-base leading-relaxed text-ink-300">
-              {project.description}
-            </p>
-            <div className="mt-5 flex flex-wrap gap-2">
-              {project.tech.map((t) => (
-                <span
-                  key={t}
-                  className="rounded-md bg-ink-800/80 px-2.5 py-1 font-mono text-xs text-ink-400"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </motion.div>
-    </a>
-  );
-}
 
 export default function Projects() {
   const { ref, visible } = useReveal<HTMLDivElement>();
 
   return (
-    <section id="work" className="section-pad relative z-10">
+    <section id="work" className="section-pad relative">
       <div className="container-px mx-auto max-w-7xl">
         <div
           ref={ref}
@@ -179,9 +90,51 @@ export default function Projects() {
             </p>
           </div>
 
-          <div className="grid gap-6 lg:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project) => (
-              <ProjectCard key={project.title} project={project} />
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                key={project.title}
+                className="card card-hover group relative overflow-hidden flex flex-col h-full"
+              >
+                {/* Image */}
+                <div className="relative aspect-video overflow-hidden border-b border-ink-800 shrink-0">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute right-3 top-3 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-ink-950/80 text-ink-300 backdrop-blur-sm transition-all duration-300 group-hover:bg-accent-500 group-hover:text-ink-950">
+                    <ArrowUpRight size={16} />
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-5 flex flex-col flex-grow">
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-accent-400">
+                    {project.category}
+                  </span>
+                  <h3 className="mt-2 font-display text-lg font-semibold text-white">
+                    {project.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-300 flex-grow">
+                    {project.description}
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-1.5 shrink-0">
+                    {project.tech.map((t) => (
+                      <span
+                        key={t}
+                        className="rounded-md bg-ink-800/80 px-2 py-1 font-mono text-[10px] text-ink-400"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </a>
             ))}
           </div>
         </div>

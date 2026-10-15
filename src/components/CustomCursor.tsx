@@ -1,111 +1,71 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
-const CustomCursor = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+export default function CustomCursor() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
 
-  // Detect non-touch (fine pointer) devices
   useEffect(() => {
-    const match = window.matchMedia("(pointer: fine)").matches;
-    setIsDesktop(match);
-  }, []);
-
-  // Track mouse position
-  useEffect(() => {
-    if (!isDesktop) return;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
+    const updateMousePosition = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
     };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [isDesktop]);
-
-  // Track hover over clickable elements
-  useEffect(() => {
-    if (!isDesktop) return;
-
-    const clickableSelector = "a, button, input, textarea, [role=button]";
 
     const handleMouseOver = (e: MouseEvent) => {
-      if ((e.target as HTMLElement).closest(clickableSelector)) {
+      const target = e.target as HTMLElement;
+      if (
+        target.tagName.toLowerCase() === 'button' ||
+        target.tagName.toLowerCase() === 'a' ||
+        target.closest('button') ||
+        target.closest('a')
+      ) {
         setIsHovering(true);
-      }
-    };
-
-    const handleMouseOut = (e: MouseEvent) => {
-      if ((e.target as HTMLElement).closest(clickableSelector)) {
+      } else {
         setIsHovering(false);
       }
     };
 
-    document.addEventListener("mouseover", handleMouseOver);
-    document.addEventListener("mouseout", handleMouseOut);
+    window.addEventListener('mousemove', updateMousePosition);
+    window.addEventListener('mouseover', handleMouseOver);
+
+    // Hide default cursor safely without breaking scrollbars
+    document.body.style.cursor = 'none';
+    const iter = document.querySelectorAll('a, button');
+    iter.forEach(el => {
+      (el as HTMLElement).style.cursor = 'none';
+    });
+
     return () => {
-      document.removeEventListener("mouseover", handleMouseOver);
-      document.removeEventListener("mouseout", handleMouseOut);
+      window.removeEventListener('mousemove', updateMousePosition);
+      window.removeEventListener('mouseover', handleMouseOver);
+      document.body.style.cursor = 'auto';
     };
-  }, [isDesktop]);
+  }, []);
 
-  // Hide default cursor globally
-  useEffect(() => {
-    if (!isDesktop) return;
-
-    const style = document.createElement("style");
-    style.textContent = "* { cursor: none !important; }";
-    document.head.appendChild(style);
-    return () => {
-      document.head.removeChild(style);
-    };
-  }, [isDesktop]);
-
-  if (!isDesktop) return null;
-
-  const { x, y } = position;
-
-  const outerSize = 40;
-  const innerSize = 8;
+  if (typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches) {
+    return null;
+  }
 
   return (
     <>
-      {/* Outer ring */}
-      <div
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: `${outerSize}px`,
-          height: `${outerSize}px`,
-          borderRadius: "50%",
-          border: isHovering
-            ? "2px solid rgba(86, 211, 100, 0.8)"
-            : "2px solid rgba(56, 139, 253, 0.5)",
-          pointerEvents: "none",
-          zIndex: 9999,
-          transform: `translate(${x - outerSize / 2}px, ${y - outerSize / 2}px) scale(${isHovering ? 1.5 : 1})`,
-          transition: "transform 150ms ease-out, border-color 150ms ease-out",
-          mixBlendMode: "difference",
+      <motion.div
+        className="pointer-events-none fixed left-0 top-0 z-[9999] h-2 w-2 rounded-full bg-accent-400 mix-blend-difference"
+        animate={{
+          x: mousePosition.x - 4,
+          y: mousePosition.y - 4,
         }}
+        transition={{ type: 'tween', ease: 'backOut', duration: 0.1 }}
       />
-      {/* Inner dot */}
-      <div
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: `${innerSize}px`,
-          height: `${innerSize}px`,
-          borderRadius: "50%",
-          background: "#58a6ff",
-          pointerEvents: "none",
-          zIndex: 9999,
-          transform: `translate(${x - innerSize / 2}px, ${y - innerSize / 2}px) scale(${isHovering ? 0.5 : 1})`,
+      <motion.div
+        className="pointer-events-none fixed left-0 top-0 z-[9998] rounded-full border border-accent-500/50 mix-blend-difference"
+        animate={{
+          x: mousePosition.x - (isHovering ? 24 : 16),
+          y: mousePosition.y - (isHovering ? 24 : 16),
+          height: isHovering ? 48 : 32,
+          width: isHovering ? 48 : 32,
+          backgroundColor: isHovering ? 'rgba(6, 182, 212, 0.1)' : 'transparent',
         }}
+        transition={{ type: 'spring', stiffness: 150, damping: 15, mass: 0.5 }}
       />
     </>
   );
-};
-
-export default CustomCursor;
+}

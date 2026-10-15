@@ -14,7 +14,7 @@ export default function AIAssistant() {
     {
       id: '1',
       role: 'assistant',
-      content: "Hi! I am Madhu's AI assistant. Ask me anything about his skills, projects, or background.",
+      content: "Hi! I am Maxhu, Madhu's AI assistant. Ask me anything about his skills, projects, or background.",
     },
   ]);
   const [input, setInput] = useState('');
@@ -44,11 +44,19 @@ export default function AIAssistant() {
       if (lower.includes('rust') || lower.includes('devignite')) {
         botResponse = "Madhu built DevIgnite, a cross-platform developer environment manager in Rust! He loves system programming and performance optimization.";
       } else if (lower.includes('game') || lower.includes('unity')) {
-        botResponse = "Madhu creates games using JavaScript and engines like Unity. Check out 'Game Complex' in the projects section!";
+        botResponse = "Madhu creates games using C# and Unity. Check out 'Game Complex' in the projects section! He also holds a Unity Junior Programmer certification.";
       } else if (lower.includes('ai') || lower.includes('machine learning')) {
-        botResponse = "Madhu is an AI Engineer who has built adaptive firewalls using AI and is passionate about neural networks.";
+        botResponse = "Madhu is an AI & Data Science Engineering student. He built an Adaptive Firewall using AI, and holds an AI Fluency certification from Claude/Anthropic!";
+      } else if (lower.includes('cyber') || lower.includes('hack') || lower.includes('security')) {
+        botResponse = "Cybersecurity is his core strength! He interned as an Ethical Hacker at Jutrm Career Academy and ACMEGRADE, mastering tools like Burp Suite, Nmap, and Metasploit. He also completed job simulations with Forage and Deloitte.";
+      } else if (lower.includes('education') || lower.includes('college') || lower.includes('university')) {
+        botResponse = "Madhu is pursuing a B.E. in Artificial Intelligence and Data Science at East West Institute of Technology (EWIT), Bengaluru, expecting to graduate in 2027.";
+      } else if (lower.includes('aws') || lower.includes('cloud')) {
+        botResponse = "Madhu is an AWS Academy Graduate and holds the AWS Cloud Foundations certification!";
       } else if (lower.includes('hire') || lower.includes('contact') || lower.includes('resume')) {
-        botResponse = "You can contact Madhu via the Contact section below, or connect with him on LinkedIn!";
+        botResponse = "You can download his resume directly from the terminal (type 'resume'), contact him via the form below, or connect with him on LinkedIn!";
+      } else if (lower.includes('who are you') || lower.includes('maxhu')) {
+        botResponse = "I am Maxhu AI, a digital twin representing Madhu. I've been programmed with his resume, skills, and background to help answer your questions!";
       }
 
       setMessages((prev) => [...prev, { id: Date.now().toString(), role: 'assistant', content: botResponse }]);
@@ -65,7 +73,7 @@ export default function AIAssistant() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="absolute bottom-16 right-0 w-80 sm:w-96 rounded-2xl border border-ink-700 bg-ink-900/95 shadow-2xl backdrop-blur-xl overflow-hidden flex flex-col h-[400px]"
+            className="absolute bottom-16 right-0 w-[calc(100vw-3rem)] max-w-sm sm:max-w-none sm:w-96 rounded-2xl border border-ink-700 bg-ink-900/95 shadow-2xl backdrop-blur-xl overflow-hidden flex flex-col h-[400px]"
           >
             {/* Header */}
             <div className="flex items-center justify-between border-b border-ink-800 bg-ink-950 px-4 py-3">
@@ -74,7 +82,7 @@ export default function AIAssistant() {
                   <Bot size={18} />
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-white">Madhu's AI</h3>
+                  <h3 className="text-sm font-semibold text-white">Maxhu AI</h3>
                   <div className="flex items-center gap-1.5">
                     <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
                     <span className="text-xs text-ink-400">Online</span>

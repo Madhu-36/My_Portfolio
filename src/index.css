@@ -125,3 +125,24 @@
     box-shadow: 0 0 20px rgba(34, 211, 238, 0.15), inset 0 0 20px rgba(34, 211, 238, 0.05);
   }
 }
+.gravity-fall {
+  animation: fallDown 2s forwards cubic-bezier(0.5, 0, 1, 1);
+  transform-origin: bottom;
+}
+
+@keyframes fallDown {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(1000px) rotate(10deg); opacity: 0; }
+}
+
+@layer utilities {
+  .hacker-mode {
+    filter: sepia(100%) hue-rotate(80deg) saturate(400%) contrast(150%) invert(10%);
+    font-family: "JetBrains Mono", monospace !important;
+  }
+  .hacker-mode h1, .hacker-mode h2, .hacker-mode h3, .hacker-mode span {
+    font-family: "JetBrains Mono", monospace !important;
+    text-transform: uppercase;
+  }
+}
+

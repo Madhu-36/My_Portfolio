@@ -2,39 +2,41 @@ import { useReveal } from '../hooks/useReveal';
 
 const experiences = [
   {
-    role: 'Open Source Developer',
-    company: 'Independent',
-    period: '2024 — Present',
+    role: 'Ethical Hacker Intern',
+    company: 'Jutrm Career Academy',
+    period: 'Mar 2026',
     description:
-      'Developing and maintaining tools like DevIgnite (Rust CLI) and ASTra (Python). Focused on performance optimization and system engineering.',
+      'Completed hands-on penetration testing and vulnerability assessments across real-time network infrastructure projects. Analyzed system vulnerabilities and evaluated kernel-level security requirements.',
     highlights: [
-      'Built a high-performance cross-platform dev environment manager in Rust.',
-      'Developed tools for analyzing and modifying Python Abstract Syntax Trees.',
-      'Contributed to open source and built a strong GitHub portfolio.',
+      'Real-time network penetration testing',
+      'Kernel-level security evaluation',
+      'Vulnerability assessment & mitigation',
     ],
   },
   {
-    role: 'B.E. in Computer Science',
+    role: 'Ethical Hacker Intern',
+    company: 'ACMEGRADE',
+    period: 'Dec 2025 – Jun 2026',
+    description:
+      'Executed web and network vulnerability assessments using Burp Suite and Nmap. Intercepted HTTP traffic, verified security risks, and documented PoCs and remediation reports for development teams.',
+    highlights: [
+      'Burp Suite & Nmap vulnerability scanning',
+      'XSS, SQLi, & Access Control assessment',
+      'PoC documentation & remediation reporting',
+      'Security patch verification',
+    ],
+  },
+  {
+    role: 'B.E. in Computer Science / AI & DS',
     company: 'East West Institute of Technology',
-    period: '2022 — Present',
+    period: '2022 – Present',
     description:
-      'Pursuing engineering with a focus on core computer science fundamentals, system programming, AI, and software engineering.',
+      'Pursuing engineering with a focus on Artificial Intelligence and Data Science. Coursework spans machine learning, data structures, algorithms, and software engineering.',
     highlights: [
-      'Developed AI-driven applications like an adaptive firewall.',
-      'Strong grasp of data structures and algorithms.',
-      'Active in technical communities and self-driven projects.',
-    ],
-  },
-  {
-    role: 'Web & Game Development Projects',
-    company: 'Independent / Self-taught',
-    period: '2023 — Present',
-    description:
-      'Building responsive web applications and complex game systems. Created Annam Farm App and Game Complex.',
-    highlights: [
-      'Built interactive JavaScript games with complex mechanics.',
-      'Developed responsive frontend web apps (React, Vite, HTML/CSS).',
-      'Experimented with AI integration in web applications.',
+      'ML & deep learning projects',
+      'Data science & analytics',
+      'Strong CS fundamentals',
+      'Active in technical communities',
     ],
   },
 ];

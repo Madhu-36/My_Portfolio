@@ -22,28 +22,20 @@ export default function Contact() {
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) return;
 
     setStatus('loading');
-    setErrorMsg('');
 
-    if (!supabase) {
-      setStatus('error');
-      setErrorMsg('Supabase is not configured. Please add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to your .env file.');
-      return;
-    }
+    // Encode the email parameters
+    const subject = encodeURIComponent(`Portfolio Contact from ${form.name}`);
+    const body = encodeURIComponent(`${form.message}\n\n---\nSender Email: ${form.email}\nSender Name: ${form.name}`);
+    
+    // Open the default email client
+    window.location.href = `mailto:madhu.s.3606@gmail.com?subject=${subject}&body=${body}`;
 
-    const { error } = await supabase.from('contact_messages').insert({
-      name: form.name.trim(),
-      email: form.email.trim(),
-      message: form.message.trim(),
-    });
-
-    if (error) {
-      setStatus('error');
-      setErrorMsg('Something went wrong. Please try again or email me directly.');
-      return;
-    }
-
-    setStatus('success');
-    setForm({ name: '', email: '', message: '' });
+    // Show success state briefly then reset
+    setTimeout(() => {
+      setStatus('success');
+      setForm({ name: '', email: '', message: '' });
+      setTimeout(() => setStatus('idle'), 3000);
+    }, 500);
   };
 
   return (
@@ -74,7 +66,7 @@ export default function Contact() {
 
               <div className="mt-10 space-y-5">
                 <a
-                  href="mailto:madhu.s@example.com"
+                  href="mailto:madhu.s.3606@gmail.com"
                   className="group flex items-center gap-4 text-ink-200 transition-colors hover:text-white"
                 >
                   <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-ink-700 transition-colors group-hover:border-accent-500/50">
@@ -84,7 +76,7 @@ export default function Contact() {
                     <div className="text-xs uppercase tracking-widest text-ink-500">
                       Email
                     </div>
-                    <div className="text-base font-medium">madhu.s@example.com</div>
+                    <div className="text-base font-medium">madhu.s.3606@gmail.com</div>
                   </div>
                 </a>
 
