@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -12,28 +12,21 @@
   }
 
   body {
-    @apply bg-ink-950 text-ink-100 font-sans antialiased;
+    @apply bg-ink-950 text-ink-100 font-sans antialiased selection:bg-accent-500/20 selection:text-accent-300;
     background-image:
-      radial-gradient(60% 50% at 50% 0%, rgba(34, 211, 238, 0.06), transparent 70%),
-      radial-gradient(40% 40% at 85% 20%, rgba(245, 158, 11, 0.04), transparent 70%);
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(14, 165, 233, 0.08), transparent),
+      radial-gradient(ellipse 60% 40% at 90% 40%, rgba(56, 189, 248, 0.03), transparent);
     background-attachment: fixed;
   }
 
-  ::selection {
-    @apply bg-accent-500/30 text-white;
-  }
-
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
   }
   ::-webkit-scrollbar-track {
     @apply bg-ink-950;
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-ink-700 rounded-full border-2 border-ink-950;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-accent-700;
+    @apply bg-ink-800 rounded-full hover:bg-ink-700 transition-colors;
   }
 }
 
@@ -43,39 +36,43 @@
   }
 
   .section-pad {
-    @apply py-24 md:py-32;
+    @apply py-20 md:py-28;
   }
 
   .eyebrow {
-    @apply inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-accent-400;
+    @apply inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.18em] text-accent-400 font-medium;
   }
 
   .heading-xl {
-    @apply font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.05] tracking-tight;
+    @apply font-display text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.1] tracking-tight text-white;
   }
 
   .heading-lg {
-    @apply font-display text-3xl sm:text-4xl md:text-5xl font-semibold leading-[1.1] tracking-tight;
+    @apply font-display text-3xl sm:text-4xl font-semibold leading-[1.15] tracking-tight text-white;
   }
 
   .heading-md {
-    @apply font-display text-2xl sm:text-3xl font-medium leading-tight tracking-tight;
+    @apply font-display text-xl sm:text-2xl font-medium leading-tight tracking-tight text-white;
   }
 
   .card {
-    @apply rounded-2xl border border-ink-800 bg-ink-900/60 backdrop-blur-sm transition-all duration-300;
+    @apply rounded-xl border border-ink-800/80 bg-ink-900/60 backdrop-blur-md transition-all duration-200;
   }
 
   .card-hover {
-    @apply hover:border-accent-500/30 hover:bg-ink-900 hover:shadow-2xl hover:shadow-accent-500/5 hover:-translate-y-1;
+    @apply hover:border-ink-700 hover:bg-ink-900/90 hover:shadow-xl hover:-translate-y-0.5;
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-accent-500 px-6 py-3 text-sm font-semibold text-ink-950 transition-all duration-300 hover:bg-accent-400 hover:shadow-lg hover:shadow-accent-500/30 active:scale-95;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-accent-500 px-5 py-2.5 text-sm font-medium text-ink-950 transition-all duration-200 hover:bg-accent-400 hover:shadow-md hover:shadow-accent-500/20 active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-ink-700/80 bg-ink-900/60 px-5 py-2.5 text-sm font-medium text-ink-200 transition-all duration-200 hover:border-ink-600 hover:bg-ink-800/80 hover:text-white active:scale-[0.98];
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink-700 px-6 py-3 text-sm font-medium text-ink-100 transition-all duration-300 hover:border-accent-500/40 hover:bg-ink-800/50 active:scale-95;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-ink-300 transition-colors hover:bg-ink-800/50 hover:text-white;
   }
 
   .link-underline {
@@ -83,14 +80,10 @@
   }
   .link-underline::after {
     content: '';
-    @apply absolute -bottom-0.5 left-0 h-px w-0 bg-accent-400 transition-all duration-300;
+    @apply absolute -bottom-0.5 left-0 h-px w-0 bg-accent-400 transition-all duration-200;
   }
   .link-underline:hover::after {
     @apply w-full;
-  }
-
-  .terminal {
-    @apply rounded-xl border border-ink-800 bg-ink-950/80 font-mono text-sm;
   }
 }
 
@@ -101,48 +94,19 @@
 
   .reveal {
     opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .reveal.is-visible {
     opacity: 1;
     transform: translateY(0);
   }
 
-  .grid-pattern {
+  .subtle-grid {
     background-image:
-      linear-gradient(to right, rgba(34, 211, 238, 0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(34, 211, 238, 0.04) 1px, transparent 1px);
-    background-size: 48px 48px;
-  }
-
-  .text-glow {
-    text-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
-  }
-
-  .border-glow {
-    box-shadow: 0 0 20px rgba(34, 211, 238, 0.15), inset 0 0 20px rgba(34, 211, 238, 0.05);
+      linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 32px 32px;
   }
 }
-.gravity-fall {
-  animation: fallDown 2s forwards cubic-bezier(0.5, 0, 1, 1);
-  transform-origin: bottom;
-}
-
-@keyframes fallDown {
-  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(1000px) rotate(10deg); opacity: 0; }
-}
-
-@layer utilities {
-  .hacker-mode {
-    filter: sepia(100%) hue-rotate(80deg) saturate(400%) contrast(150%) invert(10%);
-    font-family: "JetBrains Mono", monospace !important;
-  }
-  .hacker-mode h1, .hacker-mode h2, .hacker-mode h3, .hacker-mode span {
-    font-family: "JetBrains Mono", monospace !important;
-    text-transform: uppercase;
-  }
-}
-

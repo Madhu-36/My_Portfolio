@@ -1,43 +1,51 @@
+import { Briefcase, Calendar, GraduationCap, MapPin } from 'lucide-react';
 import { useReveal } from '../hooks/useReveal';
 
 const experiences = [
   {
+    type: 'work',
     role: 'Ethical Hacker Intern',
     company: 'Jutrm Career Academy',
-    period: 'Mar 2026',
+    location: 'Bengaluru, India',
+    period: 'March 2026',
     description:
-      'Completed hands-on penetration testing and vulnerability assessments across real-time network infrastructure projects. Analyzed system vulnerabilities and evaluated kernel-level security requirements.',
+      'Completed hands-on network penetration testing and infrastructure vulnerability audits across live environments. Evaluated system exposure and formulated kernel-level remediation steps.',
     highlights: [
-      'Real-time network penetration testing',
-      'Kernel-level security evaluation',
-      'Vulnerability assessment & mitigation',
+      'Real-time network vulnerability scanning and mapping',
+      'System hardening & kernel-level defense analysis',
+      'Remediation reporting and attack surface reduction',
     ],
+    tech: ['Penetration Testing', 'Network Security', 'Linux', 'Security Audits'],
   },
   {
+    type: 'work',
     role: 'Ethical Hacker Intern',
     company: 'ACMEGRADE',
-    period: 'Dec 2025 – Jun 2026',
+    location: 'Remote',
+    period: 'December 2025 – June 2026',
     description:
-      'Executed web and network vulnerability assessments using Burp Suite and Nmap. Intercepted HTTP traffic, verified security risks, and documented PoCs and remediation reports for development teams.',
+      'Executed web application vulnerability assessments focusing on the OWASP Top 10. Intercepted and modified HTTP/S traffic using Burp Suite, documented reproducible PoCs, and assisted in verification of security patches.',
     highlights: [
-      'Burp Suite & Nmap vulnerability scanning',
-      'XSS, SQLi, & Access Control assessment',
-      'PoC documentation & remediation reporting',
-      'Security patch verification',
+      'Burp Suite & Nmap automated + manual reconnaissance',
+      'SQL injection, XSS, and broken access control testing',
+      'Wrote actionable vulnerability documentation and risk impact ratings',
     ],
+    tech: ['Burp Suite', 'Nmap', 'OWASP Top 10', 'Web Security', 'HTTP Analysis'],
   },
   {
-    role: 'B.E. in Computer Science / AI & DS',
+    type: 'education',
+    role: 'Bachelor of Engineering in AI & Data Science',
     company: 'East West Institute of Technology',
-    period: '2022 – Present',
+    location: 'Bengaluru, India',
+    period: '2022 – 2026 (Expected)',
     description:
-      'Pursuing engineering with a focus on Artificial Intelligence and Data Science. Coursework spans machine learning, data structures, algorithms, and software engineering.',
+      'Specialized coursework in Machine Learning, Deep Neural Networks, Data Structures & Algorithms, Network Security, and Distributed Systems.',
     highlights: [
-      'ML & deep learning projects',
-      'Data science & analytics',
-      'Strong CS fundamentals',
-      'Active in technical communities',
+      'Core focus on Applied Artificial Intelligence and Systems Engineering',
+      'Active participant in technical hackathons and cybersecurity clubs',
+      'Built multiple open-source software tools and ML pipelines',
     ],
+    tech: ['Machine Learning', 'Data Structures', 'Python', 'Algorithms', 'Security'],
   },
 ];
 
@@ -45,79 +53,82 @@ export default function Experience() {
   const { ref, visible } = useReveal<HTMLDivElement>();
 
   return (
-    <section id="experience" className="section-pad relative">
+    <section id="experience" className="section-pad relative border-t border-ink-800/60">
       <div className="container-px mx-auto max-w-7xl">
         <div
           ref={ref}
           className={`reveal ${visible ? 'is-visible' : ''}`}
         >
-          <span className="eyebrow mb-6">
-            <span className="h-px w-8 bg-accent-400" />
-            Journey
-          </span>
-          <h2 className="heading-lg mb-16 max-w-2xl text-balance">
-            Learning, building, and growing.
-          </h2>
+          <div className="mb-12 border-b border-ink-800/80 pb-6">
+            <span className="eyebrow mb-2">
+              <Briefcase size={13} className="text-accent-400" />
+              Career &amp; Education
+            </span>
+            <h2 className="heading-lg text-balance mt-1">
+              Experience &amp; Academic Journey
+            </h2>
+          </div>
 
-          <div className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-0 top-2 h-full w-px bg-gradient-to-b from-accent-500/40 via-ink-700 to-transparent md:left-1/2" />
-
-            <div className="space-y-12">
-              {experiences.map((exp, i) => (
-                <div
-                  key={exp.role + exp.company}
-                  className={`relative flex flex-col gap-4 md:flex-row md:gap-0 ${
-                    i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                  }`}
-                >
-                  {/* Dot */}
-                  <div className="absolute left-0 top-2 z-10 h-3 w-3 -translate-x-[5px] rounded-full border-2 border-accent-500 bg-ink-950 md:left-1/2 md:-translate-x-[6px]" />
-
-                  {/* Spacer for alternating layout */}
-                  <div className="hidden md:block md:w-1/2" />
-
-                  {/* Content */}
-                  <div
-                    className={`pl-8 md:w-1/2 md:pl-12 ${
-                      i % 2 === 0
-                        ? 'md:pl-12'
-                        : 'md:pl-0 md:pr-12 md:text-right'
-                    }`}
-                  >
-                    <div className="card card-hover p-6 sm:p-8">
-                      <span className="font-mono text-xs uppercase tracking-widest text-accent-400">
-                        {exp.period}
-                      </span>
-                      <h3 className="mt-3 font-display text-xl font-semibold text-white">
+          <div className="max-w-4xl space-y-8">
+            {experiences.map((exp) => (
+              <div
+                key={exp.role + exp.company}
+                className="card p-6 sm:p-7 border-ink-800/80 bg-ink-900/50"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 border-b border-ink-800/70 pb-4">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      {exp.type === 'education' ? (
+                        <GraduationCap size={16} className="text-accent-400 shrink-0" />
+                      ) : (
+                        <Briefcase size={16} className="text-accent-400 shrink-0" />
+                      )}
+                      <h3 className="font-display text-lg font-semibold text-white">
                         {exp.role}
                       </h3>
-                      <p className="mt-1 text-base text-ink-400">
-                        {exp.company}
-                      </p>
-                      <p className="mt-4 text-sm leading-relaxed text-ink-300">
-                        {exp.description}
-                      </p>
-                      <ul
-                        className={`mt-5 space-y-2 ${
-                          i % 2 !== 0 ? 'md:flex md:flex-col md:items-end' : ''
-                        }`}
-                      >
-                        {exp.highlights.map((h) => (
-                          <li
-                            key={h}
-                            className="flex items-center gap-2 text-sm text-ink-300"
-                          >
-                            <span className="h-1.5 w-1.5 rounded-full bg-accent-500" />
-                            {h}
-                          </li>
-                        ))}
-                      </ul>
                     </div>
+                    <p className="text-sm font-medium text-ink-200 mt-1">
+                      {exp.company}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-3 text-xs text-ink-400 font-mono">
+                    <span className="inline-flex items-center gap-1">
+                      <Calendar size={12} className="text-accent-400/80" />
+                      {exp.period}
+                    </span>
+                    <span className="inline-flex items-center gap-1">
+                      <MapPin size={12} className="text-ink-500" />
+                      {exp.location}
+                    </span>
                   </div>
                 </div>
-              ))}
-            </div>
+
+                <p className="mt-4 text-xs sm:text-sm leading-relaxed text-ink-300">
+                  {exp.description}
+                </p>
+
+                <ul className="mt-4 space-y-1.5 text-xs text-ink-300">
+                  {exp.highlights.map((h) => (
+                    <li key={h} className="flex items-start gap-2">
+                      <span className="h-1.5 w-1.5 rounded-full bg-accent-400 mt-1.5 shrink-0" />
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-5 flex flex-wrap gap-1.5 pt-4 border-t border-ink-800/60">
+                  {exp.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded bg-ink-800/70 px-2 py-0.5 font-mono text-[10px] text-ink-400"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
