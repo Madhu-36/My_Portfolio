@@ -1,71 +1,124 @@
-import { ArrowUpRight } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowUpRight, Github, FolderGit2 } from 'lucide-react';
 import { useReveal } from '../hooks/useReveal';
 
-const projects = [
+export interface Project {
+  title: string;
+  category: string;
+  domain: 'all' | 'cyber' | 'ai' | 'systems';
+  description: string;
+  tech: string[];
+  image: string;
+  accent: string;
+  link: string;
+}
+
+const projects: Project[] = [
+  {
+    title: 'Kavach: Agentic AI Security',
+    category: 'Cybersecurity & Agentic AI',
+    domain: 'cyber',
+    description:
+      'Cryptographic micro-mandates that guarantee mathematical spending safety for autonomous AI agents over digital payment rails, pairing asymmetric Ed25519 signatures with process isolation.',
+    tech: ['Python', 'Ed25519 Cryptography', 'Process Isolation', 'Docker'],
+    image: '/previews/kavach.svg',
+    accent: 'from-accent-500/20 to-accent-700/5',
+    link: 'https://github.com/Madhu-36/Kavach',
+  },
+  {
+    title: 'CodeShield: AI Firewall',
+    category: 'AI Security & Tooling',
+    domain: 'cyber',
+    description:
+      'Edge-native security firewall and AST static analysis engine to intercept prompt injection, dangerous code generation patterns, and malicious code execution in real time.',
+    tech: ['Python', 'AST Analysis', 'Security Auditing', 'CI/CD Pipelines'],
+    image: '/previews/codeshield.jpg',
+    accent: 'from-accent-500/20 to-accent-700/5',
+    link: 'https://github.com/Madhu-36/CodeShield',
+  },
   {
     title: 'Adaptive Firewall using AI',
-    category: 'Cybersecurity & AI',
+    category: 'Cybersecurity & Machine Learning',
+    domain: 'cyber',
     description:
-      'Engineered an intelligent adaptive firewall that leverages machine learning to detect and mitigate network threats in real-time, reducing false positives by 35% and improving threat response time.',
-    tech: ['Python', 'AI/ML', 'Networking'],
+      'Intelligent adaptive firewall leveraging LSTM-Autoencoders and Reinforcement Learning (PPO) for real-time anomaly detection and kernel-level mitigation, cutting false positives by 35%.',
+    tech: ['Python', 'LSTM-Autoencoders', 'RL (PPO)', 'Kernel Automation'],
     image: '/previews/adaptive-firewall.jpg',
     accent: 'from-accent-500/20 to-accent-700/5',
     link: 'https://github.com/Madhu-36/Adaptive-firewall-Application-using-AI',
   },
   {
     title: 'DevIgnite',
-    category: 'Development Tools',
+    category: 'Systems & Developer Tooling',
+    domain: 'systems',
     description:
-      'Built a high-performance cross-platform environment manager in Rust. Features a sandboxed symlink routing engine that eliminated path pollution and reduced setup times by over 80%.',
-    tech: ['Rust', 'CLI', 'System Architecture'],
+      'High-performance cross-platform environment manager built in Rust. Features a sandboxed symlink routing engine that eliminates path pollution and slashes setup times by over 80%.',
+    tech: ['Rust', 'CLI Architecture', 'Systems Programming', 'Linux'],
     image: '/previews/devignite.jpg',
     accent: 'from-gold-500/20 to-gold-600/5',
     link: 'https://github.com/Madhu-36/DevIgnite',
   },
   {
-    title: 'ASTra',
-    category: 'Software Engineering',
+    title: 'MXB (Machine eXecutive Brain)',
+    category: 'AI & Desktop Automation',
+    domain: 'ai',
     description:
-      'Developed advanced abstract syntax tree (AST) tooling utilities for robust application development, streamlining code analysis and enabling automated security auditing workflows.',
-    tech: ['Python', 'AST', 'Tooling'],
-    image: '/previews/astra.jpg',
+      'Desktop executive AI assistant and second brain for Windows, integrating local LLM inference engines, offline resilience, and automated context retrieval workflows.',
+    tech: ['Python', 'Local Inference', 'Desktop Automation', 'NLP'],
+    image: '/previews/mxb.jpg',
     accent: 'from-accent-500/20 to-accent-700/5',
-    link: 'https://github.com/Madhu-36/ASTra',
+    link: 'https://github.com/Madhu-36/MXB',
   },
   {
-    title: 'Game Complex',
-    category: 'Game Development',
+    title: 'PacketWay 3D',
+    category: 'Network Forensics & WebGL',
+    domain: 'cyber',
     description:
-      'Programmed an interactive 3D game complex with optimized rendering pipelines and complex AI-driven mechanics, maintaining 60 FPS under heavy procedural generation loads.',
-    tech: ['C#', 'Game Engine', '3D Graphics'],
-    image: '/previews/game-complex.jpg',
-    accent: 'from-gold-500/20 to-gold-600/5',
-    link: 'https://github.com/Madhu-36/Game-Complex',
-  },
-  {
-    title: 'Packet-way',
-    category: 'Networking & Security',
-    description:
-      'Created a network packet analysis tool that parses and logs raw traffic flows, actively identifying anomalous behavior patterns with deep packet inspection techniques.',
-    tech: ['Networking', 'Cybersecurity', 'Python'],
+      'Enterprise-grade network threat detection and deep packet inspection platform featuring real-time 3D packet traffic visualization and live anomaly telemetry.',
+    tech: ['React', 'Node.js', 'Three.js', 'Packet Forensics'],
     image: '/previews/packet-way.jpg',
     accent: 'from-accent-500/20 to-accent-700/5',
     link: 'https://github.com/Madhu-36/Packet-way',
   },
   {
-    title: 'Reflect-open',
-    category: 'Open Source / Tools',
+    title: 'Game Complex',
+    category: 'Full Stack & Game Platform',
+    domain: 'systems',
     description:
-      'Contributed an open-source Local-First Markdown note-taking app structured for AI agent integration, optimizing offline data synchronization and rich text formatting.',
-    tech: ['TypeScript', 'React', 'Markdown'],
+      'Next-generation digital games storefront and interactive platform featuring optimized real-time catalog navigation, secure checkout, and high-performance game asset delivery.',
+    tech: ['React 19', 'Django', 'Python', 'Tailwind CSS'],
+    image: '/previews/game-complex.jpg',
+    accent: 'from-gold-500/20 to-gold-600/5',
+    link: 'https://github.com/Madhu-36/Game-Complex',
+  },
+  {
+    title: 'Reflect-open',
+    category: 'Open Source / Local-First',
+    domain: 'systems',
+    description:
+      'Open-source local-first Markdown workspace structured for agentic AI integration, zero-latency offline synchronization, and rich document knowledge mapping.',
+    tech: ['TypeScript', 'React', 'Local-First DB', 'Markdown'],
     image: '/previews/reflect-open.jpg',
     accent: 'from-gold-500/20 to-gold-600/5',
     link: 'https://github.com/Madhu-36/reflect-open',
   },
 ];
 
+const filterTabs = [
+  { label: 'All Projects', value: 'all' },
+  { label: 'Cybersecurity', value: 'cyber' },
+  { label: 'AI & Machine Learning', value: 'ai' },
+  { label: 'Systems & Tools', value: 'systems' },
+] as const;
+
 export default function Projects() {
   const { ref, visible } = useReveal<HTMLDivElement>();
+  const [activeFilter, setActiveFilter] = useState<'all' | 'cyber' | 'ai' | 'systems'>('all');
+
+  const filteredProjects = projects.filter((p) => {
+    if (activeFilter === 'all') return true;
+    return p.domain === activeFilter;
+  });
 
   return (
     <section id="work" className="section-pad relative">
@@ -74,33 +127,61 @@ export default function Projects() {
           ref={ref}
           className={`reveal ${visible ? 'is-visible' : ''}`}
         >
-          <div className="mb-14 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <div className="mb-10 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between border-b border-ink-800 pb-6">
             <div>
-              <span className="eyebrow mb-6">
-                <span className="h-px w-8 bg-accent-400" />
-                Selected Work
+              <span className="eyebrow mb-3">
+                <FolderGit2 size={14} className="text-accent-400" />
+                GitHub Repositories
               </span>
               <h2 className="heading-lg text-balance">
                 Projects I&apos;ve built.
               </h2>
+              <p className="mt-2 max-w-xl text-base text-ink-400">
+                Live open-source repositories across cybersecurity, artificial intelligence, and systems tooling.
+              </p>
             </div>
-            <p className="max-w-sm text-base text-ink-400">
-              A selection of security tools, AI models, and games I&apos;ve
-              designed and built across my three domains of interest.
-            </p>
+
+            <a
+              href="https://github.com/Madhu-36?tab=repositories"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg border border-ink-700 bg-ink-900/60 px-4 py-2 text-xs font-mono uppercase tracking-wider text-ink-200 transition-all hover:border-accent-500/50 hover:bg-accent-500/10 hover:text-white"
+            >
+              <Github size={15} />
+              <span>github.com/Madhu-36</span>
+              <ArrowUpRight size={14} />
+            </a>
           </div>
 
+          {/* Category Filter Tabs */}
+          <div className="mb-8 flex flex-wrap items-center gap-2">
+            {filterTabs.map((tab) => (
+              <button
+                key={tab.value}
+                onClick={() => setActiveFilter(tab.value)}
+                className={`rounded-lg px-3.5 py-1.5 text-xs font-medium transition-all ${
+                  activeFilter === tab.value
+                    ? 'bg-accent-500 text-ink-950 font-semibold shadow-md shadow-accent-500/20'
+                    : 'border border-ink-800 bg-ink-900/60 text-ink-400 hover:border-ink-700 hover:text-white'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Project Cards Grid */}
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project) => (
+            {filteredProjects.map((project) => (
               <a
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 key={project.title}
-                className="card card-hover group relative overflow-hidden flex flex-col h-full"
+                className="card card-hover group relative overflow-hidden flex flex-col h-full bg-ink-900/60"
               >
                 {/* Image */}
-                <div className="relative aspect-video overflow-hidden border-b border-ink-800 shrink-0">
+                <div className="relative aspect-video overflow-hidden border-b border-ink-800 shrink-0 bg-ink-950">
                   <img
                     src={project.image}
                     alt={project.title}
@@ -117,17 +198,17 @@ export default function Projects() {
                   <span className="font-mono text-[10px] uppercase tracking-widest text-accent-400">
                     {project.category}
                   </span>
-                  <h3 className="mt-2 font-display text-lg font-semibold text-white">
+                  <h3 className="mt-2 font-display text-lg font-semibold text-white group-hover:text-accent-300 transition-colors">
                     {project.title}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink-300 flex-grow">
                     {project.description}
                   </p>
-                  <div className="mt-4 flex flex-wrap gap-1.5 shrink-0">
+                  <div className="mt-4 flex flex-wrap gap-1.5 shrink-0 pt-3 border-t border-ink-800/60">
                     {project.tech.map((t) => (
                       <span
                         key={t}
-                        className="rounded-md bg-ink-800/80 px-2 py-1 font-mono text-[10px] text-ink-400"
+                        className="rounded-md bg-ink-800/80 px-2 py-1 font-mono text-[10px] text-ink-300 border border-ink-700/50"
                       >
                         {t}
                       </span>

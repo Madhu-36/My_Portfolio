@@ -44,32 +44,42 @@ An interactive, high-performance 3D portfolio showcasing engineering work across
 
 ---
 
-## 📂 Featured Projects
+## 📂 Featured Projects (GitHub Repositories)
+
+### 🛡️ [Kavach: Cryptographic Micro-Mandates for Agentic AI](https://github.com/Madhu-36/Kavach)
+* **Domain:** Cybersecurity & Agentic AI
+* **Stack:** Python, Ed25519 Cryptography, Process Isolation, Docker
+* **Description:** Cryptographic micro-mandates that mathematically bound autonomous AI agent spending over UPI digital payment rails, pairing asymmetric Ed25519 signatures with strict OS process isolation.
+
+### 🛡️ [CodeShield: Edge-Native AI Security Firewall](https://github.com/Madhu-36/CodeShield)
+* **Domain:** AI Security & Static Auditing
+* **Stack:** Python, AST Analysis, Security Auditing, CI/CD
+* **Description:** Edge-native security firewall and AST static analysis engine to intercept prompt injection, dangerous code generation patterns, and malicious code payloads in real time.
 
 ### 🛡️ [Adaptive Firewall Application using AI](https://github.com/Madhu-36/Adaptive-firewall-Application-using-AI)
 * **Domain:** Cybersecurity & Artificial Intelligence
-* **Stack:** Python, Machine Learning, Scapy, Network Security
-* **Description:** An intelligent adaptive firewall that leverages machine learning models to detect, classify, and mitigate network anomalies and DDoS attacks in real-time, reducing false positives by 35%.
+* **Stack:** Python, LSTM-Autoencoder, Reinforcement Learning (PPO), Kernel Rules
+* **Description:** An intelligent adaptive firewall that leverages LSTM-Autoencoders and Reinforcement Learning (PPO) for real-time anomaly detection and kernel-level automated rule enforcement, reducing false positives by 35%.
 
 ### ⚡ [DevIgnite](https://github.com/Madhu-36/DevIgnite)
 * **Domain:** Systems & Developer Tooling
 * **Stack:** Rust, CLI Architecture, Systems Programming
 * **Description:** A high-performance, cross-platform developer environment manager written in Rust with a sandboxed symlink routing engine that eliminates path pollution and slashes setup times by 80%.
 
-### 🔍 [ASTra](https://github.com/Madhu-36/ASTra)
-* **Domain:** Static Analysis & Security Tooling
-* **Stack:** Python, Abstract Syntax Trees (AST)
-* **Description:** An advanced abstract syntax tree parser and code inspection utility engineered for automated security auditing, vulnerability pattern scanning, and code analysis workflows.
+### 🧠 [MXB (Machine eXecutive Brain)](https://github.com/Madhu-36/MXB)
+* **Domain:** Artificial Intelligence & Desktop Automation
+* **Stack:** Python, Local LLM Inference, Desktop Automation, NLP
+* **Description:** An AI-powered second brain and desktop executive assistant for Windows, integrating local LLM inference engines, offline resilience, and automated context retrieval workflows.
+
+### 📡 [PacketWay 3D](https://github.com/Madhu-36/Packet-way)
+* **Domain:** Network Forensics & Deep Packet Inspection
+* **Stack:** React, Node.js, Three.js, Packet Forensics
+* **Description:** Enterprise-grade network threat detection and deep packet inspection platform featuring 3D packet traffic visualization and real-time anomaly telemetry.
 
 ### 🎮 [Game Complex](https://github.com/Madhu-36/Game-Complex)
-* **Domain:** Game Development & Procedural Systems
-* **Stack:** C#, Unity Engine, 3D Shaders
-* **Description:** An interactive 3D virtual environment featuring custom physics pipelines, optimized procedural terrain generation, and AI-driven behavior trees maintaining a stable 60 FPS.
-
-### 📡 [Packet-way](https://github.com/Madhu-36/Packet-way)
-* **Domain:** Network Forensics & Deep Packet Inspection
-* **Stack:** Python, Socket Programming, Network Protocols
-* **Description:** A raw network packet analysis engine that intercepts, reconstructs, and logs live traffic flows to identify malicious payloads and anomalous handshake signatures.
+* **Domain:** Full Stack & Digital Games Platform
+* **Stack:** React 19, Django, Python, Tailwind CSS
+* **Description:** Next-generation digital games storefront and interactive platform featuring optimized real-time catalog navigation, secure checkout, and high-performance game asset delivery.
 
 ### 📝 [Reflect-open](https://github.com/Madhu-36/reflect-open)
 * **Domain:** Open Source & Knowledge Management
