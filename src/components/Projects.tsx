@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ArrowUpRight, Github, FolderGit2 } from 'lucide-react';
 import { useReveal } from '../hooks/useReveal';
+import { getAssetUrl } from '../utils/assets';
 
 export interface Project {
   title: string;
@@ -183,7 +184,7 @@ export default function Projects() {
                 {/* Image */}
                 <div className="relative aspect-video overflow-hidden border-b border-ink-800 shrink-0 bg-ink-950">
                   <img
-                    src={project.image}
+                    src={getAssetUrl(project.image)}
                     alt={project.title}
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"

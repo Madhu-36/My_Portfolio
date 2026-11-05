@@ -1,5 +1,6 @@
 import { Shield, Brain, Gamepad2, Cpu, ExternalLink } from 'lucide-react';
 import { useReveal } from '../hooks/useReveal';
+import { getAssetUrl } from '../utils/assets';
 
 const stats = [
   { value: '3', label: 'Core domains' },
@@ -165,7 +166,7 @@ export default function About() {
               {certifications.map((cert) => (
                 <a
                   key={cert.title}
-                  href={cert.link}
+                  href={getAssetUrl(cert.link)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="card card-hover group p-5 flex items-start gap-4"

@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Terminal as TerminalIcon } from 'lucide-react';
+import { getAssetUrl } from '../utils/assets';
 
 type CommandLog = {
   command: string;
@@ -69,7 +70,7 @@ export default function InteractiveTerminal() {
       window.open('https://www.linkedin.com/in/madhu-s-/', '_blank');
       output = <span className="text-accent-400">Opening LinkedIn profile...</span>;
     } else if (cmd === 'resume') {
-      window.open('/resume.pdf', '_blank');
+      window.open(getAssetUrl('/resume.pdf'), '_blank');
       output = <span className="text-accent-400">Opening Madhu S's Resume...</span>;
     } else if (cmd === 'portfolio') {
       output = (
