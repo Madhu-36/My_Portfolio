@@ -84,7 +84,7 @@ export default function Hero() {
                 Get in touch
               </a>
               <a
-                href={getAssetUrl('/resume.pdf')}
+                href={getAssetUrl('/Madhu_S_Resume.pdf?v=2')}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-ghost inline-flex items-center gap-2 border-accent-500/30 text-accent-400 hover:border-accent-400 hover:text-white"
