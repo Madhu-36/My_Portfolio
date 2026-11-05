@@ -21,7 +21,7 @@ const projects: Project[] = [
     description:
       'Cryptographic micro-mandates that guarantee mathematical spending safety for autonomous AI agents over digital payment rails, pairing asymmetric Ed25519 signatures with process isolation.',
     tech: ['Python', 'Ed25519 Cryptography', 'Process Isolation', 'Docker'],
-    image: '/previews/kavach.svg',
+    image: '/previews/kavach.gif',
     accent: 'from-accent-500/20 to-accent-700/5',
     link: 'https://github.com/Madhu-36/Kavach',
   },
