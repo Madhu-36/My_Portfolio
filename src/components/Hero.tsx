@@ -1,4 +1,4 @@
-import { ArrowDown, Github, Linkedin, Mail, Terminal } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import InteractiveTerminal from './InteractiveTerminal';
 
 export default function Hero() {
@@ -8,15 +8,15 @@ export default function Hero() {
       className="relative flex min-h-screen items-center overflow-hidden pt-16"
     >
       {/* Background grid */}
-      <div className="grid-pattern absolute inset-0 opacity-60" />
+      <div className="grid-pattern absolute inset-0 opacity-50 pointer-events-none" />
 
-      {/* Floating orbs */}
-      <div className="absolute -left-32 top-1/4 h-72 w-72 rounded-full bg-accent-500/20 blur-[120px] animate-pulse-slow" />
-      <div className="absolute right-0 top-1/3 h-96 w-96 rounded-full bg-gold-500/10 blur-[140px] animate-pulse-slow" />
+      {/* Floating orbs - Hardware accelerated with transform-gpu to prevent repaint lag */}
+      <div className="pointer-events-none absolute -left-32 top-1/4 h-72 w-72 rounded-full bg-accent-500/20 blur-[100px] animate-pulse-slow transform-gpu will-change-transform" />
+      <div className="pointer-events-none absolute right-0 top-1/3 h-80 w-80 rounded-full bg-gold-500/10 blur-[110px] animate-pulse-slow transform-gpu will-change-transform" />
 
       {/* Scan line effect */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute left-0 h-32 w-full bg-gradient-to-b from-accent-500/5 to-transparent animate-scan" />
+        <div className="absolute left-0 h-28 w-full bg-gradient-to-b from-accent-500/5 to-transparent animate-scan transform-gpu will-change-transform" />
       </div>
 
       <div className="container-px relative z-10 mx-auto w-full max-w-7xl">

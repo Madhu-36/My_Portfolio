@@ -31,9 +31,13 @@ function App() {
     return () => clearTimeout(timer);
   }, [isLoading]);
 
-  // Global Sound Effects Listener
+  // Global Sound Effects Listener with performance throttling
   useEffect(() => {
+    let lastCheck = 0;
     const handleMouseOver = (e: MouseEvent) => {
+      const now = performance.now();
+      if (now - lastCheck < 50) return;
+      lastCheck = now;
       const target = e.target as HTMLElement;
       if (target.closest('button') || target.closest('a') || target.classList.contains('group')) {
         playHover();
@@ -47,8 +51,8 @@ function App() {
       }
     };
 
-    document.addEventListener('mouseover', handleMouseOver);
-    document.addEventListener('click', handleClick);
+    document.addEventListener('mouseover', handleMouseOver, { passive: true });
+    document.addEventListener('click', handleClick, { passive: true });
 
     return () => {
       document.removeEventListener('mouseover', handleMouseOver);
@@ -57,11 +61,14 @@ function App() {
   }, [playHover, playClick]);
 
   return (
-    <div className="w-screen min-h-screen bg-transparent overflow-x-hidden text-white">
+    <div className="w-full min-h-screen bg-transparent overflow-x-hidden text-white">
       
-      {/* Permanent 3D Background */}
-      <div className="fixed top-0 left-0 w-full h-screen z-0 bg-[#0a0a0a] pointer-events-none">
-        <Canvas gl={{ antialias: true, alpha: false }} dpr={[1, 2]}>
+      {/* Permanent 3D Background - Hardware accelerated with clamped DPR */}
+      <div className="fixed top-0 left-0 w-full h-screen z-0 bg-[#0a0a0a] pointer-events-none will-change-transform">
+        <Canvas 
+          gl={{ antialias: true, alpha: false, powerPreference: 'high-performance' }} 
+          dpr={[1, 1.5]}
+        >
           <PerspectiveCamera makeDefault position={[0, 0, 15]} fov={45} />
           <Suspense fallback={null}>
             <GeometricScene />
@@ -70,7 +77,7 @@ function App() {
         </Canvas>
       </div>
 
-      {/* Main Site Content (fades in after 5s of 3D intro) */}
+      {/* Main Site Content */}
       <CustomCursor />
       <HackerMode />
       <LiveStatsHUD />
@@ -80,7 +87,7 @@ function App() {
             className="relative w-full h-full z-10 bg-transparent"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1.2, delay: 0.2 }}
+            transition={{ duration: 1, ease: 'easeOut' }}
           >
             <div className="min-h-screen bg-transparent">
               <Navbar />

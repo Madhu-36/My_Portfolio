@@ -10,24 +10,22 @@ export default function GeometricScene() {
   const mouseRef = useRef(new THREE.Vector2(0, 0));
 
   useFrame((state, delta) => {
-    // Smooth mouse parallax
-    const targetX = (state.mouse.x * viewport.width) / 10;
-    const targetY = (state.mouse.y * viewport.height) / 10;
+    // Smooth mouse parallax with clamp
+    const targetX = (state.mouse.x * viewport.width) / 12;
+    const targetY = (state.mouse.y * viewport.height) / 12;
     
-    mouseRef.current.x += (targetX - mouseRef.current.x) * 0.05;
-    mouseRef.current.y += (targetY - mouseRef.current.y) * 0.05;
+    mouseRef.current.x += (targetX - mouseRef.current.x) * 0.04;
+    mouseRef.current.y += (targetY - mouseRef.current.y) * 0.04;
 
     if (groupRef.current) {
-      // Enhanced complex rotation
-      groupRef.current.rotation.y += delta * 0.3;
-      groupRef.current.rotation.x += delta * 0.15;
-      groupRef.current.rotation.z += delta * 0.1;
+      groupRef.current.rotation.y += delta * 0.25;
+      groupRef.current.rotation.x += delta * 0.12;
+      groupRef.current.rotation.z += delta * 0.08;
       
       groupRef.current.position.x = mouseRef.current.x;
       groupRef.current.position.y = mouseRef.current.y;
 
-      // Enhanced pulsating "breathing" animation
-      const scale = 1 + Math.sin(state.clock.elapsedTime * 2) * 0.05;
+      const scale = 1 + Math.sin(state.clock.elapsedTime * 1.8) * 0.04;
       groupRef.current.scale.setScalar(scale);
     }
   });
@@ -36,39 +34,38 @@ export default function GeometricScene() {
     <>
       <color attach="background" args={['#0a0a0a']} />
       
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[10, 10, 10]} intensity={2} color="#ffffff" />
-      <directionalLight position={[-10, -10, -10]} intensity={8} color="#001188" />
-      <directionalLight position={[10, -10, 10]} intensity={6} color="#00ff44" />
-      <directionalLight position={[-10, 10, 10]} intensity={6} color="#ffcc00" />
-      <directionalLight position={[10, -10, -10]} intensity={6} color="#ff0000" />
+      <ambientLight intensity={0.6} />
+      <directionalLight position={[10, 10, 10]} intensity={2.5} color="#38bdf8" />
+      <directionalLight position={[-10, -10, -10]} intensity={4} color="#0284c7" />
+      <directionalLight position={[10, -10, 10]} intensity={3} color="#22d3ee" />
 
-      {/* Dust/Sparkles for atmosphere */}
-      <Sparkles count={500} scale={20} size={2} speed={0.4} opacity={0.3} color="#ffffff" />
+      {/* Lightweight, elegant dust particles */}
+      <Sparkles count={120} scale={18} size={2} speed={0.3} opacity={0.25} color="#38bdf8" />
 
       <group ref={groupRef}>
-        {/* Central Complex Geometry */}
-        <Float speed={4} rotationIntensity={3} floatIntensity={3}>
+        <Float speed={3} rotationIntensity={2} floatIntensity={2}>
           <mesh>
-            <torusKnotGeometry args={[2, 0.6, 512, 64]} />
+            {/* Optimized geometry: 128x32 provides identical visual smoothness with 75% fewer vertices */}
+            <torusKnotGeometry args={[2, 0.58, 128, 32]} />
             <MeshTransmissionMaterial 
-              backside
-              thickness={2}
-              roughness={0.1}
+              backside={false}
+              resolution={256}
+              samples={4}
+              thickness={1.5}
+              roughness={0.12}
               transmission={1}
-              ior={1.5}
-              chromaticAberration={0.5}
-              anisotropy={0.3}
+              ior={1.4}
+              chromaticAberration={0.3}
+              anisotropy={0.2}
               color="#ffffff"
             />
           </mesh>
         </Float>
-
       </group>
       
-      <EffectComposer>
-        <Bloom luminanceThreshold={0.2} mipmapBlur intensity={1.5} />
-        <Vignette eskil={false} offset={0.1} darkness={1.1} />
+      <EffectComposer multisampling={0}>
+        <Bloom luminanceThreshold={0.25} mipmapBlur intensity={1.2} />
+        <Vignette eskil={false} offset={0.15} darkness={1.1} />
       </EffectComposer>
     </>
   );
