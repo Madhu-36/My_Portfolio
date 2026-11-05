@@ -109,7 +109,9 @@ export default function InteractiveTerminal() {
         <ul className="text-ink-200 space-y-1">
           <li>- <a href="https://github.com/Madhu-36/Adaptive-firewall-Application-using-AI" target="_blank" className="text-accent-400 hover:underline">Adaptive-firewall-Application-using-AI</a></li>
           <li>- <a href="https://github.com/Madhu-36/DevIgnite" target="_blank" className="text-accent-400 hover:underline">DevIgnite</a> (Developer environment manager)</li>
-          <li>- <a href="https://github.com/Madhu-36/ASTra" target="_blank" className="text-accent-400 hover:underline">ASTra</a></li>
+          <li>- <a href="https://github.com/Madhu-36/Kavach" target="_blank" className="text-accent-400 hover:underline">Kavach</a> (Agentic AI Security)</li>
+          <li>- <a href="https://github.com/Madhu-36/CodeShield" target="_blank" className="text-accent-400 hover:underline">CodeShield</a> (AI Security Firewall)</li>
+          <li>- <a href="https://github.com/Madhu-36/MXB" target="_blank" className="text-accent-400 hover:underline">MXB</a> (Machine eXecutive Brain)</li>
           <li>- <a href="https://github.com/Madhu-36/Game-Complex" target="_blank" className="text-accent-400 hover:underline">Game-Complex</a></li>
           <li>- <a href="https://github.com/Madhu-36/Packet-way" target="_blank" className="text-accent-400 hover:underline">Packet-way</a></li>
           <li>- <a href="https://github.com/Madhu-36/reflect-open" target="_blank" className="text-accent-400 hover:underline">reflect-open</a></li>
