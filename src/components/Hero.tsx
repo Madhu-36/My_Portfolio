@@ -1,144 +1,129 @@
-import { ArrowDown, Github, Linkedin, FileText, ShieldCheck, Cpu, Code2 } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Mail, Terminal } from 'lucide-react';
+import InteractiveTerminal from './InteractiveTerminal';
 
 export default function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[92vh] items-center overflow-hidden pt-20 pb-16"
+      className="relative flex min-h-screen items-center overflow-hidden pt-16"
     >
-      <div className="subtle-grid absolute inset-0 opacity-40 pointer-events-none" />
+      {/* Background grid */}
+      <div className="grid-pattern absolute inset-0 opacity-60" />
+
+      {/* Floating orbs */}
+      <div className="absolute -left-32 top-1/4 h-72 w-72 rounded-full bg-accent-500/20 blur-[120px] animate-pulse-slow" />
+      <div className="absolute right-0 top-1/3 h-96 w-96 rounded-full bg-gold-500/10 blur-[140px] animate-pulse-slow" />
+
+      {/* Scan line effect */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute left-0 h-32 w-full bg-gradient-to-b from-accent-500/5 to-transparent animate-scan" />
+      </div>
 
       <div className="container-px relative z-10 mx-auto w-full max-w-7xl">
-        <div className="grid gap-12 lg:grid-cols-[1.25fr_1fr] lg:items-center">
-          {/* Left: Introduction */}
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-ink-800 bg-ink-900/80 px-3.5 py-1 text-xs text-ink-300 mb-6">
-              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Available for engineering roles &amp; research collaborations</span>
+        <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr] lg:items-center">
+          {/* Left: intro */}
+          <div className="max-w-2xl">
+            <div
+              className="animate-fade-up opacity-0"
+              style={{ animationDelay: '0.1s' }}
+            >
+              <span className="eyebrow mb-6">
+                <span className="h-px w-8 bg-accent-400" />
+                AI &amp; DS Engineer · Ethical Hacker · Game Developer
+              </span>
             </div>
 
-            <h1 className="heading-xl tracking-tight text-balance">
-              Hi, I&apos;m <span className="text-accent-400">Madhu S</span>.
-              <br />
-              <span className="text-ink-200">
-                Software &amp; Security Engineer.
+            <h1
+              className="heading-xl animate-fade-up text-balance opacity-0"
+              style={{ animationDelay: '0.2s' }}
+            >
+              Developing and Securing{' '}
+              <span className="relative inline-block">
+                <span className="bg-gradient-to-r from-accent-400 via-accent-300 to-gold-400 bg-clip-text text-transparent text-glow">
+                  INNOVATION,
+                </span>
+                <svg
+                  className="absolute -bottom-2 left-0 w-full"
+                  viewBox="0 0 300 12"
+                  fill="none"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M2 9C70 3 200 2 298 7"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className="text-accent-500/40"
+                    strokeLinecap="round"
+                  />
+                </svg>
               </span>
+              <br />
+              one byte at a time.
             </h1>
 
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-300">
-              Undergraduate in Artificial Intelligence &amp; Data Science based in Bengaluru.
-              I build resilient systems across penetration testing, applied machine learning,
-              and systems-level developer tooling.
+            <p
+              className="mt-8 max-w-xl animate-fade-up text-lg leading-relaxed text-ink-300 opacity-0"
+              style={{ animationDelay: '0.35s' }}
+            >
+              I&apos;m Madhu S — an aspiring AI &amp; Data Science engineer
+              passionate about ethical hacking, game development, and building
+              intelligent systems. From vulnerability analysis to neural
+              networks and immersive game worlds, I turn curiosity into code.
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-3.5">
+            <div
+              className="mt-10 flex animate-fade-up flex-wrap items-center gap-4 opacity-0"
+              style={{ animationDelay: '0.5s' }}
+            >
               <a href="#work" className="btn-primary">
-                View Selected Work
-                <ArrowDown size={15} />
-              </a>
-              <a
-                href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary"
-              >
-                <FileText size={15} className="text-accent-400" />
-                Resume PDF
+                View my work
+                <ArrowDown size={16} />
               </a>
               <a href="#contact" className="btn-ghost">
-                Contact Me
+                Get in touch
               </a>
             </div>
 
-            <div className="mt-10 flex items-center gap-4 text-ink-400">
-              <a
-                href="https://github.com/Madhu-36"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub Profile"
-                className="flex items-center gap-2 text-sm text-ink-300 hover:text-white transition-colors"
-              >
-                <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-ink-800 bg-ink-900/60 hover:border-ink-700">
-                  <Github size={17} />
-                </span>
-                <span className="hidden sm:inline font-mono text-xs">github.com/Madhu-36</span>
-              </a>
-
-              <a
-                href="https://www.linkedin.com/in/madhu-s-/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn Profile"
-                className="flex items-center gap-2 text-sm text-ink-300 hover:text-white transition-colors"
-              >
-                <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-ink-800 bg-ink-900/60 hover:border-ink-700">
-                  <Linkedin size={17} />
-                </span>
-                <span className="hidden sm:inline font-mono text-xs">linkedin.com/in/madhu-s-</span>
-              </a>
+            <div
+              className="mt-12 flex animate-fade-up items-center gap-5 opacity-0"
+              style={{ animationDelay: '0.65s' }}
+            >
+              {[
+                { Icon: Github, href: 'https://github.com/Madhu-36', label: 'GitHub' },
+                { Icon: Linkedin, href: 'https://www.linkedin.com/in/madhu-s-/', label: 'LinkedIn' },
+                { Icon: Mail, href: '#contact', label: 'Email' },
+              ].map(({ Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target={label === 'Email' ? undefined : '_blank'}
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-ink-700 text-ink-400 transition-all duration-300 hover:border-accent-500/50 hover:text-accent-400 hover:-translate-y-0.5"
+                >
+                  <Icon size={18} />
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Right: Technical Profile Card */}
-          <div className="card p-6 md:p-8 border-ink-800/80 bg-ink-900/70 shadow-2xl">
-            <div className="flex items-center justify-between border-b border-ink-800/80 pb-4 mb-5">
-              <div className="flex items-center gap-2 text-xs font-mono text-ink-400 uppercase tracking-wider">
-                <Code2 size={15} className="text-accent-400" />
-                Engineering Snapshot
-              </div>
-              <span className="text-[11px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
-                Bengaluru, IN
-              </span>
-            </div>
-
-            <div className="space-y-4 text-sm">
-              <div>
-                <span className="text-xs font-mono uppercase tracking-wider text-ink-400 block mb-1">
-                  Education
-                </span>
-                <p className="font-medium text-white">
-                  B.E. in Artificial Intelligence &amp; Data Science
-                </p>
-                <p className="text-xs text-ink-300 mt-0.5">
-                  East West Institute of Technology (2022 – Present)
-                </p>
-              </div>
-
-              <div>
-                <span className="text-xs font-mono uppercase tracking-wider text-ink-400 block mb-1">
-                  Primary Domains
-                </span>
-                <div className="flex flex-wrap gap-1.5 mt-1">
-                  <span className="inline-flex items-center gap-1 rounded bg-ink-800/70 px-2.5 py-1 text-xs text-ink-200 border border-ink-700/60">
-                    <ShieldCheck size={12} className="text-accent-400" />
-                    Penetration Testing
-                  </span>
-                  <span className="inline-flex items-center gap-1 rounded bg-ink-800/70 px-2.5 py-1 text-xs text-ink-200 border border-ink-700/60">
-                    <Cpu size={12} className="text-accent-400" />
-                    Applied AI / ML
-                  </span>
-                  <span className="inline-flex items-center gap-1 rounded bg-ink-800/70 px-2.5 py-1 text-xs text-ink-200 border border-ink-700/60">
-                    <Code2 size={12} className="text-accent-400" />
-                    Systems &amp; CLI Tools
-                  </span>
-                </div>
-              </div>
-
-              <div>
-                <span className="text-xs font-mono uppercase tracking-wider text-ink-400 block mb-1">
-                  Core Technologies
-                </span>
-                <p className="text-xs text-ink-200 font-mono leading-relaxed bg-ink-950/70 p-2.5 rounded-lg border border-ink-800">
-                  Python · Rust · C# · TypeScript · Docker · AWS · Linux · Burp Suite · Nmap · PyTorch
-                </p>
-              </div>
-
-              <div className="pt-2 border-t border-ink-800/80 flex items-center justify-between text-xs text-ink-400">
-                <span>Recent Focus</span>
-                <span className="text-ink-200 font-medium">Adaptive Firewall &amp; DevIgnite</span>
-              </div>
-            </div>
+          {/* Right: terminal card */}
+          <div
+            className="animate-fade-up opacity-0 w-full"
+            style={{ animationDelay: '0.8s' }}
+          >
+            <InteractiveTerminal />
           </div>
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 md:flex">
+        <span className="font-mono text-xs uppercase tracking-widest text-ink-500">
+          Scroll
+        </span>
+        <div className="flex h-10 w-6 justify-center rounded-full border border-ink-700 p-1">
+          <div className="h-2 w-1 animate-bounce rounded-full bg-accent-400" />
         </div>
       </div>
     </section>

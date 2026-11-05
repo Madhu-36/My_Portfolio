@@ -1,59 +1,65 @@
-import { ArrowUpRight, Github, FolderGit2 } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { useReveal } from '../hooks/useReveal';
 
 const projects = [
   {
     title: 'Adaptive Firewall using AI',
-    category: 'Cybersecurity & Machine Learning',
+    category: 'Cybersecurity & AI',
     description:
-      'Engineered an intelligent adaptive firewall application that leverages machine learning models to detect and mitigate malicious network anomalies in real-time. Reduced false positive alerts by 35% while increasing response times to zero-day probes.',
-    tech: ['Python', 'Scikit-learn', 'Networking', 'Packet Inspection'],
+      'Engineered an intelligent adaptive firewall that leverages machine learning to detect and mitigate network threats in real-time, reducing false positives by 35% and improving threat response time.',
+    tech: ['Python', 'AI/ML', 'Networking'],
     image: '/previews/adaptive-firewall.jpg',
+    accent: 'from-accent-500/20 to-accent-700/5',
     link: 'https://github.com/Madhu-36/Adaptive-firewall-Application-using-AI',
   },
   {
     title: 'DevIgnite',
-    category: 'Systems & Developer Tooling',
+    category: 'Development Tools',
     description:
-      'Built a high-performance cross-platform developer environment manager in Rust. Implemented a sandboxed symlink routing engine that eliminates path collisions and reduced fresh workstation configuration times by over 80%.',
-    tech: ['Rust', 'CLI Architecture', 'Systems Programming', 'Linux'],
+      'Built a high-performance cross-platform environment manager in Rust. Features a sandboxed symlink routing engine that eliminated path pollution and reduced setup times by over 80%.',
+    tech: ['Rust', 'CLI', 'System Architecture'],
     image: '/previews/devignite.jpg',
+    accent: 'from-gold-500/20 to-gold-600/5',
     link: 'https://github.com/Madhu-36/DevIgnite',
   },
   {
     title: 'ASTra',
-    category: 'Static Analysis & Tooling',
+    category: 'Software Engineering',
     description:
-      'Developed an abstract syntax tree (AST) inspection framework to parse and evaluate source code structures. Enables automated static vulnerability detection and automated compliance pattern scanning.',
-    tech: ['Python', 'AST Analysis', 'Static Auditing', 'Security'],
+      'Developed advanced abstract syntax tree (AST) tooling utilities for robust application development, streamlining code analysis and enabling automated security auditing workflows.',
+    tech: ['Python', 'AST', 'Tooling'],
     image: '/previews/astra.jpg',
+    accent: 'from-accent-500/20 to-accent-700/5',
     link: 'https://github.com/Madhu-36/ASTra',
   },
   {
     title: 'Game Complex',
-    category: 'Interactive 3D Simulation',
+    category: 'Game Development',
     description:
-      'Engineered an interactive 3D simulation with customized physics calculations and procedural generation mechanics, maintaining a stable 60 FPS through optimized rendering pipelines and memory pooling.',
-    tech: ['C#', 'Unity Engine', 'HLSL Shaders', '3D Graphics'],
+      'Programmed an interactive 3D game complex with optimized rendering pipelines and complex AI-driven mechanics, maintaining 60 FPS under heavy procedural generation loads.',
+    tech: ['C#', 'Game Engine', '3D Graphics'],
     image: '/previews/game-complex.jpg',
+    accent: 'from-gold-500/20 to-gold-600/5',
     link: 'https://github.com/Madhu-36/Game-Complex',
   },
   {
     title: 'Packet-way',
-    category: 'Network Forensics',
+    category: 'Networking & Security',
     description:
-      'Created a network packet sniffer and analysis engine that parses raw Ethernet and IP traffic, reconstructing packet flows and flagging suspicious handshake anomalies and port-scan attempts.',
-    tech: ['Python', 'Raw Sockets', 'Wireshark Integration', 'Cybersecurity'],
+      'Created a network packet analysis tool that parses and logs raw traffic flows, actively identifying anomalous behavior patterns with deep packet inspection techniques.',
+    tech: ['Networking', 'Cybersecurity', 'Python'],
     image: '/previews/packet-way.jpg',
+    accent: 'from-accent-500/20 to-accent-700/5',
     link: 'https://github.com/Madhu-36/Packet-way',
   },
   {
     title: 'Reflect-open',
-    category: 'Local-First Application',
+    category: 'Open Source / Tools',
     description:
-      'Engineered an open-source, local-first markdown note-taking workspace designed for offline resilience, fast indexing, and structured data preparation for local AI evaluation pipelines.',
-    tech: ['TypeScript', 'React', 'Local-First DB', 'Markdown'],
+      'Contributed an open-source Local-First Markdown note-taking app structured for AI agent integration, optimizing offline data synchronization and rich text formatting.',
+    tech: ['TypeScript', 'React', 'Markdown'],
     image: '/previews/reflect-open.jpg',
+    accent: 'from-gold-500/20 to-gold-600/5',
     link: 'https://github.com/Madhu-36/reflect-open',
   },
 ];
@@ -62,32 +68,26 @@ export default function Projects() {
   const { ref, visible } = useReveal<HTMLDivElement>();
 
   return (
-    <section id="work" className="section-pad relative border-t border-ink-800/60">
+    <section id="work" className="section-pad relative">
       <div className="container-px mx-auto max-w-7xl">
         <div
           ref={ref}
           className={`reveal ${visible ? 'is-visible' : ''}`}
         >
-          <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between border-b border-ink-800/80 pb-6">
+          <div className="mb-14 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <span className="eyebrow mb-2">
-                <FolderGit2 size={13} className="text-accent-400" />
-                Featured Repositories
+              <span className="eyebrow mb-6">
+                <span className="h-px w-8 bg-accent-400" />
+                Selected Work
               </span>
-              <h2 className="heading-lg text-balance mt-1">
-                Engineered Projects &amp; Software
+              <h2 className="heading-lg text-balance">
+                Projects I&apos;ve built.
               </h2>
             </div>
-            <a
-              href="https://github.com/Madhu-36?tab=repositories"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-ink-300 hover:text-white transition-colors"
-            >
-              <Github size={14} />
-              View all on GitHub
-              <ArrowUpRight size={13} />
-            </a>
+            <p className="max-w-sm text-base text-ink-400">
+              A selection of security tools, AI models, and games I&apos;ve
+              designed and built across my three domains of interest.
+            </p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -97,37 +97,37 @@ export default function Projects() {
                 target="_blank"
                 rel="noopener noreferrer"
                 key={project.title}
-                className="card card-hover group relative overflow-hidden flex flex-col h-full border-ink-800/80 bg-ink-900/50"
+                className="card card-hover group relative overflow-hidden flex flex-col h-full"
               >
-                {/* Project Media */}
-                <div className="relative aspect-video overflow-hidden border-b border-ink-800/80 shrink-0 bg-ink-950">
+                {/* Image */}
+                <div className="relative aspect-video overflow-hidden border-b border-ink-800 shrink-0">
                   <img
                     src={project.image}
                     alt={project.title}
                     loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute right-3 top-3 z-10 flex h-7 w-7 items-center justify-center rounded-md bg-ink-950/80 text-ink-300 backdrop-blur-sm border border-ink-700/60 transition-colors group-hover:border-accent-500/50 group-hover:text-accent-300">
-                    <ArrowUpRight size={14} />
+                  <div className="absolute right-3 top-3 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-ink-950/80 text-ink-300 backdrop-blur-sm transition-all duration-300 group-hover:bg-accent-500 group-hover:text-ink-950">
+                    <ArrowUpRight size={16} />
                   </div>
                 </div>
 
-                {/* Project Details */}
+                {/* Content */}
                 <div className="p-5 flex flex-col flex-grow">
-                  <span className="font-mono text-[11px] uppercase tracking-wider text-accent-400">
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-accent-400">
                     {project.category}
                   </span>
-                  <h3 className="mt-1.5 font-display text-base font-semibold text-white group-hover:text-accent-300 transition-colors">
+                  <h3 className="mt-2 font-display text-lg font-semibold text-white">
                     {project.title}
                   </h3>
-                  <p className="mt-2 text-xs leading-relaxed text-ink-300 flex-grow">
+                  <p className="mt-2 text-sm leading-relaxed text-ink-300 flex-grow">
                     {project.description}
                   </p>
-                  <div className="mt-4 flex flex-wrap gap-1.5 shrink-0 pt-3 border-t border-ink-800/60">
+                  <div className="mt-4 flex flex-wrap gap-1.5 shrink-0">
                     {project.tech.map((t) => (
                       <span
                         key={t}
-                        className="rounded bg-ink-800/80 px-2 py-0.5 font-mono text-[10px] text-ink-300 border border-ink-700/50"
+                        className="rounded-md bg-ink-800/80 px-2 py-1 font-mono text-[10px] text-ink-400"
                       >
                         {t}
                       </span>

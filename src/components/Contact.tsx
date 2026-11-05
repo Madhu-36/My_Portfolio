@@ -1,12 +1,20 @@
 import { useState } from 'react';
-import { Mail, MapPin, Send, CheckCircle2, Loader2, Github, Linkedin, FileText } from 'lucide-react';
+import { createClient } from '@supabase/supabase-js';
+import { Mail, MapPin, Send, CheckCircle2, AlertCircle, Loader2, Github, Linkedin } from 'lucide-react';
 import { useReveal } from '../hooks/useReveal';
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+// Only initialize Supabase if variables are configured to prevent crash
+const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : null;
 
 type Status = 'idle' | 'loading' | 'success' | 'error';
 
 export default function Contact() {
   const { ref, visible } = useReveal<HTMLDivElement>();
   const [status, setStatus] = useState<Status>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
   const [form, setForm] = useState({ name: '', email: '', message: '' });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -15,194 +23,195 @@ export default function Contact() {
 
     setStatus('loading');
 
-    const subject = encodeURIComponent(`Portfolio Inquiry from ${form.name}`);
-    const body = encodeURIComponent(
-      `${form.message}\n\n---\nSender: ${form.name}\nEmail: ${form.email}`
-    );
-
-    // Direct mailto link fallback
+    // Encode the email parameters
+    const subject = encodeURIComponent(`Portfolio Contact from ${form.name}`);
+    const body = encodeURIComponent(`${form.message}\n\n---\nSender Email: ${form.email}\nSender Name: ${form.name}`);
+    
+    // Open the default email client
     window.location.href = `mailto:madhu.s.3606@gmail.com?subject=${subject}&body=${body}`;
 
+    // Show success state briefly then reset
     setTimeout(() => {
       setStatus('success');
       setForm({ name: '', email: '', message: '' });
-      setTimeout(() => setStatus('idle'), 4000);
-    }, 600);
+      setTimeout(() => setStatus('idle'), 3000);
+    }, 500);
   };
 
   return (
-    <section id="contact" className="section-pad relative border-t border-ink-800/60">
-      <div className="container-px mx-auto max-w-7xl">
+    <section id="contact" className="section-pad relative overflow-hidden">
+      {/* Background glow */}
+      <div className="absolute left-1/2 top-0 h-64 w-[600px] -translate-x-1/2 rounded-full bg-accent-500/10 blur-[120px]" />
+
+      <div className="container-px relative z-10 mx-auto max-w-7xl">
         <div
           ref={ref}
           className={`reveal ${visible ? 'is-visible' : ''}`}
         >
-          <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
-            {/* Left: Direct Contact Information */}
+          <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
+            {/* Left: info */}
             <div>
-              <span className="eyebrow mb-3">
-                <span className="h-px w-6 bg-accent-400" />
-                Get in Touch
+              <span className="eyebrow mb-6">
+                <span className="h-px w-8 bg-accent-400" />
+                Contact
               </span>
               <h2 className="heading-lg text-balance">
-                Let&apos;s start a conversation.
+                Let's build something{' '}
+                <span className="text-accent-400">great</span> together.
               </h2>
-              <p className="mt-4 text-sm text-ink-300 leading-relaxed max-w-md">
-                Whether you have an engineering role, a security audit inquiry, an open-source collaboration,
-                or just want to connect, feel free to reach out.
+              <p className="mt-6 max-w-md text-lg leading-relaxed text-ink-300">
+                Have a project in mind, a role to fill, or just want to say hello?
+                I'm always open to interesting conversations.
               </p>
 
-              <div className="mt-8 space-y-4">
+              <div className="mt-10 space-y-5">
                 <a
                   href="mailto:madhu.s.3606@gmail.com"
-                  className="flex items-center gap-3.5 text-ink-200 hover:text-white transition-colors group p-3 rounded-lg border border-ink-800/80 bg-ink-900/40 hover:border-ink-700"
+                  className="group flex items-center gap-4 text-ink-200 transition-colors hover:text-white"
                 >
-                  <span className="flex h-10 w-10 items-center justify-center rounded-md bg-ink-800/80 text-accent-400">
-                    <Mail size={17} />
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-ink-700 transition-colors group-hover:border-accent-500/50">
+                    <Mail size={18} className="text-accent-400" />
                   </span>
                   <div>
-                    <div className="text-[11px] font-mono uppercase tracking-wider text-ink-400">
-                      Direct Email
+                    <div className="text-xs uppercase tracking-widest text-ink-500">
+                      Email
                     </div>
-                    <div className="text-sm font-medium">madhu.s.3606@gmail.com</div>
+                    <div className="text-base font-medium">madhu.s.3606@gmail.com</div>
                   </div>
                 </a>
 
-                <div className="flex items-center gap-3.5 text-ink-200 p-3 rounded-lg border border-ink-800/80 bg-ink-900/40">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-md bg-ink-800/80 text-accent-400">
-                    <MapPin size={17} />
+                <div className="flex items-center gap-4 text-ink-200">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-ink-700">
+                    <MapPin size={18} className="text-accent-400" />
                   </span>
                   <div>
-                    <div className="text-[11px] font-mono uppercase tracking-wider text-ink-400">
+                    <div className="text-xs uppercase tracking-widest text-ink-500">
                       Location
                     </div>
-                    <div className="text-sm font-medium">Bengaluru, Karnataka, India</div>
+                    <div className="text-base font-medium">Bengaluru, India</div>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-ink-800/70 flex items-center gap-3">
+              <div className="mt-8 flex items-center gap-4">
                 <a
                   href="https://github.com/Madhu-36"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-secondary !py-2 !px-3.5 !text-xs font-mono"
+                  aria-label="GitHub"
+                  className="flex h-11 w-11 items-center justify-center rounded-xl border border-ink-700 text-ink-300 transition-all duration-300 hover:border-accent-500/50 hover:text-accent-400 hover:-translate-y-0.5"
                 >
-                  <Github size={15} />
-                  GitHub
+                  <Github size={20} />
                 </a>
                 <a
                   href="https://www.linkedin.com/in/madhu-s-/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-secondary !py-2 !px-3.5 !text-xs font-mono"
+                  aria-label="LinkedIn"
+                  className="flex h-11 w-11 items-center justify-center rounded-xl border border-ink-700 text-ink-300 transition-all duration-300 hover:border-accent-500/50 hover:text-accent-400 hover:-translate-y-0.5"
                 >
-                  <Linkedin size={15} />
-                  LinkedIn
-                </a>
-                <a
-                  href="/resume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-secondary !py-2 !px-3.5 !text-xs font-mono"
-                >
-                  <FileText size={15} />
-                  Resume
+                  <Linkedin size={20} />
                 </a>
               </div>
             </div>
 
-            {/* Right: Message Form */}
-            <div className="card p-6 sm:p-8 border-ink-800/80 bg-ink-900/60">
+            {/* Right: form */}
+            <div className="card p-8 sm:p-10">
               {status === 'success' ? (
-                <div className="flex h-full min-h-[300px] flex-col items-center justify-center text-center p-6">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                    <CheckCircle2 size={24} />
+                <div className="flex h-full min-h-[300px] flex-col items-center justify-center text-center">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent-500/15">
+                    <CheckCircle2 size={32} className="text-accent-400" />
                   </div>
-                  <h3 className="mt-4 font-display text-lg font-semibold text-white">
-                    Email Client Opened
+                  <h3 className="mt-6 font-display text-2xl font-semibold text-white">
+                    Message sent!
                   </h3>
-                  <p className="mt-2 max-w-sm text-xs text-ink-300">
-                    Your message draft has been prepared. If your email client didn&apos;t open automatically,
-                    send directly to <span className="text-white font-mono">madhu.s.3606@gmail.com</span>.
+                  <p className="mt-3 max-w-sm text-ink-300">
+                    Thanks for reaching out. I'll get back to you within 24 hours.
                   </p>
                   <button
                     onClick={() => setStatus('idle')}
-                    className="btn-secondary mt-6 !text-xs"
+                    className="btn-ghost mt-6"
                   >
                     Send another message
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label
                       htmlFor="name"
-                      className="block text-xs font-mono uppercase tracking-wider text-ink-400 mb-1.5"
+                      className="mb-2 block text-sm font-medium text-ink-200"
                     >
-                      Your Name
+                      Name
                     </label>
                     <input
-                      type="text"
                       id="name"
+                      type="text"
                       required
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
                       placeholder="Jane Doe"
-                      className="w-full rounded-lg border border-ink-800 bg-ink-950/80 px-3.5 py-2.5 text-sm text-white placeholder-ink-500 outline-none transition-colors focus:border-accent-400 focus:ring-1 focus:ring-accent-400"
+                      className="w-full rounded-xl border border-ink-700 bg-ink-800/50 px-4 py-3 text-base text-white placeholder:text-ink-500 transition-all duration-300 focus:border-accent-500/50 focus:bg-ink-800 focus:outline-none focus:ring-2 focus:ring-accent-500/20"
                     />
                   </div>
 
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-xs font-mono uppercase tracking-wider text-ink-400 mb-1.5"
+                      className="mb-2 block text-sm font-medium text-ink-200"
                     >
-                      Your Email Address
+                      Email
                     </label>
                     <input
-                      type="email"
                       id="email"
+                      type="email"
                       required
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      placeholder="jane@company.com"
-                      className="w-full rounded-lg border border-ink-800 bg-ink-950/80 px-3.5 py-2.5 text-sm text-white placeholder-ink-500 outline-none transition-colors focus:border-accent-400 focus:ring-1 focus:ring-accent-400"
+                      placeholder="jane@example.com"
+                      className="w-full rounded-xl border border-ink-700 bg-ink-800/50 px-4 py-3 text-base text-white placeholder:text-ink-500 transition-all duration-300 focus:border-accent-500/50 focus:bg-ink-800 focus:outline-none focus:ring-2 focus:ring-accent-500/20"
                     />
                   </div>
 
                   <div>
                     <label
                       htmlFor="message"
-                      className="block text-xs font-mono uppercase tracking-wider text-ink-400 mb-1.5"
+                      className="mb-2 block text-sm font-medium text-ink-200"
                     >
                       Message
                     </label>
                     <textarea
                       id="message"
-                      rows={4}
                       required
+                      rows={5}
                       value={form.message}
                       onChange={(e) => setForm({ ...form, message: e.target.value })}
-                      placeholder="Hi Madhu, I'd like to discuss a potential engineering opportunity..."
-                      className="w-full rounded-lg border border-ink-800 bg-ink-950/80 px-3.5 py-2.5 text-sm text-white placeholder-ink-500 outline-none transition-colors focus:border-accent-400 focus:ring-1 focus:ring-accent-400 resize-none"
+                      placeholder="Tell me about your project..."
+                      className="w-full resize-none rounded-xl border border-ink-700 bg-ink-800/50 px-4 py-3 text-base text-white placeholder:text-ink-500 transition-all duration-300 focus:border-accent-500/50 focus:bg-ink-800 focus:outline-none focus:ring-2 focus:ring-accent-500/20"
                     />
                   </div>
+
+                  {status === 'error' && (
+                    <div className="flex items-center gap-2.5 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+                      <AlertCircle size={18} className="shrink-0" />
+                      {errorMsg}
+                    </div>
+                  )}
 
                   <button
                     type="submit"
                     disabled={status === 'loading'}
-                    className="btn-primary w-full !py-2.5 !text-sm mt-2"
+                    className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     {status === 'loading' ? (
                       <>
                         <Loader2 size={16} className="animate-spin" />
-                        Preparing email...
+                        Sending...
                       </>
                     ) : (
                       <>
-                        <Send size={15} />
-                        Send Message
+                        Send message
+                        <Send size={16} />
                       </>
                     )}
                   </button>
