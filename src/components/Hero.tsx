@@ -1,5 +1,6 @@
-import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowDown, FileText, Github, Linkedin, Mail } from 'lucide-react';
 import InteractiveTerminal from './InteractiveTerminal';
+import { getAssetUrl } from '../utils/assets';
 
 export default function Hero() {
   return (
@@ -81,6 +82,15 @@ export default function Hero() {
               </a>
               <a href="#contact" className="btn-ghost">
                 Get in touch
+              </a>
+              <a
+                href={getAssetUrl('/resume.pdf')}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost inline-flex items-center gap-2 border-accent-500/30 text-accent-400 hover:border-accent-400 hover:text-white"
+              >
+                <FileText size={16} />
+                Resume
               </a>
             </div>
 
