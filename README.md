@@ -133,6 +133,16 @@ npm run build
 
 ---
 
+## 🌐 Automated Continuous Deployment
+
+This portfolio is automatically built and deployed to **GitHub Pages** on every push to `main` via GitHub Actions:
+
+- **Live URL:** [https://madhu-36.github.io/My_Portfolio/](https://madhu-36.github.io/My_Portfolio/)
+- **Deployment Workflow:** [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)
+- **Engineered with:** React 18, Vite, Three.js, Tailwind CSS, Framer Motion
+
+---
+
 <div align="center">
 
 Designed & Engineered with ❤️ by **[Madhu S](https://github.com/Madhu-36)**
