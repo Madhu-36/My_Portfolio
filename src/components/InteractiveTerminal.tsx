@@ -46,6 +46,7 @@ export default function InteractiveTerminal() {
           <li><strong>whoami</strong> - Print current user</li>
           <li><strong>cat skills.txt</strong> - List core skills</li>
           <li><strong>github</strong> - Open GitHub profile</li>
+          <li><strong>repo</strong> - View portfolio source code</li>
           <li><strong>linkedin</strong> - Open LinkedIn profile</li>
           <li><strong>resume</strong> - Download/View resume</li>
           <li><strong>portfolio</strong> - Show portfolio details</li>
@@ -80,6 +81,9 @@ export default function InteractiveTerminal() {
     } else if (cmd === 'github') {
       window.open('https://github.com/Madhu-36', '_blank');
       output = <span className="text-accent-400">Opening GitHub profile...</span>;
+    } else if (cmd === 'repo' || cmd === 'source') {
+      window.open('https://github.com/Madhu-36/My_Portfolio', '_blank');
+      output = <span className="text-accent-400">Opening portfolio repository...</span>;
     } else if (cmd === 'linkedin') {
       window.open('https://www.linkedin.com/in/madhu-s-/', '_blank');
       output = <span className="text-accent-400">Opening LinkedIn profile...</span>;
