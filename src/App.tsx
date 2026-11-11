@@ -3,6 +3,7 @@ import GeometricScene from './components/GeometricScene';
 import { Suspense, useState, useEffect } from 'react';
 import { PerspectiveCamera, OrbitControls } from '@react-three/drei';
 import { motion, AnimatePresence } from 'framer-motion';
+import CanvasErrorBoundary from './components/CanvasErrorBoundary';
 
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -70,9 +71,11 @@ function App() {
           dpr={[1, 1.5]}
         >
           <PerspectiveCamera makeDefault position={[0, 0, 15]} fov={45} />
-          <Suspense fallback={null}>
-            <GeometricScene />
-          </Suspense>
+          <CanvasErrorBoundary>
+            <Suspense fallback={null}>
+              <GeometricScene />
+            </Suspense>
+          </CanvasErrorBoundary>
           <OrbitControls enableZoom={false} enablePan={false} maxPolarAngle={Math.PI / 2 + 0.2} minPolarAngle={Math.PI / 2 - 0.2} />
         </Canvas>
       </div>
