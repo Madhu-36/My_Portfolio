@@ -50,6 +50,7 @@ export default function InteractiveTerminal() {
           <li><strong>resume</strong> - Download/View resume</li>
           <li><strong>portfolio</strong> - Show portfolio details</li>
           <li><strong>projects</strong> - List featured projects</li>
+          <li><strong>date</strong> - Display current system time</li>
           <li><strong>clear</strong> - Clear terminal output</li>
         </ul>
       );
@@ -60,6 +61,13 @@ export default function InteractiveTerminal() {
           <p>&gt; Role: AI &amp; Data Science Engineer · Cybersecurity Specialist</p>
           <p>&gt; Host: cyberearth-node-blr01 · Status: Active</p>
         </div>
+      );
+    } else if (cmd === 'date' || cmd === 'time') {
+      const now = new Date();
+      output = (
+        <span className="text-accent-400 font-mono">
+          System Time (UTC): {now.toUTCString()}
+        </span>
       );
     } else if (cmd === 'cat skills.txt') {
       output = (
