@@ -13,7 +13,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           'three-vendor': ['three', '@react-three/fiber', '@react-three/drei'],
-          'ui-vendor': ['framer-motion', 'lucide-react', 'canvas-confetti'],
+          'ui-vendor': ['framer-motion', 'lucide-react', 'gsap'],
         },
       },
     },
