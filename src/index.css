@@ -9,6 +9,8 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    scrollbar-width: thin;
+    scrollbar-color: #374151 #030712;
   }
 
   body {
