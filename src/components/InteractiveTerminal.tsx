@@ -54,7 +54,13 @@ export default function InteractiveTerminal() {
         </ul>
       );
     } else if (cmd === 'whoami') {
-      output = <span className="text-ink-200">Madhu S</span>;
+      output = (
+        <div className="text-ink-200 space-y-0.5">
+          <p className="text-accent-400 font-bold">&gt; UID: 0x36 [Madhu S]</p>
+          <p>&gt; Role: AI &amp; Data Science Engineer · Cybersecurity Specialist</p>
+          <p>&gt; Host: cyberearth-node-blr01 · Status: Active</p>
+        </div>
+      );
     } else if (cmd === 'cat skills.txt') {
       output = (
         <>
