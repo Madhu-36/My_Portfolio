@@ -182,7 +182,9 @@ export default function InteractiveTerminal() {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              className="bg-transparent border-none outline-none text-ink-200 flex-grow caret-accent-400"
+              placeholder="Type 'help' or command..."
+              aria-label="Interactive terminal command input"
+              className="bg-transparent border-none outline-none text-ink-200 flex-grow caret-accent-400 placeholder-ink-600"
               autoComplete="off"
               spellCheck="false"
             />
