@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Terminal as TerminalIcon } from 'lucide-react';
 import { getAssetUrl } from '../utils/assets';
+import { useSoundEffects } from '../hooks/useSoundEffects';
 
 type CommandLog = {
   command: string;
@@ -34,7 +35,10 @@ export default function InteractiveTerminal() {
     }
   }, [history]);
 
+  const { playClick } = useSoundEffects();
+
   const executeCommand = (rawCmd: string) => {
+    playClick();
     if (!rawCmd.trim()) return;
 
     const cmd = rawCmd.trim().toLowerCase();
