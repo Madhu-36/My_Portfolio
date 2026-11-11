@@ -44,10 +44,16 @@ export default function Footer() {
           </a>
         </div>
 
-        <div className="mt-8 border-t border-ink-800 pt-6 text-center">
-          <p className="font-mono text-sm text-ink-500">
-            © {new Date().getFullYear()} Madhu S. Built with curiosity &amp;
-            code.
+        <div className="mt-8 border-t border-ink-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-ink-500">
+          <div className="flex items-center gap-2">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-500"></span>
+            </span>
+            <span>All systems operational · Cyberspace Node BLR</span>
+          </div>
+          <p>
+            © {new Date().getFullYear()} Madhu S. Built with curiosity &amp; code.
           </p>
         </div>
       </div>
