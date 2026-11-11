@@ -87,6 +87,7 @@ export default function Hero() {
                 href={getAssetUrl('/Madhu_S_Resume.pdf?v=2')}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="View or download Madhu S resume in PDF format"
                 className="btn-ghost inline-flex items-center gap-2 border-accent-500/30 text-accent-400 hover:border-accent-400 hover:text-white"
               >
                 <FileText size={16} />
