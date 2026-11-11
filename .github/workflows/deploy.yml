@@ -33,7 +33,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Typecheck and Build Production Distribution
         run: npm run build
 
       - name: Setup Pages
