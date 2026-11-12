@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Menu, X } from 'lucide-react';
 import MSLogo from './MSLogo';
 import { Magnetic } from './Magnetic';
 import { useActiveSection } from '../hooks/useActiveSection';
 import { useScrollProgress } from '../hooks/useScrollProgress';
+import { useKeyPress } from '../hooks/useKeyPress';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 const links = [
   { label: 'About', href: '#about', id: 'about' },
@@ -13,11 +15,36 @@ const links = [
   { label: 'Contact', href: '#contact', id: 'contact' },
 ];
 
+const sectionIds = links.map((l) => l.id);
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const activeSection = useActiveSection(links.map((l) => l.id));
+  const activeSection = useActiveSection(sectionIds);
   const scrollProgress = useScrollProgress();
+
+  // Dynamic document title based on active section in viewport
+  const sectionTitle = useMemo(() => {
+    switch (activeSection) {
+      case 'about':
+        return 'Madhu S | About';
+      case 'work':
+        return 'Madhu S | Projects';
+      case 'expertise':
+        return 'Madhu S | Expertise';
+      case 'experience':
+        return 'Madhu S | Journey';
+      case 'contact':
+        return 'Madhu S | Contact';
+      default:
+        return 'Madhu S - AI, Data Science & Cyber Security Engineer';
+    }
+  }, [activeSection]);
+
+  useDocumentTitle(sectionTitle);
+
+  // Close mobile menu on Escape key
+  useKeyPress('Escape', () => setOpen(false), { enabled: open });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -25,15 +52,6 @@ export default function Navbar() {
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
-
-  // Close mobile menu on Escape key
-  useEffect(() => {
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && open) setOpen(false);
-    };
-    document.addEventListener('keydown', onKeyDown);
-    return () => document.removeEventListener('keydown', onKeyDown);
-  }, [open]);
 
   return (
     <header
