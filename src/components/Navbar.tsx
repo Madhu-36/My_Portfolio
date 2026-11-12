@@ -24,6 +24,15 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Close mobile menu on Escape key
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && open) setOpen(false);
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [open]);
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
@@ -66,7 +75,9 @@ export default function Navbar() {
         <button
           onClick={() => setOpen((v) => !v)}
           className="flex h-10 w-10 items-center justify-center rounded-lg border border-ink-700 text-ink-200 md:hidden"
-          aria-label="Toggle menu"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
+          aria-controls="mobile-nav"
         >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
@@ -74,6 +85,9 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       <div
+        id="mobile-nav"
+        role="navigation"
+        aria-label="Mobile navigation"
         className={`overflow-hidden border-t border-ink-800 bg-ink-950/95 backdrop-blur-xl transition-all duration-300 md:hidden ${
           open ? 'max-h-96' : 'max-h-0'
         }`}
