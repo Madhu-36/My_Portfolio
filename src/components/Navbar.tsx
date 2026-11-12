@@ -2,18 +2,20 @@ import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import MSLogo from './MSLogo';
 import { Magnetic } from './Magnetic';
+import { useActiveSection } from '../hooks/useActiveSection';
 
 const links = [
-  { label: 'About', href: '#about' },
-  { label: 'Work', href: '#work' },
-  { label: 'Expertise', href: '#expertise' },
-  { label: 'Journey', href: '#experience' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About', href: '#about', id: 'about' },
+  { label: 'Work', href: '#work', id: 'work' },
+  { label: 'Expertise', href: '#expertise', id: 'expertise' },
+  { label: 'Journey', href: '#experience', id: 'experience' },
+  { label: 'Contact', href: '#contact', id: 'contact' },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const activeSection = useActiveSection(links.map((l) => l.id));
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -45,7 +47,10 @@ export default function Navbar() {
             <Magnetic key={link.href}>
               <a
                 href={link.href}
-                className="link-underline"
+                className={`link-underline transition-colors duration-200 ${
+                  activeSection === link.id ? 'text-white' : ''
+                }`}
+                aria-current={activeSection === link.id ? 'page' : undefined}
               >
                 {link.label}
               </a>
