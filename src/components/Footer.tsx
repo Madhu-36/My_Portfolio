@@ -56,6 +56,10 @@ export default function Footer() {
             © {new Date().getFullYear()} Madhu S. Built with curiosity &amp; code.
           </p>
         </div>
+        {/* Tech credits */}
+        <p className="mt-4 text-center font-mono text-[10px] text-ink-600 tracking-wide">
+          Built with React · Vite · Three.js · Tailwind CSS · TypeScript
+        </p>
       </div>
     </footer>
   );
