@@ -20,6 +20,7 @@ import LiveStatsHUD from './components/LiveStatsHUD';
 import { useSoundEffects } from './hooks/useSoundEffects';
 import BackToTop from './components/BackToTop';
 import SectionDivider from './components/SectionDivider';
+import OfflineBanner from './components/OfflineBanner';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -86,6 +87,7 @@ function App() {
       <CustomCursor />
       <HackerMode />
       <LiveStatsHUD />
+      <OfflineBanner />
       <AnimatePresence>
         {!isLoading && (
           <motion.div 
