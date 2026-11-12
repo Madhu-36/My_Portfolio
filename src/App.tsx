@@ -19,6 +19,7 @@ import HackerMode from './components/HackerMode';
 import LiveStatsHUD from './components/LiveStatsHUD';
 import { useSoundEffects } from './hooks/useSoundEffects';
 import BackToTop from './components/BackToTop';
+import SectionDivider from './components/SectionDivider';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -103,10 +104,15 @@ function App() {
               <Navbar />
               <main id="main-content">
                 <Hero />
+                <SectionDivider />
                 <About />
+                <SectionDivider />
                 <Projects />
+                <SectionDivider />
                 <Expertise />
+                <SectionDivider />
                 <Experience />
+                <SectionDivider />
                 <Contact />
               </main>
               <Footer />
