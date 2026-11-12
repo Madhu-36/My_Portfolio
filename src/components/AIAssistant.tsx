@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Bot, X, Send } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useKeyPress } from '../hooks/useKeyPress';
 
 type Message = {
   id: string;
@@ -20,6 +21,9 @@ export default function AIAssistant() {
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  // Close assistant popup when user hits Escape key
+  useKeyPress('Escape', () => setIsOpen(false), { enabled: isOpen });
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -41,7 +45,9 @@ export default function AIAssistant() {
       let botResponse = "I'm still learning about that! You can reach out to Madhu directly via the contact form.";
       const lower = userMsg.toLowerCase();
       
-      if (lower.includes('rust') || lower.includes('devignite')) {
+      if (lower.includes('codeshield')) {
+        botResponse = "Madhu built CodeShield, an AI-powered static analysis & vulnerability scanner that flags OWASP Top 10 security risks with zero-day detection capabilities!";
+      } else if (lower.includes('rust') || lower.includes('devignite')) {
         botResponse = "Madhu built DevIgnite, a cross-platform developer environment manager in Rust! He loves system programming and performance optimization.";
       } else if (lower.includes('game') || lower.includes('unity')) {
         botResponse = "Madhu creates games using C# and Unity. Check out 'Game Complex' in the projects section! He also holds a Unity Junior Programmer certification.";
@@ -69,6 +75,9 @@ export default function AIAssistant() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            role="dialog"
+            aria-label="Maxhu AI Chat"
+            aria-modal="false"
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
@@ -90,6 +99,8 @@ export default function AIAssistant() {
                 </div>
               </div>
               <button
+                type="button"
+                aria-label="Close chat"
                 onClick={() => setIsOpen(false)}
                 className="rounded-lg p-1.5 text-ink-400 hover:bg-ink-800 hover:text-white transition-colors"
               >
@@ -147,6 +158,9 @@ export default function AIAssistant() {
       </AnimatePresence>
 
       <motion.button
+        type="button"
+        aria-label={isOpen ? "Close AI assistant" : "Open AI assistant"}
+        aria-expanded={isOpen}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
