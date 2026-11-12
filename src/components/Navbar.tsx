@@ -3,6 +3,7 @@ import { Menu, X } from 'lucide-react';
 import MSLogo from './MSLogo';
 import { Magnetic } from './Magnetic';
 import { useActiveSection } from '../hooks/useActiveSection';
+import { useScrollProgress } from '../hooks/useScrollProgress';
 
 const links = [
   { label: 'About', href: '#about', id: 'about' },
@@ -16,6 +17,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const activeSection = useActiveSection(links.map((l) => l.id));
+  const scrollProgress = useScrollProgress();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -41,6 +43,16 @@ export default function Navbar() {
           : 'border-b border-transparent bg-transparent'
       }`}
     >
+      {/* Reading progress bar */}
+      <div
+        role="progressbar"
+        aria-label="Reading progress"
+        aria-valuenow={Math.round(scrollProgress * 100)}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-accent-500 to-gold-400 transition-[width] duration-100"
+        style={{ width: `${scrollProgress * 100}%` }}
+      />
       <nav className="container-px mx-auto flex h-16 max-w-7xl items-center justify-between md:h-20">
         <Magnetic>
           <a href="#top" className="group flex items-center gap-2.5">
