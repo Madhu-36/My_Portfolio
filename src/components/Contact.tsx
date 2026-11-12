@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
-import { Mail, MapPin, Send, CheckCircle2, AlertCircle, Loader2, Github, Linkedin } from 'lucide-react';
+import { Mail, MapPin, Send, CheckCircle2, AlertCircle, Loader2, Github, Linkedin, Copy, Check } from 'lucide-react';
 import { useReveal } from '../hooks/useReveal';
+import { useClipboard } from '../hooks/useClipboard';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
@@ -16,6 +17,7 @@ export default function Contact() {
   const [status, setStatus] = useState<Status>('idle');
   const [errorMsg, setErrorMsg] = useState('');
   const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const { copied, copy } = useClipboard();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -72,13 +74,21 @@ export default function Contact() {
                   <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-ink-700 transition-colors group-hover:border-accent-500/50">
                     <Mail size={18} className="text-accent-400" />
                   </span>
-                  <div>
+                  <div className="flex-1">
                     <div className="text-xs uppercase tracking-widest text-ink-500">
                       Email
                     </div>
                     <div className="text-base font-medium">madhu.s.3606@gmail.com</div>
                   </div>
                 </a>
+                <button
+                  onClick={() => copy('madhu.s.3606@gmail.com')}
+                  aria-label={copied ? 'Email copied!' : 'Copy email address'}
+                  title={copied ? 'Copied!' : 'Copy email'}
+                  className="ml-auto flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-ink-700 text-ink-400 transition-all hover:border-accent-500/50 hover:text-accent-400"
+                >
+                  {copied ? <Check size={15} className="text-accent-400" /> : <Copy size={15} />}
+                </button>
 
                 <div className="flex items-center gap-4 text-ink-200">
                   <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-ink-700">
