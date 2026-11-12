@@ -18,6 +18,7 @@ import CustomCursor from './components/CustomCursor';
 import HackerMode from './components/HackerMode';
 import LiveStatsHUD from './components/LiveStatsHUD';
 import { useSoundEffects } from './hooks/useSoundEffects';
+import BackToTop from './components/BackToTop';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -110,6 +111,7 @@ function App() {
               </main>
               <Footer />
               <AIAssistant />
+              <BackToTop />
             </div>
           </motion.div>
         )}
