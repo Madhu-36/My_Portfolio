@@ -10,6 +10,8 @@ type CommandLog = {
 
 export default function InteractiveTerminal() {
   const [input, setInput] = useState('');
+  const [cmdHistory, setCmdHistory] = useState<string[]>(['whoami', 'cat skills.txt']);
+  const [historyIndex, setHistoryIndex] = useState<number>(-1);
   const [history, setHistory] = useState<CommandLog[]>([
     {
       command: 'whoami',
@@ -143,8 +145,31 @@ export default function InteractiveTerminal() {
       output = <span className="text-gold-400 font-bold">Access Granted: Welcome Admin. Initiating Override... Just kidding!</span>;
     }
 
+    setCmdHistory((prev) => [...prev, rawCmd]);
+    setHistoryIndex(-1);
     setHistory((prev) => [...prev, { command: rawCmd, output }]);
     setInput('');
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (cmdHistory.length === 0) return;
+      const nextIndex = historyIndex === -1 ? cmdHistory.length - 1 : Math.max(0, historyIndex - 1);
+      setHistoryIndex(nextIndex);
+      setInput(cmdHistory[nextIndex]);
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (historyIndex === -1) return;
+      if (historyIndex < cmdHistory.length - 1) {
+        const nextIndex = historyIndex + 1;
+        setHistoryIndex(nextIndex);
+        setInput(cmdHistory[nextIndex]);
+      } else {
+        setHistoryIndex(-1);
+        setInput('');
+      }
+    }
   };
 
   const handleCommand = (e: React.FormEvent) => {
@@ -186,6 +211,7 @@ export default function InteractiveTerminal() {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
               placeholder="Type 'help' or command..."
               aria-label="Interactive terminal command input"
               className="bg-transparent border-none outline-none text-ink-200 flex-grow caret-accent-400 placeholder-ink-600"
