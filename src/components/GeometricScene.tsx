@@ -57,6 +57,9 @@ export default function GeometricScene() {
               ior={1.4}
               chromaticAberration={0.3}
               anisotropy={0.2}
+              distortion={0}
+              distortionScale={0}
+              temporalDistortion={0}
               color="#ffffff"
             />
           </mesh>
