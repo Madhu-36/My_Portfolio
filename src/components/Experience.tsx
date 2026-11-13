@@ -1,45 +1,5 @@
 import { useReveal } from '../hooks/useReveal';
-
-const experiences = [
-  {
-    role: 'Ethical Hacker Intern',
-    company: 'Jutrm Career Academy',
-    period: 'Mar 2026',
-    description:
-      'Completed hands-on penetration testing and vulnerability assessments across real-time network infrastructure projects. Analyzed system vulnerabilities and evaluated kernel-level security requirements.',
-    highlights: [
-      'Real-time network penetration testing',
-      'Kernel-level security evaluation',
-      'Vulnerability assessment & mitigation',
-    ],
-  },
-  {
-    role: 'Ethical Hacker Intern',
-    company: 'ACMEGRADE',
-    period: 'Dec 2025 – Jun 2026',
-    description:
-      'Executed web and network vulnerability assessments using Burp Suite and Nmap. Intercepted HTTP traffic, verified security risks, and documented PoCs and remediation reports for development teams.',
-    highlights: [
-      'Burp Suite & Nmap vulnerability scanning',
-      'XSS, SQLi, & Access Control assessment',
-      'PoC documentation & remediation reporting',
-      'Security patch verification',
-    ],
-  },
-  {
-    role: 'B.E. in Computer Science / AI & DS',
-    company: 'East West Institute of Technology',
-    period: '2022 – Present',
-    description:
-      'Pursuing engineering with a focus on Artificial Intelligence and Data Science. Coursework spans machine learning, data structures, algorithms, and software engineering.',
-    highlights: [
-      'ML & deep learning projects',
-      'Data science & analytics',
-      'Strong CS fundamentals',
-      'Active in technical communities',
-    ],
-  },
-];
+import { experiencesData } from '../data/experience';
 
 export default function Experience() {
   const { ref, visible } = useReveal<HTMLDivElement>();
@@ -64,7 +24,7 @@ export default function Experience() {
             <div className="absolute left-0 top-2 h-full w-px bg-gradient-to-b from-accent-500/40 via-ink-700 to-transparent md:left-1/2" />
 
             <div className="space-y-12">
-              {experiences.map((exp, i) => (
+              {experiencesData.map((exp, i) => (
                 <div
                   key={exp.role + exp.company}
                   className={`relative flex flex-col gap-4 md:flex-row md:gap-0 ${
