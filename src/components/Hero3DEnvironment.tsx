@@ -49,7 +49,6 @@ export default function Hero3DEnvironment() {
           anchorX="left"
           anchorY="middle"
           font="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hjp-Ek-_EeA.woff"
-          fontWeight="bold"
         >
           Building the
         </Text>
@@ -60,7 +59,6 @@ export default function Hero3DEnvironment() {
           anchorX="left"
           anchorY="middle"
           font="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hjp-Ek-_EeA.woff"
-          fontWeight="900"
         >
           DIGITAL FUTURE
         </Text>

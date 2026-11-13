@@ -8,12 +8,17 @@ type Status = 'idle' | 'loading' | 'success' | 'error';
 export default function Contact() {
   const { ref, visible } = useReveal<HTMLDivElement>();
   const [status, setStatus] = useState<Status>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const { copied, copy } = useClipboard();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) return;
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      setErrorMsg('Please fill out all fields before submitting.');
+      setStatus('error');
+      return;
+    }
 
     setStatus('loading');
 
