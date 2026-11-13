@@ -1,70 +1,5 @@
 import { useReveal } from '../hooks/useReveal';
-
-const skills = [
-  {
-    category: 'Cybersecurity & Ethical Hacking',
-    items: [
-      'Penetration Testing',
-      'Vulnerability Analysis',
-      'Malware Analysis',
-      'Identity Management',
-      'Network Security',
-      'Burp Suite',
-      'Wireshark',
-      'Metasploit',
-      'Nmap',
-      'OWASP Top 10',
-    ],
-  },
-  {
-    category: 'AI & Data Science',
-    items: [
-      'Python',
-      'Machine Learning',
-      'Deep Learning',
-      'Neural Networks',
-      'TensorFlow',
-      'Pandas',
-      'NumPy',
-      'Scikit-learn',
-      'Data Visualization',
-      'NLP',
-    ],
-  },
-  {
-    category: 'Game Development',
-    items: [
-      'Unity',
-      'C#',
-      'Godot',
-      'Game Physics',
-      'Level Design',
-      '3D Modeling',
-      'Blender',
-      'Shader Programming',
-    ],
-  },
-  {
-    category: 'Tools & Languages',
-    items: [
-      'Git & GitHub',
-      'Linux',
-      'Docker',
-      'VS Code',
-      'C++',
-      'JavaScript',
-      'SQL',
-      'Bash Scripting',
-    ],
-  },
-];
-
-const marqueeItems = [
-  'Python', 'C#', 'C++', 'Linux', 'Burp Suite', 'Wireshark',
-  'Metasploit', 'Nmap', 'Unity', 'Godot', 'TensorFlow',
-  'Pandas', 'NumPy', 'Scikit-learn', 'Docker', 'Git',
-  'OWASP', 'Malware Analysis', 'Neural Networks',
-];
+import { skillsData, marqueeSkills } from '../data/skills';
 
 const skillDescriptions: Record<string, string> = {
   // Cybersecurity
@@ -131,7 +66,7 @@ export default function Expertise() {
           </h2>
 
           <div className="grid gap-6 md:grid-cols-2">
-            {skills.map((group) => (
+            {skillsData.map((group) => (
               <div key={group.category} className="card card-hover p-8">
                 <h3 className="font-display text-xl font-semibold text-white">
                   {group.category}
@@ -168,7 +103,7 @@ export default function Expertise() {
       {/* Marquee */}
       <div className="relative mt-20 flex overflow-hidden border-y border-ink-800 bg-ink-900/40 py-6 pointer-events-none">
         <div className="flex animate-marquee whitespace-nowrap">
-          {[...marqueeItems, ...marqueeItems].map((item, i) => (
+          {[...marqueeSkills, ...marqueeSkills].map((item, i) => (
             <span
               key={i}
               className="mx-8 font-display text-2xl font-medium text-ink-600 transition-colors hover:text-accent-400"
