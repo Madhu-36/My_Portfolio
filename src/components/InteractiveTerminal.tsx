@@ -48,18 +48,34 @@ export default function InteractiveTerminal() {
 
     if (cmd === 'help') {
       output = (
-        <ul className="text-ink-200 list-disc list-inside">
-          <li><strong>whoami</strong> - Print current user</li>
-          <li><strong>cat skills.txt</strong> - List core skills</li>
-          <li><strong>github</strong> - Open GitHub profile</li>
-          <li><strong>repo</strong> - View portfolio source code</li>
-          <li><strong>linkedin</strong> - Open LinkedIn profile</li>
-          <li><strong>resume</strong> - Download/View resume</li>
-          <li><strong>portfolio</strong> - Show portfolio details</li>
-          <li><strong>projects</strong> - List featured projects</li>
-          <li><strong>date</strong> - Display current system time</li>
-          <li><strong>clear</strong> - Clear terminal output</li>
-        </ul>
+        <div className="space-y-2 text-ink-300">
+          <p className="text-accent-400 font-semibold">&gt; AVAILABLE TERMINAL COMMANDS:</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1 text-xs">
+            <div><span className="text-white font-bold">whoami</span> - Print profile identity</div>
+            <div><span className="text-white font-bold">cat skills.txt</span> - Core skill matrix</div>
+            <div><span className="text-white font-bold">projects</span> - Open-source repos</div>
+            <div><span className="text-white font-bold">experience</span> - Career internships</div>
+            <div><span className="text-white font-bold">resume</span> - Open verified resume</div>
+            <div><span className="text-white font-bold">banner</span> - Show system ASCII banner</div>
+            <div><span className="text-white font-bold">github</span> - Launch GitHub profile</div>
+            <div><span className="text-white font-bold">linkedin</span> - Launch LinkedIn network</div>
+            <div><span className="text-white font-bold">repo</span> - Inspect portfolio repo</div>
+            <div><span className="text-white font-bold">date</span> - Current system time</div>
+            <div><span className="text-white font-bold">clear</span> - Clear terminal logs</div>
+          </div>
+          <p className="text-ink-500 text-[11px] pt-1">&gt; Tip: Use Up/Down arrow keys to recall previous commands.</p>
+        </div>
+      );
+    } else if (cmd === 'banner') {
+      output = (
+        <pre className="text-accent-400 text-[10px] sm:text-xs font-mono leading-tight overflow-x-auto">
+{` __  __    _    ____  _   _ _   _   ____  
+|  \\/  |  / \\  |  _ \\| | | | | | | / ___| 
+| |\\/| | / _ \\ | | | | |_| | | | | \\___ \\ 
+| |  | |/ ___ \\| |_| |  _  | |_| |  ___) |
+|_|  |_/_/   \\_\\____/|_| |_|\\___/  |____/ 
+[ AI & Data Science Engineer · Cybersecurity Specialist ]`}
+        </pre>
       );
     } else if (cmd === 'whoami') {
       output = (
