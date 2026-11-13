@@ -8,6 +8,12 @@ type CommandLog = {
   output: React.ReactNode;
 };
 
+const AVAILABLE_COMMANDS = [
+  'help', 'whoami', 'cat skills.txt', 'projects', 'experience',
+  'resume', 'banner', 'github', 'linkedin', 'repo', 'date', 'time',
+  'about', 'portfolio', 'clear', 'sudo'
+];
+
 export default function InteractiveTerminal() {
   const [input, setInput] = useState('');
   const [cmdHistory, setCmdHistory] = useState<string[]>(['whoami', 'cat skills.txt']);
@@ -168,6 +174,26 @@ export default function InteractiveTerminal() {
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Tab') {
+      e.preventDefault();
+      const trimmed = input.trim().toLowerCase();
+      if (!trimmed) return;
+      
+      const matches = AVAILABLE_COMMANDS.filter((c) => c.startsWith(trimmed));
+      if (matches.length === 1) {
+        setInput(matches[0]);
+      } else if (matches.length > 1) {
+        setHistory((prev) => [
+          ...prev,
+          {
+            command: input,
+            output: <span className="text-accent-400 font-mono text-xs">{matches.join('   ')}</span>,
+          },
+        ]);
+      }
+      return;
+    }
+
     if (e.key === 'ArrowUp') {
       e.preventDefault();
       if (cmdHistory.length === 0) return;
