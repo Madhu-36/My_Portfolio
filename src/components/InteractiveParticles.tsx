@@ -7,8 +7,7 @@ export default function InteractiveParticles() {
   const mesh = useRef<THREE.InstancedMesh>(null);
   
   // Create initial random positions
-  const { positions, originalPositions } = useMemo(() => {
-    const positions = new Float32Array(count * 3);
+  const originalPositions = useMemo(() => {
     const originalPositions = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
       const r = 10 + Math.random() * 20;
@@ -19,15 +18,11 @@ export default function InteractiveParticles() {
       const y = r * Math.sin(phi) * Math.sin(theta);
       const z = r * Math.cos(phi);
       
-      positions[i * 3] = x;
-      positions[i * 3 + 1] = y;
-      positions[i * 3 + 2] = z;
-      
       originalPositions[i * 3] = x;
       originalPositions[i * 3 + 1] = y;
       originalPositions[i * 3 + 2] = z;
     }
-    return { positions, originalPositions };
+    return originalPositions;
   }, [count]);
 
   const dummy = useMemo(() => new THREE.Object3D(), []);

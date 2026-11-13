@@ -1,21 +1,13 @@
 import { useState } from 'react';
-import { createClient } from '@supabase/supabase-js';
 import { Mail, MapPin, Send, CheckCircle2, AlertCircle, Loader2, Github, Linkedin, Copy, Check } from 'lucide-react';
 import { useReveal } from '../hooks/useReveal';
 import { useClipboard } from '../hooks/useClipboard';
-
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-
-// Only initialize Supabase if variables are configured to prevent crash
-const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : null;
 
 type Status = 'idle' | 'loading' | 'success' | 'error';
 
 export default function Contact() {
   const { ref, visible } = useReveal<HTMLDivElement>();
   const [status, setStatus] = useState<Status>('idle');
-  const [errorMsg, setErrorMsg] = useState('');
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const { copied, copy } = useClipboard();
 
