@@ -4,6 +4,7 @@ import { useReveal } from '../hooks/useReveal';
 import { getAssetUrl } from '../utils/assets';
 import { projectsData, projectFilterTabs } from '../data/projects';
 import { useDebounce } from '../hooks/useDebounce';
+import { Badge } from './Badge';
 import type { ProjectItem, ProjectDomain } from '../types/portfolio';
 
 export type { ProjectItem as Project };
@@ -176,12 +177,13 @@ export default function Projects() {
                     </p>
                     <div className="mt-4 flex flex-wrap gap-1.5 shrink-0 pt-3 border-t border-ink-800/60">
                       {project.tech.map((t) => (
-                        <span
+                        <Badge
                           key={t}
-                          className="rounded-md bg-ink-800/80 px-2 py-1 font-mono text-[10px] text-ink-300 border border-ink-700/50"
+                          variant="ghost"
+                          className="rounded-md bg-ink-800/80 px-2 py-0.5 text-[10px]"
                         >
                           {t}
-                        </span>
+                        </Badge>
                       ))}
                     </div>
                   </div>

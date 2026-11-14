@@ -1,5 +1,6 @@
 import { useReveal } from '../hooks/useReveal';
 import { experiencesData } from '../data/experience';
+import { Badge } from './Badge';
 
 export default function Experience() {
   const { ref, visible } = useReveal<HTMLDivElement>();
@@ -46,10 +47,12 @@ export default function Experience() {
                     }`}
                   >
                     <div className="card card-hover p-6 sm:p-8">
-                      <span className="font-mono text-xs uppercase tracking-widest text-accent-400">
-                        {exp.period}
-                      </span>
-                      <h3 className="mt-3 font-display text-xl font-semibold text-white">
+                      <div className="mb-3">
+                        <Badge variant="accent" className="font-mono text-[11px] uppercase tracking-wider">
+                          {exp.period}
+                        </Badge>
+                      </div>
+                      <h3 className="font-display text-xl font-semibold text-white">
                         {exp.role}
                       </h3>
                       <p className="mt-1 text-base text-ink-400">
