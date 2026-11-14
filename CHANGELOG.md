@@ -2,159 +2,37 @@
 
 All notable changes to this project will be documented in this file.
 
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.0.1] - 2026-08-25
-- Placeholder for version 0.0.1 update.
+## [1.1.0] - 2026-11-14
 
-## [0.0.2] - 2026-08-25
-- Placeholder for version 0.0.2 update.
+### Added
+- **Interactive Terminal Tools**: Command history buffer with Up/Down arrow key recall, Tab autocompletion for registered shell commands, two-column formatted help grid, cyber ASCII banner (`banner`), and one-click copy logs button with clipboard feedback.
+- **Project Search & Filter**: Real-time project search input debounced with `useDebounce`, dynamic counts inside domain filter pills (`All`, `Cybersecurity`, `AI`, `Systems`), and responsive empty search state.
+- **Keyboard Shortcuts Modal**: Universal modal dialog triggered with `?` key or floating shortcuts pill, listing all single-key shortcuts (`T`, `W`, `C`, `B`, `ESC`, `HACK`).
+- **Single-Key Navigation**: Rapid section jumping (`T` for Terminal, `W` for Work, `C` for Contact, `B` for Back-to-Top) with input-focus isolation.
+- **Interactive System HUD**: Collapsible/expandable LiveStatsHUD with toggle chevron.
+- **Audio Controls**: Persistent mute/unmute sound effects toggle in Navbar backed by `localStorage`.
+- **Reusable UI Components**: Generic `<Badge>` component with accent, ghost, gold, and outline variants; `<OfflineBanner>` with aria-live network status alerts; and `cn(...)` utility merging clsx and tailwind-merge.
+- **Custom React Hooks**: `useActiveSection`, `useScrollProgress`, `useWindowSize`, `usePrefersReducedMotion`, `useLocalStorage`, `useDebounce`, `useHover`, `useOnlineStatus`, `useDocumentTitle`, and `useKeyPress`.
+- **SEO & Social Media Sharing**: OpenGraph (`og:image`, `og:title`, `og:description`, `og:url`), Twitter Summary Large Image card, XML sitemap, and Google crawler `robots.txt`.
 
-## [0.0.3] - 2026-08-25
-- Placeholder for version 0.0.3 update.
+### Changed
+- Refactored projects, career experience, and technical skills into dedicated typed modules under `src/data/`.
+- Updated Drei `<MeshTransmissionMaterial>` distortion properties and removed invalid `fontWeight` prop from `<Text>` components to guarantee zero TypeScript errors.
+- Enhanced GitHub Actions CI workflow to run strict `npm run typecheck` prior to building for GitHub Pages.
 
-## [0.0.4] - 2026-08-25
-- Placeholder for version 0.0.4 update.
+### Accessibility (a11y)
+- Added `usePrefersReducedMotion` check in `CustomCursor` to disable canvas tracking for motion-sensitive users.
+- Added `aria-label`, `aria-expanded`, and `role="dialog"` attributes to all interactive modals and buttons.
+- Provided skip-to-content accessibility link at the top of the DOM.
 
-## [0.0.5] - 2026-08-25
-- Placeholder for version 0.0.5 update.
+---
 
-## [0.0.6] - 2026-08-25
-- Placeholder for version 0.0.6 update.
+## [1.0.0] - 2026-11-12
 
-## [0.0.7] - 2026-08-25
-- Placeholder for version 0.0.7 update.
-
-## [0.0.8] - 2026-08-25
-- Placeholder for version 0.0.8 update.
-
-## [0.0.9] - 2026-08-25
-- Placeholder for version 0.0.9 update.
-
-## [0.0.10] - 2026-08-25
-- Placeholder for version 0.0.10 update.
-
-## [0.0.11] - 2026-08-25
-- Placeholder for version 0.0.11 update.
-
-## [0.0.12] - 2026-08-25
-- Placeholder for version 0.0.12 update.
-
-## [0.0.13] - 2026-08-25
-- Placeholder for version 0.0.13 update.
-
-## [0.0.14] - 2026-08-25
-- Placeholder for version 0.0.14 update.
-
-## [0.0.15] - 2026-08-25
-- Placeholder for version 0.0.15 update.
-
-## [0.0.17] - 2026-08-25
-- Placeholder for version 0.0.17 update.
-
-## [0.0.18] - 2026-08-25
-- Placeholder for version 0.0.18 update.
-
-## [0.0.19] - 2026-08-25
-- Fixed email attribution for version 0.0.19 update.
-
-## [0.0.20] - 2026-08-25
-- Fixed email attribution for version 0.0.20 update.
-
-## [0.0.21] - 2026-08-25
-- Fixed email attribution for version 0.0.21 update.
-
-## [0.0.22] - 2026-08-25
-- Fixed email attribution for version 0.0.22 update.
-
-## [0.0.23] - 2026-08-25
-- Fixed email attribution for version 0.0.23 update.
-
-## [0.0.24] - 2026-08-25
-- Fixed email attribution for version 0.0.24 update.
-
-## [0.0.25] - 2026-08-25
-- Fixed email attribution for version 0.0.25 update.
-
-## [0.0.26] - 2026-08-25
-- Fixed email attribution for version 0.0.26 update.
-
-## [0.0.27] - 2026-08-25
-- Fixed email attribution for version 0.0.27 update.
-
-## [0.0.28] - 2026-08-25
-- Fixed email attribution again for version 0.0.28 update.
-
-## [0.0.29] - 2026-08-25
-- Fixed email attribution again for version 0.0.29 update.
-
-## [0.0.30] - 2026-08-25
-- Fixed email attribution again for version 0.0.30 update.
-
-## [0.0.31] - 2026-08-25
-- Fixed email attribution again for version 0.0.31 update.
-
-## [0.0.32] - 2026-08-25
-- Fixed email attribution again for version 0.0.32 update.
-
-## [0.0.33] - 2026-08-25
-- Fixed email attribution again for version 0.0.33 update.
-
-## [0.0.34] - 2026-08-25
-- Fixed email attribution again for version 0.0.34 update.
-
-## [0.0.35] - 2026-08-25
-- Fixed email attribution again for version 0.0.35 update.
-
-## [0.0.36] - 2026-08-25
-- Fixed email attribution again for version 0.0.36 update.
-
-## [0.0.37] - 2026-08-25
-- Using provided PAT for version 0.0.37 update.
-
-## [0.0.39] - 2026-08-25
-- Using provided PAT for version 0.0.39 update.
-
-## [0.0.40] - 2026-08-25
-- Using provided PAT for version 0.0.40 update.
-
-## [0.0.41] - 2026-08-25
-- Using provided PAT for version 0.0.41 update.
-
-## [0.0.42] - 2026-08-25
-- Using provided PAT for version 0.0.42 update.
-
-## [0.0.43] - 2026-08-25
-- Using provided PAT for version 0.0.43 update.
-
-## [0.0.44] - 2026-08-25
-- Using provided PAT for version 0.0.44 update.
-
-## [0.0.45] - 2026-08-25
-- Using provided PAT for version 0.0.45 update.
-
-## [0.0.46] - 2026-08-25
-- Placeholder for version 0.0.46 update.
-
-## [0.0.47] - 2026-08-25
-- Placeholder for version 0.0.47 update.
-
-## [0.0.48] - 2026-08-25
-- Placeholder for version 0.0.48 update.
-
-## [0.0.49] - 2026-08-25
-- Placeholder for version 0.0.49 update.
-
-## [0.0.50] - 2026-08-25
-- Placeholder for version 0.0.50 update.
-
-## [0.0.51] - 2026-08-25
-- Placeholder for version 0.0.51 update.
-
-## [0.0.52] - 2026-08-25
-- Placeholder for version 0.0.52 update.
-
-## [0.0.53] - 2026-08-25
-- Placeholder for version 0.0.53 update.
-
-## [0.0.54] - 2026-08-25
-- Placeholder for version 0.0.54 update.
+### Initial Release
+- Personal developer portfolio showcasing AI, cybersecurity, and game development projects.
+- Hardware-accelerated Three.js 3D background with clamped DPR and fallback error boundary.
+- Mobile-responsive navigation, dynamic contact form, and Maxhu AI digital assistant.
