@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
-import { Terminal as TerminalIcon } from 'lucide-react';
+import { Terminal as TerminalIcon, Copy, Check } from 'lucide-react';
 import { getAssetUrl } from '../utils/assets';
 import { useSoundEffects } from '../hooks/useSoundEffects';
+import { useClipboard } from '../hooks/useClipboard';
 
 type CommandLog = {
   command: string;
@@ -18,6 +19,7 @@ export default function InteractiveTerminal() {
   const [input, setInput] = useState('');
   const [cmdHistory, setCmdHistory] = useState<string[]>(['whoami', 'cat skills.txt']);
   const [historyIndex, setHistoryIndex] = useState<number>(-1);
+  const { copied, copy } = useClipboard();
   const [history, setHistory] = useState<CommandLog[]>([
     {
       command: 'whoami',
@@ -223,16 +225,40 @@ export default function InteractiveTerminal() {
     <div className="flex flex-col md:flex-row items-stretch gap-4 w-full">
       <div className="terminal border-glow overflow-hidden h-[350px] md:h-[450px] flex flex-col font-mono shadow-2xl flex-grow min-w-0">
         {/* Title bar */}
-        <div className="flex items-center gap-2 border-b border-ink-800 bg-ink-900/80 px-4 py-3 shrink-0">
-          <div className="flex gap-1.5">
-            <span className="h-3 w-3 rounded-full bg-red-500/70" />
-            <span className="h-3 w-3 rounded-full bg-yellow-500/70" />
-            <span className="h-3 w-3 rounded-full bg-green-500/70" />
+        <div className="flex items-center justify-between border-b border-ink-800 bg-ink-900/80 px-4 py-2.5 shrink-0">
+          <div className="flex items-center gap-2">
+            <div className="flex gap-1.5">
+              <span className="h-3 w-3 rounded-full bg-red-500/70" />
+              <span className="h-3 w-3 rounded-full bg-yellow-500/70" />
+              <span className="h-3 w-3 rounded-full bg-green-500/70" />
+            </div>
+            <span className="ml-2 flex items-center gap-1.5 text-xs text-ink-400">
+              <TerminalIcon size={12} />
+              madhu@portfolio:~$
+            </span>
           </div>
-          <span className="ml-2 flex items-center gap-1.5 text-xs text-ink-400">
-            <TerminalIcon size={12} />
-            madhu@portfolio:~$
-          </span>
+
+          <button
+            type="button"
+            onClick={() => {
+              const textLog = history.map((h) => `$ ${h.command}`).join('\n');
+              copy(textLog);
+            }}
+            aria-label="Copy terminal command history"
+            className="flex items-center gap-1.5 text-[11px] font-mono text-ink-400 hover:text-accent-400 transition-colors px-2 py-0.5 rounded border border-ink-800 hover:border-accent-500/40 bg-ink-950/40"
+          >
+            {copied ? (
+              <>
+                <Check size={12} className="text-emerald-400" />
+                <span className="text-emerald-400">Copied</span>
+              </>
+            ) : (
+              <>
+                <Copy size={12} />
+                <span>Copy Logs</span>
+              </>
+            )}
+          </button>
         </div>
         
         {/* Body */}
