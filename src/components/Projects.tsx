@@ -14,6 +14,15 @@ export default function Projects() {
   const [searchQuery, setSearchQuery] = useState('');
   const debouncedSearch = useDebounce(searchQuery, 200).trim().toLowerCase();
 
+  const categoryCounts = useMemo(() => {
+    return {
+      all: projectsData.length,
+      cyber: projectsData.filter((p) => p.domain === 'cyber').length,
+      ai: projectsData.filter((p) => p.domain === 'ai').length,
+      systems: projectsData.filter((p) => p.domain === 'systems').length,
+    };
+  }, []);
+
   const filteredProjects = useMemo(() => {
     return projectsData.filter((p) => {
       const matchesFilter = activeFilter === 'all' || p.domain === activeFilter;
@@ -63,19 +72,31 @@ export default function Projects() {
           {/* Category Filter Tabs & Instant Search */}
           <div className="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="flex flex-wrap items-center gap-2">
-              {projectFilterTabs.map((tab) => (
-                <button
-                  key={tab.value}
-                  onClick={() => setActiveFilter(tab.value)}
-                  className={`rounded-lg px-3.5 py-1.5 text-xs font-medium transition-all ${
-                    activeFilter === tab.value
-                      ? 'bg-accent-500 text-ink-950 font-semibold shadow-md shadow-accent-500/20'
-                      : 'border border-ink-800 bg-ink-900/60 text-ink-400 hover:border-ink-700 hover:text-white'
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
+              {projectFilterTabs.map((tab) => {
+                const count = categoryCounts[tab.value];
+                return (
+                  <button
+                    key={tab.value}
+                    onClick={() => setActiveFilter(tab.value)}
+                    className={`rounded-lg px-3.5 py-1.5 text-xs font-medium transition-all flex items-center gap-1.5 ${
+                      activeFilter === tab.value
+                        ? 'bg-accent-500 text-ink-950 font-semibold shadow-md shadow-accent-500/20'
+                        : 'border border-ink-800 bg-ink-900/60 text-ink-400 hover:border-ink-700 hover:text-white'
+                    }`}
+                  >
+                    <span>{tab.label}</span>
+                    <span
+                      className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
+                        activeFilter === tab.value
+                          ? 'bg-ink-950/20 text-ink-950 font-bold'
+                          : 'bg-ink-800 text-ink-400'
+                      }`}
+                    >
+                      {count}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
 
             <div className="relative w-full sm:w-64">
