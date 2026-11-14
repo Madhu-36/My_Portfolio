@@ -21,6 +21,7 @@ import { useSoundEffects } from './hooks/useSoundEffects';
 import BackToTop from './components/BackToTop';
 import SectionDivider from './components/SectionDivider';
 import OfflineBanner from './components/OfflineBanner';
+import KeyboardShortcutsModal from './components/KeyboardShortcutsModal';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -120,6 +121,7 @@ function App() {
               <Footer />
               <AIAssistant />
               <BackToTop />
+              <KeyboardShortcutsModal />
             </div>
           </motion.div>
         )}
