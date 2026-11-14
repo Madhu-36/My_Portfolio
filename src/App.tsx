@@ -65,6 +65,35 @@ function App() {
     };
   }, [playHover, playClick]);
 
+  // Global single-key navigation shortcuts ('t', 'w', 'c', 'b')
+  useEffect(() => {
+    const handleNavigationKey = (e: KeyboardEvent) => {
+      const activeEl = document.activeElement;
+      if (activeEl instanceof HTMLInputElement || activeEl instanceof HTMLTextAreaElement) {
+        return;
+      }
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+
+      const key = e.key.toLowerCase();
+      if (key === 't') {
+        const term = document.getElementById('terminal-input');
+        if (term) {
+          term.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          setTimeout(() => term.focus({ preventScroll: true }), 400);
+        }
+      } else if (key === 'w') {
+        document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
+      } else if (key === 'c') {
+        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+      } else if (key === 'b') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    };
+
+    window.addEventListener('keydown', handleNavigationKey);
+    return () => window.removeEventListener('keydown', handleNavigationKey);
+  }, []);
+
   return (
     <div className="w-full min-h-screen bg-transparent overflow-x-hidden text-white">
       
