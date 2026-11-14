@@ -1,11 +1,12 @@
 import { useEffect, useState, useMemo } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Volume2, VolumeX } from 'lucide-react';
 import MSLogo from './MSLogo';
 import { Magnetic } from './Magnetic';
 import { useActiveSection } from '../hooks/useActiveSection';
 import { useScrollProgress } from '../hooks/useScrollProgress';
 import { useKeyPress } from '../hooks/useKeyPress';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { useSoundEffects } from '../hooks/useSoundEffects';
 
 const links = [
   { label: 'About', href: '#about', id: 'about' },
@@ -22,6 +23,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const activeSection = useActiveSection(sectionIds);
   const scrollProgress = useScrollProgress();
+  const { muted, toggleMute } = useSoundEffects();
 
   // Dynamic document title based on active section in viewport
   const sectionTitle = useMemo(() => {
@@ -100,17 +102,38 @@ export default function Navbar() {
               Let&apos;s talk
             </a>
           </Magnetic>
+
+          <Magnetic>
+            <button
+              type="button"
+              onClick={toggleMute}
+              aria-label={muted ? 'Unmute UI sound effects' : 'Mute UI sound effects'}
+              className="flex h-9 w-9 items-center justify-center rounded-lg border border-ink-800 bg-ink-900/60 text-ink-400 hover:border-accent-500/40 hover:text-white transition-all"
+            >
+              {muted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+            </button>
+          </Magnetic>
         </div>
 
-        <button
-          onClick={() => setOpen((v) => !v)}
-          className="flex h-10 w-10 items-center justify-center rounded-lg border border-ink-700 text-ink-200 md:hidden"
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-        >
-          {open ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <button
+            type="button"
+            onClick={toggleMute}
+            aria-label={muted ? 'Unmute UI sound effects' : 'Mute UI sound effects'}
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-ink-700 text-ink-200"
+          >
+            {muted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+          </button>
+          <button
+            onClick={() => setOpen((v) => !v)}
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-ink-700 text-ink-200"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+          >
+            {open ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile menu */}

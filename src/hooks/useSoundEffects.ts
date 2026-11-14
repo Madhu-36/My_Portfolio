@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 // Shared singleton AudioContext to prevent memory leaks and main thread audio pauses
 let sharedAudioCtx: AudioContext | null = null;
@@ -22,8 +22,25 @@ function getAudioContext(): AudioContext | null {
 
 export const useSoundEffects = () => {
   const lastHoverTime = useRef(0);
+  const [muted, setMuted] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('portfolio-audio-muted') === 'true';
+    }
+    return false;
+  });
+
+  const toggleMute = useCallback(() => {
+    setMuted((prev) => {
+      const next = !prev;
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('portfolio-audio-muted', String(next));
+      }
+      return next;
+    });
+  }, []);
 
   const playHover = useCallback(() => {
+    if (muted) return;
     const now = performance.now();
     // Throttle hover sounds so rapid mouse movements don't flood the audio thread
     if (now - lastHoverTime.current < 90) return;
@@ -52,9 +69,10 @@ export const useSoundEffects = () => {
     } catch {
       // Ignore if audio policy prevents auto-play
     }
-  }, []);
+  }, [muted]);
 
   const playClick = useCallback(() => {
+    if (muted) return;
     try {
       const ctx = getAudioContext();
       if (!ctx || ctx.state !== 'running') return;
@@ -78,7 +96,7 @@ export const useSoundEffects = () => {
     } catch {
       // Ignore
     }
-  }, []);
+  }, [muted]);
 
-  return { playHover, playClick };
+  return { playHover, playClick, muted, toggleMute };
 };
