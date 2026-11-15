@@ -1,10 +1,11 @@
 import { useState, useMemo } from 'react';
-import { ArrowUpRight, Github, FolderGit2, Search, X } from 'lucide-react';
+import { ArrowUpRight, Github, FolderGit2, Search, X, BookOpen } from 'lucide-react';
 import { useReveal } from '../hooks/useReveal';
 import { getAssetUrl } from '../utils/assets';
 import { projectsData, projectFilterTabs } from '../data/projects';
 import { useDebounce } from '../hooks/useDebounce';
 import { Badge } from './Badge';
+import { ProjectCaseStudyModal } from './ProjectCaseStudyModal';
 import type { ProjectItem, ProjectDomain } from '../types/portfolio';
 
 export type { ProjectItem as Project };
@@ -13,6 +14,7 @@ export default function Projects() {
   const { ref, visible } = useReveal<HTMLDivElement>();
   const [activeFilter, setActiveFilter] = useState<ProjectDomain>('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
   const debouncedSearch = useDebounce(searchQuery, 200).trim().toLowerCase();
 
   const categoryCounts = useMemo(() => {
@@ -166,9 +168,25 @@ export default function Projects() {
 
                   {/* Content */}
                   <div className="p-5 flex flex-col flex-grow">
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-accent-400">
-                      {project.category}
-                    </span>
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="font-mono text-[10px] uppercase tracking-widest text-accent-400">
+                        {project.category}
+                      </span>
+                      {project.caseStudy && (
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            setSelectedProject(project);
+                          }}
+                          className="flex items-center gap-1 text-[11px] font-mono text-accent-400 hover:text-white transition-colors border border-accent-500/30 bg-accent-500/10 px-2 py-0.5 rounded"
+                        >
+                          <BookOpen size={11} />
+                          <span>Case Study</span>
+                        </button>
+                      )}
+                    </div>
                     <h3 className="mt-2 font-display text-lg font-semibold text-white group-hover:text-accent-300 transition-colors">
                       {project.title}
                     </h3>
@@ -193,6 +211,12 @@ export default function Projects() {
           )}
         </div>
       </div>
+
+      {/* Case Study Modal */}
+      <ProjectCaseStudyModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </section>
   );
 }

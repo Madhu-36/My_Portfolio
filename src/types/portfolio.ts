@@ -1,5 +1,13 @@
 export type ProjectDomain = 'all' | 'cyber' | 'ai' | 'systems';
 
+export interface CaseStudyData {
+  problem: string;
+  architecture: string[];
+  solution: string;
+  metrics: string[];
+  githubUrl: string;
+}
+
 export interface ProjectItem {
   title: string;
   category: string;
@@ -9,6 +17,7 @@ export interface ProjectItem {
   image: string;
   accent: string;
   link: string;
+  caseStudy?: CaseStudyData;
 }
 
 export interface CertificationItem {
