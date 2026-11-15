@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from 'react';
-import { Menu, X, Volume2, VolumeX } from 'lucide-react';
+import { Menu, X, Volume2, VolumeX, Search } from 'lucide-react';
 import MSLogo from './MSLogo';
 import { Magnetic } from './Magnetic';
 import { useActiveSection } from '../hooks/useActiveSection';
@@ -106,6 +106,20 @@ export default function Navbar() {
           <Magnetic>
             <button
               type="button"
+              onClick={() => {
+                window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }));
+              }}
+              aria-label="Open command palette (Cmd+K)"
+              className="flex items-center gap-1.5 h-9 px-2.5 rounded-lg border border-ink-800 bg-ink-900/60 text-ink-400 hover:border-accent-500/40 hover:text-white transition-all text-xs font-mono"
+            >
+              <Search size={14} className="text-accent-400" />
+              <kbd className="hidden lg:inline text-[10px] text-ink-500 bg-ink-800 px-1 py-0.5 rounded">⌘K</kbd>
+            </button>
+          </Magnetic>
+
+          <Magnetic>
+            <button
+              type="button"
               onClick={toggleMute}
               aria-label={muted ? 'Unmute UI sound effects' : 'Mute UI sound effects'}
               className="flex h-9 w-9 items-center justify-center rounded-lg border border-ink-800 bg-ink-900/60 text-ink-400 hover:border-accent-500/40 hover:text-white transition-all"
@@ -116,6 +130,16 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
+          <button
+            type="button"
+            onClick={() => {
+              window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }));
+            }}
+            aria-label="Open command palette"
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-ink-700 text-ink-200"
+          >
+            <Search size={18} className="text-accent-400" />
+          </button>
           <button
             type="button"
             onClick={toggleMute}
