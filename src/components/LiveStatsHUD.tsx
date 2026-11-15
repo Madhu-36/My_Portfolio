@@ -2,13 +2,47 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Activity, Terminal, ChevronDown, ChevronUp } from 'lucide-react';
 
+interface GitHubStats {
+  publicRepos: number;
+  followers: number;
+  updatedAt: string;
+}
+
 export default function LiveStatsHUD() {
   const [time, setTime] = useState(new Date());
   const [isExpanded, setIsExpanded] = useState(true);
+  const [ghStats, setGhStats] = useState<GitHubStats>(() => {
+    try {
+      const cached = localStorage.getItem('madhu-gh-stats');
+      if (cached) return JSON.parse(cached);
+    } catch {}
+    return { publicRepos: 14, followers: 8, updatedAt: 'Recent' };
+  });
 
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const fetchGitHub = async () => {
+      try {
+        const res = await fetch('https://api.github.com/users/Madhu-36');
+        if (res.ok) {
+          const data = await res.json();
+          const stats: GitHubStats = {
+            publicRepos: data.public_repos ?? 14,
+            followers: data.followers ?? 8,
+            updatedAt: new Date(data.updated_at || Date.now()).toLocaleDateString(undefined, { month: 'short', day: 'numeric' }),
+          };
+          setGhStats(stats);
+          localStorage.setItem('madhu-gh-stats', JSON.stringify(stats));
+        }
+      } catch {
+        // Silently preserve cached/default values
+      }
+    };
+    fetchGitHub();
   }, []);
 
   return (
@@ -52,16 +86,16 @@ export default function LiveStatsHUD() {
                 <span>{time.toLocaleTimeString()}</span>
               </div>
               <div className="flex justify-between gap-8">
-                <span className="text-ink-500">Current Focus:</span>
-                <span className="text-accent-400">Cybersecurity</span>
+                <span className="text-ink-500">Public Repos:</span>
+                <span className="text-accent-400 font-bold">{ghStats.publicRepos}</span>
               </div>
               <div className="flex justify-between gap-8">
-                <span className="text-ink-500">Weekly Commits:</span>
-                <span className="text-white">34</span>
+                <span className="text-ink-500">Followers:</span>
+                <span className="text-white">{ghStats.followers}</span>
               </div>
               <div className="flex justify-between gap-8">
-                <span className="text-ink-500">System Uptime:</span>
-                <span className="text-gold-400">99.9%</span>
+                <span className="text-ink-500">Last Synced:</span>
+                <span className="text-gold-400">{ghStats.updatedAt}</span>
               </div>
             </div>
           </motion.div>
