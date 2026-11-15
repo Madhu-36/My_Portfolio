@@ -1,6 +1,5 @@
 import { Canvas } from '@react-three/fiber';
-import GeometricScene from './components/GeometricScene';
-import { Suspense, useState, useEffect } from 'react';
+import { Suspense, useState, useEffect, lazy } from 'react';
 import { PerspectiveCamera, OrbitControls } from '@react-three/drei';
 import { motion, AnimatePresence } from 'framer-motion';
 import CanvasErrorBoundary from './components/CanvasErrorBoundary';
@@ -13,7 +12,6 @@ import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import AIAssistant from './components/AIAssistant';
 import CustomCursor from './components/CustomCursor';
 import HackerMode from './components/HackerMode';
 import LiveStatsHUD from './components/LiveStatsHUD';
@@ -21,7 +19,13 @@ import { useSoundEffects } from './hooks/useSoundEffects';
 import BackToTop from './components/BackToTop';
 import SectionDivider from './components/SectionDivider';
 import OfflineBanner from './components/OfflineBanner';
-import KeyboardShortcutsModal from './components/KeyboardShortcutsModal';
+
+// Lazy-loaded heavy components for optimal first-contentful-paint
+const GeometricScene = lazy(() => import('./components/GeometricScene'));
+const AIAssistant = lazy(() => import('./components/AIAssistant'));
+const KeyboardShortcutsModal = lazy(() => import('./components/KeyboardShortcutsModal'));
+const CommandPalette = lazy(() => import('./components/CommandPalette'));
+const SecurityPlayground = lazy(() => import('./components/SecurityPlayground'));
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -141,6 +145,10 @@ function App() {
                 <SectionDivider />
                 <Projects />
                 <SectionDivider />
+                <Suspense fallback={null}>
+                  <SecurityPlayground />
+                </Suspense>
+                <SectionDivider />
                 <Expertise />
                 <SectionDivider />
                 <Experience />
@@ -148,9 +156,12 @@ function App() {
                 <Contact />
               </main>
               <Footer />
-              <AIAssistant />
+              <Suspense fallback={null}>
+                <AIAssistant />
+                <KeyboardShortcutsModal />
+                <CommandPalette />
+              </Suspense>
               <BackToTop />
-              <KeyboardShortcutsModal />
             </div>
           </motion.div>
         )}
