@@ -84,7 +84,7 @@ export default function Hero() {
                 Get in touch
               </a>
               <a
-                href={getAssetUrl('/Madhu_S_Resume.pdf?v=2')}
+                href={getAssetUrl('/Madhu_S_Resume.pdf?v=20261115')}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="View or download Madhu S resume in PDF format"

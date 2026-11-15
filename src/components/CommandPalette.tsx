@@ -140,7 +140,7 @@ export function CommandPalette() {
         subtitle: 'Open current verified resume in new tab',
         icon: <FileText size={15} className="text-emerald-400" />,
         action: () => {
-          window.open(getAssetUrl('/Madhu_S_Resume.pdf?v=2'), '_blank');
+          window.open(getAssetUrl('/Madhu_S_Resume.pdf?v=20261115'), '_blank');
           setIsOpen(false);
         },
       },
