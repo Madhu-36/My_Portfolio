@@ -12,7 +12,7 @@ type CommandLog = {
 const AVAILABLE_COMMANDS = [
   'help', 'whoami', 'cat skills.txt', 'projects', 'experience',
   'resume', 'banner', 'github', 'linkedin', 'repo', 'date', 'time',
-  'about', 'portfolio', 'clear', 'sudo'
+  'about', 'portfolio', 'theme', 'clear', 'sudo'
 ];
 
 export default function InteractiveTerminal() {
@@ -68,6 +68,7 @@ export default function InteractiveTerminal() {
             <div><span className="text-white font-bold">github</span> - Launch GitHub profile</div>
             <div><span className="text-white font-bold">linkedin</span> - Launch LinkedIn network</div>
             <div><span className="text-white font-bold">repo</span> - Inspect portfolio repo</div>
+            <div><span className="text-white font-bold">theme</span> - Active palette tokens</div>
             <div><span className="text-white font-bold">date</span> - Current system time</div>
             <div><span className="text-white font-bold">clear</span> - Clear terminal logs</div>
           </div>
@@ -127,6 +128,20 @@ export default function InteractiveTerminal() {
           <li><strong>Location:</strong> Bengaluru, India</li>
           <li><strong>Focus:</strong> Securing the digital world one byte at a time.</li>
         </ul>
+      );
+    } else if (cmd === 'theme') {
+      output = (
+        <div className="space-y-1 text-ink-200">
+          <p className="text-accent-400 font-bold">&gt; ACTIVE CYBERSPACE THEME TOKENS:</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-0.5 text-xs font-mono">
+            <div><span className="text-accent-400">■</span> Cyan Primary: #22d3ee</div>
+            <div><span className="text-neural-400">■</span> Neural Violet: #8b5cf6</div>
+            <div><span className="text-gold-400">■</span> Gold Accent: #f59e0b</div>
+            <div><span className="text-emerald-400">■</span> Emerald Safe: #10b981</div>
+            <div><span className="text-ink-400">■</span> Ink Canvas: #05060a</div>
+            <div><span className="text-ink-200">■</span> White Signal: #f8fafc</div>
+          </div>
+        </div>
       );
     } else if (cmd === 'about') {
       output = (
