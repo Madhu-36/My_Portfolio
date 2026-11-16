@@ -11,7 +11,7 @@ type CommandLog = {
 
 const AVAILABLE_COMMANDS = [
   'help', 'whoami', 'cat skills.txt', 'projects', 'experience',
-  'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'date', 'time',
+  'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'stats', 'date', 'time',
   'about', 'portfolio', 'theme', 'clear', 'sudo'
 ];
 
@@ -69,6 +69,7 @@ export default function InteractiveTerminal() {
             <div><span className="text-white font-bold">linkedin</span> - Launch LinkedIn network</div>
             <div><span className="text-white font-bold">repo</span> - Inspect portfolio repo</div>
             <div><span className="text-white font-bold">contact</span> - Direct encrypted email</div>
+            <div><span className="text-white font-bold">stats</span> - Live system telemetry</div>
             <div><span className="text-white font-bold">theme</span> - Active palette tokens</div>
             <div><span className="text-white font-bold">date</span> - Current system time</div>
             <div><span className="text-white font-bold">clear</span> - Clear terminal logs</div>
@@ -152,6 +153,20 @@ export default function InteractiveTerminal() {
             Direct Email: <a href="mailto:madhu.s.3606@gmail.com" className="text-accent-400 underline font-mono">madhu.s.3606@gmail.com</a>
           </p>
           <p className="text-xs text-ink-400">&gt; Status: PGP / TLS encrypted inbox active.</p>
+        </div>
+      );
+    } else if (cmd === 'stats' || cmd === 'telemetry') {
+      output = (
+        <div className="space-y-1 text-ink-200">
+          <p className="text-accent-400 font-bold">&gt; SYSTEM & REPOSITORY TELEMETRY:</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-0.5 text-xs font-mono">
+            <div>&gt; System Uptime: <span className="text-emerald-400">99.98%</span></div>
+            <div>&gt; Total Commits: <span className="text-accent-400">24+ Today</span></div>
+            <div>&gt; Repositories: <span className="text-gold-400">8 Featured</span></div>
+            <div>&gt; Network Node: <span className="text-neural-400">blr-node-01</span></div>
+            <div>&gt; Framework: <span className="text-white">React 18 + Vite + TS</span></div>
+            <div>&gt; Performance: <span className="text-emerald-400">100 Lighthouse</span></div>
+          </div>
         </div>
       );
     } else if (cmd === 'about') {
