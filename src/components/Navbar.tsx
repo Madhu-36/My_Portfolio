@@ -110,6 +110,7 @@ export default function Navbar() {
                 window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }));
               }}
               aria-label="Open command palette (Cmd+K)"
+              aria-haspopup="dialog"
               className="flex items-center gap-1.5 h-9 px-2.5 rounded-lg border border-ink-800 bg-ink-900/60 text-ink-400 hover:border-accent-500/40 hover:text-white transition-all text-xs font-mono"
             >
               <Search size={14} className="text-accent-400" />
@@ -136,6 +137,7 @@ export default function Navbar() {
               window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }));
             }}
             aria-label="Open command palette"
+            aria-haspopup="dialog"
             className="flex h-10 w-10 items-center justify-center rounded-lg border border-ink-700 text-ink-200"
           >
             <Search size={18} className="text-accent-400" />
