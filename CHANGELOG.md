@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-11-16
+
+### Added
+- **Cyberspace Color System**: Introduced `electric-violet` (#8b5cf6) and `neural-indigo` (#6366f1) tokens to Tailwind configuration, alongside new 'neural' and 'emerald' variants in `<Badge />`.
+- **Command Palette (`Cmd+K` / `Ctrl+K`)**: Global accessible spotlight search modal with quick-launch triggers for interactive terminal commands (`whoami`, `theme`), project navigation, audio toggles, and matrix mode.
+- **Terminal Capabilities**: Added `'theme'`, `'contact'`, and `'stats'` shell commands with palette breakdowns, direct mailto triggers, and live telemetry outputs.
+- **Accessibility & Focus Traps**: Comprehensive focus trapping across `CommandPalette` and `ProjectCaseStudyModal`, plus screen-reader live announcements for filter counts.
+- **SoftwareSourceCode JSON-LD**: Added structured SEO schema for CodeShield and Kavach open-source repositories in `index.html`.
+- **Offline PWA Architecture**: Added production Service Worker (`public/sw.js`) and registration pipeline in `src/main.tsx` for offline resilience.
+- **Formatters & Type Contracts**: Added `formatNumber` and `formatDateCompact` utilities in `src/utils/formatters.ts`, alongside strict TypeScript types in `src/types/portfolio.ts`.
+- **Documentation**: Added `ARCHITECTURE.md` (component lifecycle, WebGL pipeline) and `FAQ.md` (performance, tech choices).
+
+### Changed
+- Refactored `LiveStatsHUD` to utilize centralized numeric and date formatters.
+- Strengthened client-side email format regex validation in `Contact.tsx`.
+- Optimized Vite bundle splitting with dedicated `react-vendor`, `three-vendor`, and `ui-vendor` chunks.
+
+---
+
 ## [1.1.0] - 2026-11-14
 
 ### Added
