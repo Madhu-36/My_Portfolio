@@ -39,6 +39,12 @@ export default {
           500: '#f59e0b',
           600: '#d97706',
         },
+        neural: {
+          400: '#a78bfa',
+          500: '#8b5cf6',
+          600: '#7c3aed',
+          700: '#6d28d9',
+        },
       },
       animation: {
         'fade-up': 'fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards',
