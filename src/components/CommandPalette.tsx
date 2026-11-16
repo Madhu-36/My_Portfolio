@@ -36,6 +36,34 @@ export function CommandPalette() {
   const { playClick, muted, toggleMute } = useSoundEffects();
   const { copy } = useClipboard();
   const inputRef = useRef<HTMLInputElement>(null);
+  const paletteRef = useRef<HTMLDivElement>(null);
+
+  // Focus trap for accessible dialog navigation
+  useEffect(() => {
+    if (!isOpen) return;
+    const modal = paletteRef.current;
+    if (!modal) return;
+
+    const handleTab = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab') return;
+      const focusable = modal.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last?.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first?.focus();
+      }
+    };
+
+    window.addEventListener('keydown', handleTab);
+    return () => window.removeEventListener('keydown', handleTab);
+  }, [isOpen]);
 
   // Global listener for Cmd+K / Ctrl+K
   useKeyPress(['k', 'K'], (e) => {
@@ -237,6 +265,7 @@ export function CommandPalette() {
 
             {/* Palette Window */}
             <motion.div
+              ref={paletteRef}
               role="dialog"
               aria-label="Command Palette"
               aria-modal="true"
