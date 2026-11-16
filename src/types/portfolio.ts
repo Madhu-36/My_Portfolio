@@ -31,3 +31,23 @@ export interface TerminalHistoryItem {
   command: string;
   output: React.ReactNode;
 }
+
+export type CommandCategory = 'Navigation' | 'Projects' | 'Actions';
+
+export interface CommandPaletteAction {
+  id: string;
+  category: CommandCategory;
+  title: string;
+  subtitle?: string;
+  icon: React.ReactNode;
+  action: () => void;
+}
+
+export interface GitHubStatsTelemetry {
+  publicRepos: number;
+  followers: number;
+  starsCount: number;
+  lastUpdated: string;
+  uptimePercentage: number;
+}
+
