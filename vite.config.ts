@@ -9,9 +9,11 @@ export default defineConfig({
     exclude: ['lucide-react'],
   },
   build: {
+    chunkSizeWarningLimit: 1200,
     rollupOptions: {
       output: {
         manualChunks: {
+          'react-vendor': ['react', 'react-dom'],
           'three-vendor': ['three', '@react-three/fiber', '@react-three/drei'],
           'ui-vendor': ['framer-motion', 'lucide-react', 'gsap'],
         },
