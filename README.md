@@ -23,10 +23,13 @@ An interactive, high-performance 3D portfolio showcasing engineering work across
 ## 🚀 Key Highlights & Interactive Features
 
 - **🌐 3D WebGL TorusKnot Scene:** Powered by `@react-three/fiber` and `@react-three/drei` with real-time bloom post-processing, mouse parallax, and responsive lighting.
+- **⌨️ Command Palette (`Cmd+K` / `Ctrl+K`):** Accessible spotlight search dialog providing keyboard-driven navigation across sections, direct project launches, terminal commands, audio toggles, and matrix mode.
+- **🔬 Deep-Dive Project Case Studies:** Interactive architectural modals detailing problems, solutions, ASCII diagrams, and production metrics for key systems.
+- **🛡️ CodeShield AST Security Lab:** Client-side AST analysis sandbox demonstrating heuristic vulnerability and unsafe pattern interception.
 - **🎯 Dynamic Magnetic Custom Cursor:** Fluid Framer Motion follower that locks onto interactive elements and buttons.
 - **🔊 Procedural UI Sound Engine:** Zero-dependency audio feedback generated natively via the Web Audio API oscillators on hover and click events.
 - **📊 Live Telemetry HUD:** Real-time system dashboard tracking live time, weekly commit frequencies, uptime counters, and active focus domains.
-- **💻 Matrix Hacker Mode Easter Egg:** Type `hack` anywhere on your keyboard to trigger a cybersecurity terminal theme override.
+- **💻 Matrix Hacker Mode Easter Egg:** Type `hack` anywhere on your keyboard to trigger a cybersecurity terminal theme override with Escape key dismissal.
 - **🛠️ 36-Skill Interactive Tool Kit:** Instant hover intelligence cards providing context and real-world application details for every tool.
 - **🤖 Maxhu AI Assistant:** Integrated virtual companion designed to answer questions about projects, certifications, and experience.
 
