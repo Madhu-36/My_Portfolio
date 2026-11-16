@@ -20,6 +20,9 @@ export default function Hero() {
         <div className="absolute left-0 h-28 w-full bg-gradient-to-b from-accent-500/5 to-transparent animate-scan transform-gpu will-change-transform" />
       </div>
 
+      {/* Ambient Neural & Cyan Glow */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-tr from-accent-500/10 via-neural-500/10 to-transparent blur-[120px] pointer-events-none rounded-full" />
+
       <div className="container-px relative z-10 mx-auto w-full max-w-7xl">
         <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr] lg:items-center">
           {/* Left: intro */}
