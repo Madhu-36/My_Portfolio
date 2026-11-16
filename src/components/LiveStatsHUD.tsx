@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Activity, Terminal, ChevronDown, ChevronUp } from 'lucide-react';
+import { formatNumber, formatDateCompact } from '../utils/formatters';
 
 interface GitHubStats {
   publicRepos: number;
@@ -33,7 +34,7 @@ export default function LiveStatsHUD() {
           const stats: GitHubStats = {
             publicRepos: data.public_repos ?? 14,
             followers: data.followers ?? 8,
-            updatedAt: new Date(data.updated_at || Date.now()).toLocaleDateString(undefined, { month: 'short', day: 'numeric' }),
+            updatedAt: formatDateCompact(data.updated_at || Date.now()),
           };
           setGhStats(stats);
           localStorage.setItem('madhu-gh-stats', JSON.stringify(stats));
@@ -87,11 +88,11 @@ export default function LiveStatsHUD() {
               </div>
               <div className="flex justify-between gap-8">
                 <span className="text-ink-500">Public Repos:</span>
-                <span className="text-accent-400 font-bold">{ghStats.publicRepos}</span>
+                <span className="text-accent-400 font-bold">{formatNumber(ghStats.publicRepos)}</span>
               </div>
               <div className="flex justify-between gap-8">
                 <span className="text-ink-500">Followers:</span>
-                <span className="text-white">{ghStats.followers}</span>
+                <span className="text-white">{formatNumber(ghStats.followers)}</span>
               </div>
               <div className="flex justify-between gap-8">
                 <span className="text-ink-500">Last Synced:</span>
