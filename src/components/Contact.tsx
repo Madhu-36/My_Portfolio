@@ -20,6 +20,13 @@ export default function Contact() {
       return;
     }
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(form.email.trim())) {
+      setErrorMsg('Please provide a valid email address.');
+      setStatus('error');
+      return;
+    }
+
     setStatus('loading');
 
     // Encode the email parameters
