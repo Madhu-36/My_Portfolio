@@ -11,7 +11,7 @@ type CommandLog = {
 
 const AVAILABLE_COMMANDS = [
   'help', 'whoami', 'cat skills.txt', 'projects', 'experience',
-  'resume', 'banner', 'github', 'linkedin', 'repo', 'date', 'time',
+  'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'date', 'time',
   'about', 'portfolio', 'theme', 'clear', 'sudo'
 ];
 
@@ -68,6 +68,7 @@ export default function InteractiveTerminal() {
             <div><span className="text-white font-bold">github</span> - Launch GitHub profile</div>
             <div><span className="text-white font-bold">linkedin</span> - Launch LinkedIn network</div>
             <div><span className="text-white font-bold">repo</span> - Inspect portfolio repo</div>
+            <div><span className="text-white font-bold">contact</span> - Direct encrypted email</div>
             <div><span className="text-white font-bold">theme</span> - Active palette tokens</div>
             <div><span className="text-white font-bold">date</span> - Current system time</div>
             <div><span className="text-white font-bold">clear</span> - Clear terminal logs</div>
@@ -141,6 +142,16 @@ export default function InteractiveTerminal() {
             <div><span className="text-ink-400">■</span> Ink Canvas: #05060a</div>
             <div><span className="text-ink-200">■</span> White Signal: #f8fafc</div>
           </div>
+        </div>
+      );
+    } else if (cmd === 'contact' || cmd === 'email') {
+      output = (
+        <div className="space-y-1 text-ink-200">
+          <p className="text-accent-400 font-bold">&gt; TRANSMISSION CHANNEL READY:</p>
+          <p className="text-xs text-ink-300">
+            Direct Email: <a href="mailto:madhu.s.3606@gmail.com" className="text-accent-400 underline font-mono">madhu.s.3606@gmail.com</a>
+          </p>
+          <p className="text-xs text-ink-400">&gt; Status: PGP / TLS encrypted inbox active.</p>
         </div>
       );
     } else if (cmd === 'about') {
