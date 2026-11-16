@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ExternalLink, ShieldCheck, Cpu, ArrowRight } from 'lucide-react';
 import { useKeyPress } from '../hooks/useKeyPress';
@@ -10,7 +11,37 @@ interface ProjectCaseStudyModalProps {
 }
 
 export function ProjectCaseStudyModal({ project, onClose }: ProjectCaseStudyModalProps) {
+  const modalRef = useRef<HTMLDivElement>(null);
   useKeyPress('Escape', onClose, { enabled: Boolean(project) });
+
+  useEffect(() => {
+    if (!project) return;
+    const modal = modalRef.current;
+    if (!modal) return;
+
+    const focusable = modal.querySelectorAll<HTMLElement>(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    if (focusable.length > 0) {
+      focusable[0].focus();
+    }
+
+    const handleTab = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab') return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last?.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first?.focus();
+      }
+    };
+
+    window.addEventListener('keydown', handleTab);
+    return () => window.removeEventListener('keydown', handleTab);
+  }, [project]);
 
   if (!project || !project.caseStudy) return null;
 
@@ -30,6 +61,7 @@ export function ProjectCaseStudyModal({ project, onClose }: ProjectCaseStudyModa
 
         {/* Modal Window */}
         <motion.div
+          ref={modalRef}
           role="dialog"
           aria-label={`Case Study: ${project.title}`}
           aria-modal="true"
