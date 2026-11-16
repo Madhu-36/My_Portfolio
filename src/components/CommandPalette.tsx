@@ -206,6 +206,42 @@ export function CommandPalette() {
         },
       },
       {
+        id: 'act-term-whoami',
+        category: 'Actions',
+        title: 'Run Terminal: whoami',
+        subtitle: 'Inspect engineer identity & credentials in terminal',
+        icon: <Terminal size={15} className="text-accent-400" />,
+        action: () => {
+          const t = document.getElementById('terminal-input') as HTMLInputElement | null;
+          if (t) {
+            t.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => {
+              t.focus({ preventScroll: true });
+              t.value = 'whoami';
+            }, 350);
+          }
+          setIsOpen(false);
+        },
+      },
+      {
+        id: 'act-term-theme',
+        category: 'Actions',
+        title: 'Run Terminal: theme',
+        subtitle: 'View cyberspace design tokens & palette',
+        icon: <Terminal size={15} className="text-neural-400" />,
+        action: () => {
+          const t = document.getElementById('terminal-input') as HTMLInputElement | null;
+          if (t) {
+            t.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => {
+              t.focus({ preventScroll: true });
+              t.value = 'theme';
+            }, 350);
+          }
+          setIsOpen(false);
+        },
+      },
+      {
         id: 'act-top',
         category: 'Actions',
         title: 'Scroll Back to Top',
