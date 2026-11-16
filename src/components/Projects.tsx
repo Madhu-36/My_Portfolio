@@ -72,6 +72,11 @@ export default function Projects() {
             </a>
           </div>
 
+          {/* Screen Reader Live Announcement */}
+          <div aria-live="polite" className="sr-only">
+            Showing {filteredProjects.length} of {projectsData.length} projects.
+          </div>
+
           {/* Category Filter Tabs & Instant Search */}
           <div className="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="flex flex-wrap items-center gap-2">
