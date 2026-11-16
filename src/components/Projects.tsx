@@ -169,7 +169,11 @@ export default function Projects() {
                   {/* Content */}
                   <div className="p-5 flex flex-col flex-grow">
                     <div className="flex items-center justify-between gap-2">
-                      <span className="font-mono text-[10px] uppercase tracking-widest text-accent-400">
+                      <span
+                        className={`font-mono text-[10px] uppercase tracking-widest ${
+                          project.domain === 'ai' ? 'text-neural-400' : 'text-accent-400'
+                        }`}
+                      >
                         {project.category}
                       </span>
                       {project.caseStudy && (

@@ -117,7 +117,7 @@ export const projectsData: ProjectItem[] = [
       'Desktop executive AI assistant and second brain for Windows, integrating local LLM inference engines, offline resilience, and automated context retrieval workflows.',
     tech: ['Python', 'Local Inference', 'Desktop Automation', 'NLP'],
     image: '/previews/mxb.jpg',
-    accent: 'from-accent-500/20 to-accent-700/5',
+    accent: 'from-neural-500/20 to-neural-700/5',
     link: 'https://github.com/Madhu-36/MXB',
     caseStudy: {
       problem: 'Cloud-only AI assistants leak sensitive local file context, introduce high API subscription costs, and become completely unusable when internet connectivity drops.',
