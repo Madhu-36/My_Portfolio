@@ -11,7 +11,7 @@ type CommandLog = {
 
 const AVAILABLE_COMMANDS = [
   'help', 'whoami', 'cat skills.txt', 'projects', 'experience',
-  'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'stats', 'date', 'time',
+  'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'stats', 'echo', 'date', 'time',
   'about', 'portfolio', 'theme', 'clear', 'sudo'
 ];
 
@@ -71,6 +71,7 @@ export default function InteractiveTerminal() {
             <div><span className="text-white font-bold">contact</span> - Direct encrypted email</div>
             <div><span className="text-white font-bold">stats</span> - Live system telemetry</div>
             <div><span className="text-white font-bold">theme</span> - Active palette tokens</div>
+            <div><span className="text-white font-bold">echo</span> - Print string to console</div>
             <div><span className="text-white font-bold">date</span> - Current system time</div>
             <div><span className="text-white font-bold">clear</span> - Clear terminal logs</div>
           </div>
@@ -177,6 +178,11 @@ export default function InteractiveTerminal() {
           <p>intelligent systems.</p>
         </div>
       );
+    } else if (cmd.startsWith('echo ')) {
+      const echoText = rawCmd.trim().slice(5);
+      output = <span className="text-ink-200 font-mono">&gt; {echoText}</span>;
+    } else if (cmd === 'echo') {
+      output = <span className="text-ink-400 font-mono">Usage: echo [text to display]</span>;
     } else if (cmd === 'experience') {
       output = (
         <ul className="text-ink-200">
