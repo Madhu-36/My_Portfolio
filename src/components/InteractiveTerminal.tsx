@@ -11,7 +11,7 @@ type CommandLog = {
 
 const AVAILABLE_COMMANDS = [
   'help', 'whoami', 'cat skills.txt', 'projects', 'experience',
-  'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'stats', 'echo', 'date', 'time',
+  'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'stats', 'echo', 'version', 'date', 'time',
   'about', 'portfolio', 'theme', 'clear', 'sudo'
 ];
 
@@ -72,6 +72,7 @@ export default function InteractiveTerminal() {
             <div><span className="text-white font-bold">stats</span> - Live system telemetry</div>
             <div><span className="text-white font-bold">theme</span> - Active palette tokens</div>
             <div><span className="text-white font-bold">echo</span> - Print string to console</div>
+            <div><span className="text-white font-bold">version</span> - Release and build specs</div>
             <div><span className="text-white font-bold">date</span> - Current system time</div>
             <div><span className="text-white font-bold">clear</span> - Clear terminal logs</div>
           </div>
@@ -183,6 +184,15 @@ export default function InteractiveTerminal() {
       output = <span className="text-ink-200 font-mono">&gt; {echoText}</span>;
     } else if (cmd === 'echo') {
       output = <span className="text-ink-400 font-mono">Usage: echo [text to display]</span>;
+    } else if (cmd === 'version' || cmd === 'v') {
+      output = (
+        <div className="space-y-0.5 text-xs font-mono text-ink-200">
+          <p className="text-accent-400 font-bold">&gt; Madhu S Portfolio — v1.2.0</p>
+          <p className="text-ink-400">&gt; Engine: React 18.3 · Vite 5.4 · Tailwind 3.4</p>
+          <p className="text-ink-400">&gt; WebGL: Three.js r160 · Fiber 8.15</p>
+          <p className="text-emerald-400">&gt; Status: Production Verified (All Systems Green)</p>
+        </div>
+      );
     } else if (cmd === 'experience') {
       output = (
         <ul className="text-ink-200">
