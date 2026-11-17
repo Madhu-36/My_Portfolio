@@ -31,10 +31,32 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// Network-first strategy with cache fallback
+// Network-first strategy with cache fallback and navigation resilience
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
+
+  // Handle SPA navigation requests
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request).catch(async () => {
+        const cached = await caches.match('./');
+        return cached || fetch(event.request);
+      })
+    );
+    return;
+  }
+
   event.respondWith(
-    fetch(event.request).catch(() => caches.match(event.request))
+    fetch(event.request)
+      .then((response) => {
+        if (response.status === 200 && event.request.url.startsWith(self.location.origin)) {
+          const responseClone = response.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseClone);
+          });
+        }
+        return response;
+      })
+      .catch(() => caches.match(event.request))
   );
 });
