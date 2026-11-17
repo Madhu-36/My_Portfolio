@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { ArrowUpRight, Github, FolderGit2, Search, X, BookOpen, Link2, Check } from 'lucide-react';
+import { ArrowUpRight, Github, FolderGit2, Search, X, BookOpen, Link2, Check, Shield, Cpu, Terminal } from 'lucide-react';
 import { useReveal } from '../hooks/useReveal';
 import { useClipboard } from '../hooks/useClipboard';
 import { getAssetUrl } from '../utils/assets';
@@ -196,13 +196,18 @@ export default function Projects() {
                   {/* Content */}
                   <div className="p-5 flex flex-col flex-grow">
                     <div className="flex items-center justify-between gap-2">
-                      <span
-                        className={`font-mono text-[10px] uppercase tracking-widest ${
-                          project.domain === 'ai' ? 'text-neural-400' : 'text-accent-400'
-                        }`}
-                      >
-                        {project.category}
-                      </span>
+                      <div className="flex items-center gap-1.5">
+                        {project.domain === 'cyber' && <Shield size={12} className="text-accent-400" />}
+                        {project.domain === 'ai' && <Cpu size={12} className="text-neural-400" />}
+                        {project.domain === 'systems' && <Terminal size={12} className="text-gold-400" />}
+                        <span
+                          className={`font-mono text-[10px] uppercase tracking-widest ${
+                            project.domain === 'ai' ? 'text-neural-400' : project.domain === 'systems' ? 'text-gold-400' : 'text-accent-400'
+                          }`}
+                        >
+                          {project.category}
+                        </span>
+                      </div>
                       {project.caseStudy && (
                         <button
                           type="button"
