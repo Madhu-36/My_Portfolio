@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.1] - 2026-11-17
+
+### Added
+- **Terminal Productivity Commands**: Added `echo` and `version` commands with build spec outputs, alongside animated prompt badges (`guest@cyberspace:~$`).
+- **Device & Touch Detection**: Introduced `useDeviceType` hook with automatic custom cursor suppression on touch and mobile devices.
+- **Project Interaction**: One-click copy project repository URL button with transient visual checkmark feedback.
+- **Domain Visual Cues**: Added domain-specific icons (Shield, Cpu, Terminal) alongside project category tags.
+- **Command Palette Tech Search**: Enabled filtering and finding projects by underlying tech stacks (`rust`, `python`, `docker`, etc.).
+- **PWA Navigation Resilience**: Added SPA navigation fallback and asset caching strategy in `public/sw.js`.
+- **Open Source Governance**: Added `CONTRIBUTING.md` and `SECURITY.md` policies for community development and responsible disclosure.
+- **Enhanced SEO Schema**: Added OpenGraph image alt tags, `og:site_name`, `og:locale`, and `WebSite` Schema.org JSON-LD.
+
+### Changed
+- Added `aria-pressed` states to project domain filters and navbar audio mute toggle.
+- Added active section indicator dot in desktop navigation bar.
+- Added live system heartbeat pulse and release version badge in footer.
+
+---
+
 ## [1.2.0] - 2026-11-16
 
 ### Added
