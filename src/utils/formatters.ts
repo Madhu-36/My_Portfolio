@@ -24,3 +24,16 @@ export function formatDateCompact(date: Date | string | number): string {
 export function formatUptime(uptimePercent: number): string {
   return `${uptimePercent.toFixed(2)}%`;
 }
+
+export function truncateText(text: string, maxLength: number): string {
+  if (text.length <= maxLength) return text;
+  return `${text.slice(0, maxLength).trimEnd()}...`;
+}
+
+export function slugify(str: string): string {
+  return str
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .trim()
+    .replace(/[\s_-]+/g, '-');
+}
