@@ -305,16 +305,17 @@ export default function InteractiveTerminal() {
         {/* Body */}
         <div ref={scrollContainerRef} className="p-5 text-sm leading-relaxed overflow-y-auto flex-grow scroll-smooth" onClick={() => document.getElementById('terminal-input')?.focus({ preventScroll: true })}>
           {history.map((log, i) => (
-            <div key={i} className="mb-2">
-              <p className="text-ink-400">
-                <span className="text-accent-400">$</span> {log.command}
+            <div key={i} className="mb-2.5">
+              <p className="text-ink-400 flex items-center gap-1.5 font-mono text-xs">
+                <span className="text-emerald-400 font-semibold">guest@cyberspace:~$</span>
+                <span className="text-ink-100">{log.command}</span>
               </p>
-              <div className="mt-1">{log.output}</div>
+              <div className="mt-1 pl-2 border-l border-ink-800/60">{log.output}</div>
             </div>
           ))}
           
-          <form onSubmit={handleCommand} className="flex items-center gap-2 mt-2">
-            <span className="text-accent-400">$</span>
+          <form onSubmit={handleCommand} className="flex items-center gap-2 mt-2 font-mono text-xs">
+            <span className="text-emerald-400 font-semibold select-none">guest@cyberspace:~$</span>
             <input
               id="terminal-input"
               type="text"
@@ -323,7 +324,7 @@ export default function InteractiveTerminal() {
               onKeyDown={handleKeyDown}
               placeholder="Type 'help' or command..."
               aria-label="Interactive terminal command input"
-              className="bg-transparent border-none outline-none text-ink-200 flex-grow caret-accent-400 placeholder-ink-600"
+              className="bg-transparent border-none outline-none text-ink-200 flex-grow caret-accent-400 placeholder-ink-600 text-xs sm:text-sm font-mono"
               autoComplete="off"
               spellCheck="false"
             />
