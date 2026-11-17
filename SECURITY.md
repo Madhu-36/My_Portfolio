@@ -2,41 +2,32 @@
 
 ## Supported Versions
 
-This is a personal portfolio project. Security updates will be applied to the current `main` branch only.
+| Version | Supported          |
+| :------ | :----------------- |
+| 1.2.x   | :white_check_mark: |
+| < 1.2.0 | :x:                |
 
-| Version | Supported |
-|---------|-----------|
-| `main`  | ✅        |
-| Older branches | ❌  |
+---
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability in this project, please **do not** open a public GitHub Issue.
+As an ethical security researcher and engineer, I take all vulnerability reports seriously. If you discover a potential security vulnerability in this portfolio or associated open-source tools:
 
-Instead, report it responsibly by emailing:
+1. **Do not disclose publicly** until an assessment and patch can be coordinated.
+2. **Contact via Email**:
+   - Send details to [madhu.s.3606@gmail.com](mailto:madhu.s.3606@gmail.com).
+   - Include a subject line prefixed with `[SECURITY DISCLOSURE]`.
+3. **Include Supporting Details**:
+   - Detailed description of the potential flaw.
+   - Proof of Concept (PoC) steps to reproduce.
+   - Any proposed remediation or patches.
 
-📧 **madhu.s.3606@gmail.com**
+---
 
-Please include:
-- A description of the vulnerability.
-- Steps to reproduce the issue.
-- Any potential impact.
-- Suggested remediation (optional).
+## Response Timeline
 
-I will acknowledge your report within **72 hours** and aim to release a fix within **7 days** for high-severity issues.
+- **Initial Acknowledgment**: Within 48 hours of receipt.
+- **Triage & Assessment**: Within 5 business days.
+- **Fix & Public Advisory**: Coordinated responsibly once resolved.
 
-## Scope
-
-This portfolio uses:
-- **React / Vite** – Front-end SPA, no server-side code.
-- **GitHub Pages** – Static hosting; no user data is stored.
-- **Supabase** (optional contact form backend) – Environment variables are never committed.
-
-## Best Practices Applied
-
-- No secrets or API keys committed to the repository.
-- Environment variables gated via `import.meta.env`.
-- Dependencies kept up to date with `npm audit`.
-- Content Security Policy headers considered for future hardening.
-
-Thank you for helping keep this project secure! 🔐
+Thank you for helping keep open-source software and digital systems secure!
