@@ -7,7 +7,7 @@ export const projectsData: ProjectItem[] = [
     domain: 'cyber',
     description:
       'Cryptographic micro-mandates that guarantee mathematical spending safety for autonomous AI agents over digital payment rails, pairing asymmetric Ed25519 signatures with process isolation.',
-    tech: ['Python', 'Ed25519 Cryptography', 'Process Isolation', 'Docker'],
+    tech: ['Python', 'Ed25519 Cryptography', 'Process Isolation', 'Docker', 'Zero Trust'],
     image: '/previews/kavach.gif',
     accent: 'from-accent-500/20 to-accent-700/5',
     link: 'https://github.com/Madhu-36/Kavach',
@@ -34,7 +34,7 @@ export const projectsData: ProjectItem[] = [
     domain: 'cyber',
     description:
       'Edge-native security firewall and AST static analysis engine to intercept prompt injection, dangerous code generation patterns, and malicious code execution in real time.',
-    tech: ['Python', 'AST Analysis', 'Security Auditing', 'CI/CD Pipelines'],
+    tech: ['Python', 'AST Analysis', 'Security Auditing', 'CI/CD Pipelines', 'TypeScript'],
     image: '/previews/codeshield.jpg',
     accent: 'from-accent-500/20 to-accent-700/5',
     link: 'https://github.com/Madhu-36/CodeShield',
@@ -88,7 +88,7 @@ export const projectsData: ProjectItem[] = [
     domain: 'systems',
     description:
       'High-performance cross-platform environment manager built in Rust. Features a sandboxed symlink routing engine that eliminates path pollution and slashes setup times by over 80%.',
-    tech: ['Rust', 'CLI Architecture', 'Systems Programming', 'Linux'],
+    tech: ['Rust', 'CLI Architecture', 'Systems Programming', 'Linux', 'Cross-Platform'],
     image: '/previews/devignite.jpg',
     accent: 'from-gold-500/20 to-gold-600/5',
     link: 'https://github.com/Madhu-36/DevIgnite',
@@ -142,7 +142,7 @@ export const projectsData: ProjectItem[] = [
     domain: 'cyber',
     description:
       'Enterprise-grade network threat detection and deep packet inspection platform featuring real-time 3D packet traffic visualization and live anomaly telemetry.',
-    tech: ['React', 'Node.js', 'Three.js', 'Packet Forensics'],
+    tech: ['React', 'Three.js', 'Node.js', 'Packet Forensics', 'WebSockets'],
     image: '/previews/packet-way.jpg',
     accent: 'from-accent-500/20 to-accent-700/5',
     link: 'https://github.com/Madhu-36/Packet-way',
