@@ -84,19 +84,25 @@ export default function Navbar() {
         </Magnetic>
 
         <div className="hidden items-center gap-8 md:flex">
-          {links.map((link) => (
-            <Magnetic key={link.href}>
-              <a
-                href={link.href}
-                className={`link-underline transition-colors duration-200 ${
-                  activeSection === link.id ? 'text-white' : ''
-                }`}
-                aria-current={activeSection === link.id ? 'page' : undefined}
-              >
-                {link.label}
-              </a>
-            </Magnetic>
-          ))}
+          {links.map((link) => {
+            const isActive = activeSection === link.id;
+            return (
+              <Magnetic key={link.href}>
+                <a
+                  href={link.href}
+                  className={`link-underline relative flex items-center gap-1.5 transition-colors duration-200 ${
+                    isActive ? 'text-white font-medium' : 'text-ink-400 hover:text-ink-200'
+                  }`}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  {isActive && (
+                    <span className="h-1.5 w-1.5 rounded-full bg-accent-400 shadow-[0_0_6px_rgba(34,211,238,0.8)]" />
+                  )}
+                  {link.label}
+                </a>
+              </Magnetic>
+            );
+          })}
           <Magnetic>
             <a href="#contact" className="btn-primary !py-2 !px-5">
               Let&apos;s talk
