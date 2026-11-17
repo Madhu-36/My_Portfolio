@@ -88,6 +88,7 @@ export default function Projects() {
                 return (
                   <button
                     key={tab.value}
+                    aria-pressed={activeFilter === tab.value}
                     onClick={() => setActiveFilter(tab.value)}
                     className={`rounded-lg px-3.5 py-1.5 text-xs font-medium transition-all flex items-center gap-1.5 ${
                       activeFilter === tab.value

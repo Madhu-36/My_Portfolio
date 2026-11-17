@@ -129,6 +129,7 @@ export default function Navbar() {
               type="button"
               onClick={toggleMute}
               aria-label={muted ? 'Unmute UI sound effects' : 'Mute UI sound effects'}
+              aria-pressed={!muted}
               className="flex h-9 w-9 items-center justify-center rounded-lg border border-ink-800 bg-ink-900/60 text-ink-400 hover:border-accent-500/40 hover:text-white transition-all"
             >
               {muted ? <VolumeX size={16} /> : <Volume2 size={16} />}
