@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
+import { useDeviceType } from '../hooks/useDeviceType';
 
 export default function CustomCursor() {
   const prefersReducedMotion = usePrefersReducedMotion();
+  const { isTouchDevice, isMobile } = useDeviceType();
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -17,8 +19,8 @@ export default function CustomCursor() {
   const smoothY = useSpring(cursorY, springConfig);
 
   useEffect(() => {
-    // Disable on touch devices or if user requested reduced motion
-    if (prefersReducedMotion || window.matchMedia('(pointer: coarse)').matches) {
+    // Disable on touch devices, mobile screens, or if user requested reduced motion
+    if (prefersReducedMotion || isTouchDevice || isMobile || window.matchMedia('(pointer: coarse)').matches) {
       document.body.style.cursor = 'auto';
       return;
     }
@@ -65,6 +67,8 @@ export default function CustomCursor() {
 
   if (
     prefersReducedMotion ||
+    isTouchDevice ||
+    isMobile ||
     (typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches)
   ) {
     return null;
