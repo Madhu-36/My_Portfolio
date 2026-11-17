@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
-import { ArrowUpRight, Github, FolderGit2, Search, X, BookOpen } from 'lucide-react';
+import { ArrowUpRight, Github, FolderGit2, Search, X, BookOpen, Link2, Check } from 'lucide-react';
 import { useReveal } from '../hooks/useReveal';
+import { useClipboard } from '../hooks/useClipboard';
 import { getAssetUrl } from '../utils/assets';
 import { projectsData, projectFilterTabs } from '../data/projects';
 import { useDebounce } from '../hooks/useDebounce';
@@ -15,6 +16,8 @@ export default function Projects() {
   const [activeFilter, setActiveFilter] = useState<ProjectDomain>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
+  const [copiedProject, setCopiedProject] = useState<string | null>(null);
+  const { copy } = useClipboard();
   const debouncedSearch = useDebounce(searchQuery, 200).trim().toLowerCase();
 
   const categoryCounts = useMemo(() => {
@@ -166,6 +169,25 @@ export default function Projects() {
                       decoding="async"
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        copy(project.link);
+                        setCopiedProject(project.title);
+                        setTimeout(() => setCopiedProject(null), 2000);
+                      }}
+                      title="Copy repository URL"
+                      aria-label={`Copy repository link for ${project.title}`}
+                      className="absolute left-3 top-3 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-ink-950/80 text-ink-300 backdrop-blur-sm border border-ink-800 transition-all duration-300 hover:border-accent-500/50 hover:text-accent-400"
+                    >
+                      {copiedProject === project.title ? (
+                        <Check size={14} className="text-emerald-400" />
+                      ) : (
+                        <Link2 size={14} />
+                      )}
+                    </button>
                     <div className="absolute right-3 top-3 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-ink-950/80 text-ink-300 backdrop-blur-sm transition-all duration-300 group-hover:bg-accent-500 group-hover:text-ink-950">
                       <ArrowUpRight size={16} />
                     </div>
