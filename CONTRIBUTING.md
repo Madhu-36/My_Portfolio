@@ -1,63 +1,55 @@
-# Contributing to Madhu S – Portfolio
+# Contributing Guidelines
 
-Thank you for your interest in contributing! This document explains how to set up the project locally and submit changes.
+Thank you for your interest in contributing to **Madhu S's Portfolio & Engineering Projects**!
 
-## Prerequisites
+## 1. Development Workflow
 
-- **Node.js** ≥ 18 (LTS recommended)
-- **npm** ≥ 9
-
-## Local Development
-
-```bash
-# 1. Clone the repo
-git clone https://github.com/Madhu-36/My_Portfolio.git
-cd My_Portfolio
-
-# 2. Install dependencies
-npm install
-
-# 3. Start the dev server
-npm run dev
-```
-
-The app will be available at `http://localhost:5173`.
-
-## Project Structure
-
-```
-src/
-├── components/   # Reusable UI components
-├── hooks/        # Custom React hooks
-├── types/        # TypeScript type definitions
-├── utils/        # Helper utilities
-├── App.tsx       # Root component
-└── index.css     # Global styles & design tokens
-```
-
-## Code Style
-
-- **TypeScript** – All new files must use `.ts` / `.tsx`.
-- **CSS** – Use Tailwind utility classes; avoid inline styles unless animated.
-- **Commits** – Follow [Conventional Commits](https://www.conventionalcommits.org/):
-  - `feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `perf:`, `test:`, `ci:`, `chore:`
-- **Components** – Keep them small and single-purpose.
-- **Hooks** – Start with `use`, export named functions, clean up all effects.
-
-## Submitting a Pull Request
-
-1. Fork the repository.
-2. Create a feature branch: `git checkout -b feat/my-awesome-feature`
-3. Commit your changes with a descriptive message.
-4. Open a Pull Request against `main` and fill in the PR template.
-
-## Reporting Issues
-
-Please open a GitHub Issue with:
-- A clear title and description.
-- Steps to reproduce (if it's a bug).
-- Browser / OS version if relevant.
+1. **Fork the repository** on GitHub.
+2. **Clone your fork locally**:
+   ```bash
+   git clone https://github.com/<your-username>/My_Portfolio.git
+   cd My_Portfolio
+   ```
+3. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+4. **Create a topic branch**:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+5. **Start the local dev server**:
+   ```bash
+   npm run dev
+   ```
 
 ---
 
-Built with ❤️ by [Madhu S](https://github.com/Madhu-36)
+## 2. Code Quality & Standards
+
+- **TypeScript Strictness**: Code must compile without errors using `npm run typecheck`. No unused imports or variables (`noUnusedLocals`, `noUnusedParameters`).
+- **Styling**: Use utility classes from Tailwind CSS. Respect the existing dark cyberpunk aesthetic (`#05060a` ink canvas, `#22d3ee` cyan, `#8b5cf6` neural violet, `#f59e0b` gold).
+- **Accessibility**: Include appropriate `aria-*` attributes, focus trapping for modals, and keyboard accessibility.
+- **Production Build**: Verify your changes with `npm run build` prior to opening a Pull Request.
+
+---
+
+## 3. Conventional Commits Standard
+
+We adhere strictly to the [Conventional Commits specification](https://www.conventionalcommits.org/):
+
+- `feat(...)`: A new user-facing feature.
+- `ui(...)`: Visual enhancements, styling updates, or animation refinements.
+- `a11y(...)`: Accessibility improvements.
+- `refactor(...)`: Code changes that neither fix a bug nor add a feature.
+- `perf(...)`: Changes that improve performance or bundle size.
+- `docs(...)`: Documentation additions or revisions.
+- `chore(...)`: Maintenance, dependency updates, or release version bumps.
+
+---
+
+## 4. Submitting a Pull Request
+
+- Open a PR against the `main` branch.
+- Provide a clear description of the problem solved or feature introduced.
+- Ensure all CI workflow checks pass.
