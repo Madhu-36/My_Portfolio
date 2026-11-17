@@ -47,14 +47,21 @@ export default function Footer() {
         <div className="mt-8 border-t border-ink-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-ink-500">
           <div className="flex items-center gap-2">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-500"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
-            <span>All systems operational · Cyberspace Node BLR</span>
+            <span>All systems operational · Node BLR</span>
+            <span className="hidden md:inline text-ink-600">|</span>
+            <span className="hidden md:inline text-accent-400">v1.2.0</span>
           </div>
-          <p>
-            © {new Date().getFullYear()} Madhu S. Built with curiosity &amp; code.
-          </p>
+          <div className="flex items-center gap-3">
+            <span className="text-[11px] text-ink-500 hidden sm:inline">
+              Press <kbd className="rounded border border-ink-700 bg-ink-900 px-1 py-0.5 text-[10px] text-ink-300 font-mono">Cmd+K</kbd> for palette
+            </span>
+            <p>
+              © {new Date().getFullYear()} Madhu S.
+            </p>
+          </div>
         </div>
         {/* Tech credits */}
         <p className="mt-4 text-center font-mono text-[10px] text-ink-600 tracking-wide">
