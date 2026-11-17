@@ -152,7 +152,7 @@ export function CommandPalette() {
       id: `proj-${p.title}`,
       category: 'Projects',
       title: p.title,
-      subtitle: p.category,
+      subtitle: `${p.category} · ${p.tech.join(', ')}`,
       icon: <ExternalLink size={15} className="text-gold-400" />,
       action: () => {
         window.open(p.link, '_blank');
