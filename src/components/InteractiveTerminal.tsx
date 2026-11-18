@@ -10,7 +10,7 @@ type CommandLog = {
 };
 
 const AVAILABLE_COMMANDS = [
-  'help', 'whoami', 'cat skills.txt', 'projects', 'experience', 'certs',
+  'help', 'whoami', 'skills', 'cat skills.txt', 'projects', 'experience', 'certs',
   'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'stats', 'uptime', 'echo', 'version', 'date', 'time',
   'about', 'portfolio', 'theme', 'clear', 'sudo'
 ];
@@ -60,7 +60,8 @@ export default function InteractiveTerminal() {
           <p className="text-accent-400 font-semibold">&gt; AVAILABLE TERMINAL COMMANDS:</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1 text-xs">
             <div><span className="text-white font-bold">whoami</span> - Print profile identity</div>
-            <div><span className="text-white font-bold">cat skills.txt</span> - Core skill matrix</div>
+            <div><span className="text-white font-bold">skills</span> - Categorized skill matrix</div>
+            <div><span className="text-white font-bold">cat skills.txt</span> - Core skill summary</div>
             <div><span className="text-white font-bold">projects</span> - Open-source repos</div>
             <div><span className="text-white font-bold">experience</span> - Career internships</div>
             <div><span className="text-white font-bold">certs</span> - Verified certifications</div>
@@ -106,6 +107,16 @@ export default function InteractiveTerminal() {
         <span className="text-accent-400 font-mono">
           System Time (UTC): {now.toUTCString()}
         </span>
+      );
+    } else if (cmd === 'skills') {
+      output = (
+        <div className="space-y-1 text-ink-200 text-xs font-mono">
+          <p className="text-accent-400 font-bold">&gt; CORE ENGINEERING ARSENAL:</p>
+          <div><span className="text-white font-semibold">Languages:</span> Python, C#, Rust, TypeScript, JavaScript, SQL, Bash</div>
+          <div><span className="text-accent-400 font-semibold">Cybersecurity:</span> Burp Suite, Nmap, Wireshark, Metasploit, OWASP Top 10, Kali</div>
+          <div><span className="text-neural-400 font-semibold">AI &amp; Data:</span> PyTorch, TensorFlow, Scikit-learn, OpenCV, Local LLMs</div>
+          <div><span className="text-gold-400 font-semibold">Game &amp; 3D:</span> Unity Engine, Three.js, React Three Fiber, GLSL</div>
+        </div>
       );
     } else if (cmd === 'cat skills.txt') {
       output = (
