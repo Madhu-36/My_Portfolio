@@ -51,3 +51,16 @@ export interface GitHubStatsTelemetry {
   uptimePercentage: number;
 }
 
+export interface NavigationLink {
+  id: string;
+  label: string;
+  href: string;
+}
+
+export interface SystemTelemetry {
+  uptimePercent: number;
+  edgeNode: string;
+  latencyMs: number;
+  activeStatus: boolean;
+}
+
