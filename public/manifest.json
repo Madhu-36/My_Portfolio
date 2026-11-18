@@ -7,7 +7,22 @@
   "display": "standalone",
   "background_color": "#030712",
   "theme_color": "#030712",
-  "orientation": "portrait",
+  "orientation": "any",
+  "categories": ["education", "developer", "portfolio", "technology"],
+  "shortcuts": [
+    {
+      "name": "Featured Projects",
+      "short_name": "Projects",
+      "description": "View open source repositories",
+      "url": "./#work"
+    },
+    {
+      "name": "Contact Madhu",
+      "short_name": "Contact",
+      "description": "Send a direct message",
+      "url": "./#contact"
+    }
+  ],
   "icons": [
     {
       "src": "favicon.svg",
