@@ -37,3 +37,12 @@ export function slugify(str: string): string {
     .trim()
     .replace(/[\s_-]+/g, '-');
 }
+
+export function clamp(val: number, min: number, max: number): number {
+  return Math.min(Math.max(val, min), max);
+}
+
+export function calculateReadingTime(text: string, wordsPerMinute: number = 200): number {
+  const words = text.trim().split(/\s+/).filter(Boolean).length;
+  return Math.ceil(words / wordsPerMinute);
+}
