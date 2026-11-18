@@ -1,6 +1,7 @@
 import { Shield, Brain, Gamepad2, Cpu, ExternalLink } from 'lucide-react';
 import { useReveal } from '../hooks/useReveal';
 import { getAssetUrl } from '../utils/assets';
+import { Badge } from './Badge';
 
 const stats = [
   { value: '3', label: 'Core domains' },
@@ -178,9 +179,14 @@ export default function About() {
                     <h4 className="font-display text-base font-semibold text-white group-hover:text-accent-400 transition-colors">
                       {cert.title}
                     </h4>
-                    <span className="mt-1 text-sm text-ink-400">
-                      {cert.issuer}
-                    </span>
+                    <div className="flex items-center gap-2 mt-1">
+                      <span className="text-sm text-ink-400">
+                        {cert.issuer}
+                      </span>
+                      <Badge variant="gold-glow" className="text-[10px] py-0 px-1.5">
+                        Verified
+                      </Badge>
+                    </div>
                   </div>
                   <ExternalLink size={16} className="text-ink-500 group-hover:text-accent-400 shrink-0 mt-1 transition-colors" />
                 </a>
