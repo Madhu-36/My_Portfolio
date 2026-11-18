@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.2] - 2026-11-18
+
+### Added
+- **Terminal Capabilities**: Added `'uptime'`, `'certs'`, `'skills'`, and `'gui'` shell commands with live system latency stats, verified credentials breakdown, and 3D scene return navigation.
+- **Terminal UX**: Embedded interactive `<kbd>Tab</kbd> Autocomplete` and `↑↓ History` helper badges in the terminal titlebar.
+- **React Custom Hooks**: Added `useIdleTimer` for inactivity detection and `useLocalStorageState` for cross-tab state synchronization.
+- **Utility Functions**: Added `clamp` and `calculateReadingTime` helpers to centralized formatters.
+- **Badge Styling**: Added `'gold-glow'` and `'cyan-glow'` visual variants to the `<Badge />` component.
+- **Command Palette Expansion**: Added one-click action trigger for verified certifications and credentials.
+- **Mobile Navigation Accessibility**: Added `aria-current="page"` and active indicator dots to mobile navigation drawer links.
+- **Security & PWA Standards**: Added `X-Content-Type-Options` and `referrer` defense meta tags, alongside expanded categories and shortcuts in `manifest.json`.
+- **Engineering Documentation**: Added `PERFORMANCE.md` (Core Web Vitals), `DEPLOYMENT.md` (GitHub Actions CI/CD), `ROADMAP.md` (v1.3+ milestones), and `CODE_OF_CONDUCT.md`.
+
+### Changed
+- Refactored `About.tsx` with gold-glow verified credential badges.
+- Enhanced Hero CTA buttons with keyboard navigation shortcut tooltips.
+- Enabled compressed size reporting and asset inlining thresholds in `vite.config.ts`.
+
+---
+
 ## [1.2.1] - 2026-11-17
 
 ### Added
