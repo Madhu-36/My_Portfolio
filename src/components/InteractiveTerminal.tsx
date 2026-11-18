@@ -10,7 +10,7 @@ type CommandLog = {
 };
 
 const AVAILABLE_COMMANDS = [
-  'help', 'whoami', 'cat skills.txt', 'projects', 'experience',
+  'help', 'whoami', 'cat skills.txt', 'projects', 'experience', 'certs',
   'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'stats', 'uptime', 'echo', 'version', 'date', 'time',
   'about', 'portfolio', 'theme', 'clear', 'sudo'
 ];
@@ -63,6 +63,7 @@ export default function InteractiveTerminal() {
             <div><span className="text-white font-bold">cat skills.txt</span> - Core skill matrix</div>
             <div><span className="text-white font-bold">projects</span> - Open-source repos</div>
             <div><span className="text-white font-bold">experience</span> - Career internships</div>
+            <div><span className="text-white font-bold">certs</span> - Verified certifications</div>
             <div><span className="text-white font-bold">resume</span> - Open verified resume</div>
             <div><span className="text-white font-bold">banner</span> - Show system ASCII banner</div>
             <div><span className="text-white font-bold">github</span> - Launch GitHub profile</div>
@@ -209,6 +210,19 @@ export default function InteractiveTerminal() {
           <li><strong>Ethical Hacker Intern</strong> @ Jutrm Career Academy</li>
           <li><strong>Ethical Hacker Intern</strong> @ ACMEGRADE</li>
         </ul>
+      );
+    } else if (cmd === 'certs' || cmd === 'certifications') {
+      output = (
+        <div className="space-y-1 text-ink-200 font-mono text-xs">
+          <p className="text-accent-400 font-bold">&gt; VERIFIED INDUSTRY CREDENTIALS:</p>
+          <ul className="space-y-1">
+            <li>- <span className="text-emerald-400">🛡️ Cyber Security Analyst</span> — TATA STRIVE</li>
+            <li>- <span className="text-accent-400">☁️ AWS Certified Cloud Practitioner</span> — Amazon Web Services</li>
+            <li>- <span className="text-neural-400">🧠 AI Fluency</span> — Anthropic / Claude</li>
+            <li>- <span className="text-gold-400">🔐 Cybersecurity Job Simulation</span> — Deloitte</li>
+            <li>- <span className="text-white">🎯 Junior Programmer</span> — Unity Technologies</li>
+          </ul>
+        </div>
       );
     } else if (cmd === 'sudo rm -rf /gravity') {
       output = <span className="text-red-500 font-bold">WARNING: GRAVITY DISABLED... ALL SYSTEMS FAILING...</span>;
