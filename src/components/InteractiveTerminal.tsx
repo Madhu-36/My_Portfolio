@@ -332,6 +332,9 @@ export default function InteractiveTerminal() {
               <TerminalIcon size={12} />
               madhu@portfolio:~$
             </span>
+            <span className="hidden sm:inline-block ml-3 px-1.5 py-0.5 rounded text-[10px] font-mono border border-ink-800 bg-ink-950/60 text-ink-500">
+              <kbd className="text-accent-400">Tab</kbd> Autocomplete · <kbd className="text-accent-400">↑↓</kbd> History
+            </span>
           </div>
 
           <button
