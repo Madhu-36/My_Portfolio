@@ -179,16 +179,27 @@ export default function Navbar() {
         }`}
       >
         <div className="container-px mx-auto flex max-w-7xl flex-col gap-1 py-4">
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setOpen(false)}
-              className="rounded-lg px-3 py-3 text-base font-medium text-ink-200 transition-colors hover:bg-ink-800 hover:text-white"
-            >
-              {link.label}
-            </a>
-          ))}
+          {links.map((link) => {
+            const isActive = activeSection === link.id;
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                aria-current={isActive ? 'page' : undefined}
+                className={`flex items-center justify-between rounded-lg px-3 py-3 text-base font-medium transition-colors ${
+                  isActive
+                    ? 'bg-ink-900 text-white font-semibold'
+                    : 'text-ink-200 hover:bg-ink-800 hover:text-white'
+                }`}
+              >
+                <span>{link.label}</span>
+                {isActive && (
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent-400 shadow-[0_0_6px_rgba(34,211,238,0.8)]" />
+                )}
+              </a>
+            );
+          })}
         </div>
       </div>
     </header>
