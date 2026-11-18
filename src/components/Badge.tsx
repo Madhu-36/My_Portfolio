@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-type BadgeVariant = 'accent' | 'ghost' | 'gold' | 'outline' | 'neural' | 'emerald';
+type BadgeVariant = 'accent' | 'ghost' | 'gold' | 'outline' | 'neural' | 'emerald' | 'cyan-glow' | 'gold-glow';
 
 interface BadgeProps {
   children: ReactNode;
@@ -15,6 +15,8 @@ const variantClasses: Record<BadgeVariant, string> = {
   outline: 'border-ink-600 bg-transparent text-ink-300',
   neural: 'border-neural-500/30 bg-neural-500/10 text-neural-400',
   emerald: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300',
+  'cyan-glow': 'border-accent-400/50 bg-accent-400/10 text-accent-300 shadow-[0_0_8px_rgba(34,211,238,0.25)]',
+  'gold-glow': 'border-gold-400/50 bg-gold-400/10 text-gold-300 shadow-[0_0_8px_rgba(245,158,11,0.25)]',
 };
 
 /**
