@@ -13,6 +13,7 @@ import {
   VolumeX,
   ExternalLink,
   ShieldAlert,
+  Award,
 } from 'lucide-react';
 import { useKeyPress } from '../hooks/useKeyPress';
 import { useSoundEffects } from '../hooks/useSoundEffects';
@@ -169,6 +170,17 @@ export function CommandPalette() {
         icon: <FileText size={15} className="text-emerald-400" />,
         action: () => {
           window.open(getAssetUrl('/Madhu_S_Resume.pdf?v=20261115'), '_blank');
+          setIsOpen(false);
+        },
+      },
+      {
+        id: 'act-certs',
+        category: 'Actions',
+        title: 'View Verified Certifications',
+        subtitle: 'AWS, TATA Strive, Anthropic, Deloitte, Unity',
+        icon: <Award size={15} className="text-gold-400" />,
+        action: () => {
+          document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
           setIsOpen(false);
         },
       },
