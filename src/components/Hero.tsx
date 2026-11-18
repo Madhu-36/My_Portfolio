@@ -79,11 +79,11 @@ export default function Hero() {
               className="mt-10 flex animate-fade-up flex-wrap items-center gap-4 opacity-0"
               style={{ animationDelay: '0.5s' }}
             >
-              <a href="#work" className="btn-primary">
+              <a href="#work" className="btn-primary" title="Press 'W' to jump to Projects">
                 View my work
                 <ArrowDown size={16} />
               </a>
-              <a href="#contact" className="btn-ghost">
+              <a href="#contact" className="btn-ghost" title="Press 'C' to jump to Contact">
                 Get in touch
               </a>
               <a
