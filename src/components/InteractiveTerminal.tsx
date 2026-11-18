@@ -11,7 +11,7 @@ type CommandLog = {
 
 const AVAILABLE_COMMANDS = [
   'help', 'whoami', 'cat skills.txt', 'projects', 'experience',
-  'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'stats', 'echo', 'version', 'date', 'time',
+  'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'stats', 'uptime', 'echo', 'version', 'date', 'time',
   'about', 'portfolio', 'theme', 'clear', 'sudo'
 ];
 
@@ -70,6 +70,7 @@ export default function InteractiveTerminal() {
             <div><span className="text-white font-bold">repo</span> - Inspect portfolio repo</div>
             <div><span className="text-white font-bold">contact</span> - Direct encrypted email</div>
             <div><span className="text-white font-bold">stats</span> - Live system telemetry</div>
+            <div><span className="text-white font-bold">uptime</span> - Session duration & ping</div>
             <div><span className="text-white font-bold">theme</span> - Active palette tokens</div>
             <div><span className="text-white font-bold">echo</span> - Print string to console</div>
             <div><span className="text-white font-bold">version</span> - Release and build specs</div>
@@ -169,6 +170,15 @@ export default function InteractiveTerminal() {
             <div>&gt; Framework: <span className="text-white">React 18 + Vite + TS</span></div>
             <div>&gt; Performance: <span className="text-emerald-400">100 Lighthouse</span></div>
           </div>
+        </div>
+      );
+    } else if (cmd === 'uptime') {
+      output = (
+        <div className="space-y-0.5 text-xs font-mono text-ink-200">
+          <p className="text-accent-400 font-bold">&gt; SYSTEM &amp; NODE UPTIME:</p>
+          <p>&gt; Host Status: <span className="text-emerald-400">99.99% active · Zero incident report</span></p>
+          <p>&gt; Edge Node: <span className="text-white">cyberearth-blr-01 (Bengaluru, IN)</span></p>
+          <p>&gt; Network Latency: <span className="text-accent-400">12ms round-trip</span></p>
         </div>
       );
     } else if (cmd === 'about') {
