@@ -11,7 +11,7 @@ type CommandLog = {
 
 const AVAILABLE_COMMANDS = [
   'help', 'whoami', 'skills', 'cat skills.txt', 'projects', 'experience', 'certs',
-  'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'stats', 'uptime', 'echo', 'version', 'date', 'time',
+  'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'stats', 'uptime', 'echo', 'version', 'gui', 'date', 'time',
   'about', 'portfolio', 'theme', 'clear', 'sudo'
 ];
 
@@ -76,6 +76,7 @@ export default function InteractiveTerminal() {
             <div><span className="text-white font-bold">theme</span> - Active palette tokens</div>
             <div><span className="text-white font-bold">echo</span> - Print string to console</div>
             <div><span className="text-white font-bold">version</span> - Release and build specs</div>
+            <div><span className="text-white font-bold">gui</span> - Return to 3D scene</div>
             <div><span className="text-white font-bold">date</span> - Current system time</div>
             <div><span className="text-white font-bold">clear</span> - Clear terminal logs</div>
           </div>
@@ -146,6 +147,9 @@ export default function InteractiveTerminal() {
           <li><strong>Focus:</strong> Securing the digital world one byte at a time.</li>
         </ul>
       );
+    } else if (cmd === 'gui' || cmd === 'top') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      output = <span className="text-accent-400">Navigating to WebGL 3D Canvas viewport...</span>;
     } else if (cmd === 'theme') {
       output = (
         <div className="space-y-1 text-ink-200">
