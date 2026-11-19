@@ -7,6 +7,7 @@ export default function CustomCursor() {
   const prefersReducedMotion = usePrefersReducedMotion();
   const { isTouchDevice, isMobile } = useDeviceType();
   const [isHovering, setIsHovering] = useState(false);
+  const [isMouseDown, setIsMouseDown] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
   // High performance motion values: bypass React state updates on mouse move
@@ -52,6 +53,8 @@ export default function CustomCursor() {
 
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
     window.addEventListener('mouseover', handleMouseOver, { passive: true });
+    window.addEventListener('mousedown', () => setIsMouseDown(true));
+    window.addEventListener('mouseup', () => setIsMouseDown(false));
     document.addEventListener('mouseleave', handleMouseLeave);
 
     // Hide default cursor safely on desktop
@@ -60,6 +63,8 @@ export default function CustomCursor() {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseover', handleMouseOver);
+      window.removeEventListener('mousedown', () => setIsMouseDown(true));
+      window.removeEventListener('mouseup', () => setIsMouseDown(false));
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.body.style.cursor = 'auto';
     };
@@ -103,10 +108,10 @@ export default function CustomCursor() {
           willChange: 'transform',
         }}
         animate={{
-          width: isHovering ? 44 : 28,
-          height: isHovering ? 44 : 28,
+          width: isMouseDown ? (isHovering ? 36 : 22) : isHovering ? 44 : 28,
+          height: isMouseDown ? (isHovering ? 36 : 22) : isHovering ? 44 : 28,
           borderColor: isHovering ? 'rgba(34, 211, 238, 0.9)' : 'rgba(34, 211, 238, 0.4)',
-          backgroundColor: isHovering ? 'rgba(6, 182, 212, 0.12)' : 'rgba(6, 182, 212, 0.02)',
+          backgroundColor: isMouseDown ? 'rgba(6, 182, 212, 0.25)' : isHovering ? 'rgba(6, 182, 212, 0.12)' : 'rgba(6, 182, 212, 0.02)',
         }}
         transition={{ type: 'spring', stiffness: 350, damping: 25 }}
       />
