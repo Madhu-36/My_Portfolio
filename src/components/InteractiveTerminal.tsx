@@ -11,7 +11,7 @@ type CommandLog = {
 
 const AVAILABLE_COMMANDS = [
   'help', 'whoami', 'skills', 'cat skills.txt', 'projects', 'experience', 'certs',
-  'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'socials', 'stats', 'uptime', 'ping', 'history', 'echo', 'version', 'gui', 'date', 'time',
+  'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'socials', 'stats', 'uptime', 'ping', 'history', 'matrix', 'echo', 'version', 'gui', 'date', 'time',
   'about', 'portfolio', 'theme', 'clear', 'sudo'
 ];
 
@@ -79,6 +79,7 @@ export default function InteractiveTerminal() {
             <div><span className="text-white font-bold">theme</span> - Active palette tokens</div>
             <div><span className="text-white font-bold">echo</span> - Print string to console</div>
             <div><span className="text-white font-bold">version</span> - Release and build specs</div>
+            <div><span className="text-white font-bold">matrix</span> - Toggle hacker mode</div>
             <div><span className="text-white font-bold">gui</span> - Return to 3D scene</div>
             <div><span className="text-white font-bold">date</span> - Current system time</div>
             <div><span className="text-white font-bold">clear</span> - Clear terminal logs</div>
@@ -153,6 +154,14 @@ export default function InteractiveTerminal() {
     } else if (cmd === 'gui' || cmd === 'top') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       output = <span className="text-accent-400">Navigating to WebGL 3D Canvas viewport...</span>;
+    } else if (cmd === 'matrix' || cmd === 'hack') {
+      document.body.classList.toggle('hacker-mode');
+      const isHacker = document.body.classList.contains('hacker-mode');
+      output = (
+        <span className={isHacker ? 'text-emerald-400 font-bold font-mono' : 'text-accent-400 font-mono'}>
+          {isHacker ? 'CYBERSPACE HACKER MODE: ACTIVATED [ESC to exit]' : 'Standard cyberspace theme restored.'}
+        </span>
+      );
     } else if (cmd === 'theme') {
       output = (
         <div className="space-y-1 text-ink-200">
