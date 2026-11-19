@@ -407,10 +407,11 @@ export default function InteractiveTerminal() {
           {history.map((log, i) => (
             <div key={i} className="mb-2.5">
               <p className="text-ink-400 flex items-center gap-1.5 font-mono text-xs">
+                <span className="text-ink-600 select-none text-[10px] w-4 font-mono">{i + 1}</span>
                 <span className="text-emerald-400 font-semibold">guest@cyberspace:~$</span>
                 <span className="text-ink-100">{log.command}</span>
               </p>
-              <div className="mt-1 pl-2 border-l border-ink-800/60">{log.output}</div>
+              <div className="mt-1 pl-6 border-l border-ink-800/60">{log.output}</div>
             </div>
           ))}
           
