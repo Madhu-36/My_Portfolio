@@ -11,7 +11,7 @@ type CommandLog = {
 
 const AVAILABLE_COMMANDS = [
   'help', 'whoami', 'skills', 'cat skills.txt', 'projects', 'experience', 'certs',
-  'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'stats', 'uptime', 'echo', 'version', 'gui', 'date', 'time',
+  'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'stats', 'uptime', 'ping', 'echo', 'version', 'gui', 'date', 'time',
   'about', 'portfolio', 'theme', 'clear', 'sudo'
 ];
 
@@ -73,6 +73,7 @@ export default function InteractiveTerminal() {
             <div><span className="text-white font-bold">contact</span> - Direct encrypted email</div>
             <div><span className="text-white font-bold">stats</span> - Live system telemetry</div>
             <div><span className="text-white font-bold">uptime</span> - Session duration & ping</div>
+            <div><span className="text-white font-bold">ping</span> - Latency probe to node</div>
             <div><span className="text-white font-bold">theme</span> - Active palette tokens</div>
             <div><span className="text-white font-bold">echo</span> - Print string to console</div>
             <div><span className="text-white font-bold">version</span> - Release and build specs</div>
@@ -195,6 +196,16 @@ export default function InteractiveTerminal() {
           <p>&gt; Host Status: <span className="text-emerald-400">99.99% active · Zero incident report</span></p>
           <p>&gt; Edge Node: <span className="text-white">cyberearth-blr-01 (Bengaluru, IN)</span></p>
           <p>&gt; Network Latency: <span className="text-accent-400">12ms round-trip</span></p>
+        </div>
+      );
+    } else if (cmd === 'ping') {
+      output = (
+        <div className="space-y-0.5 text-xs font-mono text-ink-200">
+          <p className="text-accent-400 font-bold">&gt; PING cyberearth-node-blr01 [127.0.0.1]:</p>
+          <p>&gt; 64 bytes from blr-edge: icmp_seq=1 ttl=64 time=11.4 ms</p>
+          <p>&gt; 64 bytes from blr-edge: icmp_seq=2 ttl=64 time=10.8 ms</p>
+          <p>&gt; 64 bytes from blr-edge: icmp_seq=3 ttl=64 time=12.1 ms</p>
+          <p className="text-emerald-400">&gt; 3 packets transmitted, 0% packet loss, min/avg/max = 10.8/11.4/12.1 ms</p>
         </div>
       );
     } else if (cmd === 'about') {
