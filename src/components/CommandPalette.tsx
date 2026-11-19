@@ -254,6 +254,24 @@ export function CommandPalette() {
         },
       },
       {
+        id: 'act-term-ping',
+        category: 'Actions',
+        title: 'Run Terminal: ping',
+        subtitle: 'Probe edge network round-trip latency in terminal',
+        icon: <Terminal size={15} className="text-emerald-400" />,
+        action: () => {
+          const t = document.getElementById('terminal-input') as HTMLInputElement | null;
+          if (t) {
+            t.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => {
+              t.focus({ preventScroll: true });
+              t.value = 'ping';
+            }, 350);
+          }
+          setIsOpen(false);
+        },
+      },
+      {
         id: 'act-top',
         category: 'Actions',
         title: 'Scroll Back to Top',
