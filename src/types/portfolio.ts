@@ -64,3 +64,20 @@ export interface SystemTelemetry {
   activeStatus: boolean;
 }
 
+export type VulnerabilitySeverity = 'low' | 'medium' | 'high' | 'critical';
+
+export interface ASTScanResult {
+  ruleId: string;
+  severity: VulnerabilitySeverity;
+  message: string;
+  line: number;
+  snippet?: string;
+}
+
+export interface SecurityAuditReport {
+  timestamp: string;
+  target: string;
+  clean: boolean;
+  findings: ASTScanResult[];
+}
+
