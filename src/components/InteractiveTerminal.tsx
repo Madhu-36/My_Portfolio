@@ -11,7 +11,7 @@ type CommandLog = {
 
 const AVAILABLE_COMMANDS = [
   'help', 'whoami', 'skills', 'cat skills.txt', 'projects', 'experience', 'certs',
-  'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'stats', 'uptime', 'ping', 'echo', 'version', 'gui', 'date', 'time',
+  'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'stats', 'uptime', 'ping', 'history', 'echo', 'version', 'gui', 'date', 'time',
   'about', 'portfolio', 'theme', 'clear', 'sudo'
 ];
 
@@ -74,6 +74,7 @@ export default function InteractiveTerminal() {
             <div><span className="text-white font-bold">stats</span> - Live system telemetry</div>
             <div><span className="text-white font-bold">uptime</span> - Session duration & ping</div>
             <div><span className="text-white font-bold">ping</span> - Latency probe to node</div>
+            <div><span className="text-white font-bold">history</span> - Command log history</div>
             <div><span className="text-white font-bold">theme</span> - Active palette tokens</div>
             <div><span className="text-white font-bold">echo</span> - Print string to console</div>
             <div><span className="text-white font-bold">version</span> - Release and build specs</div>
@@ -206,6 +207,18 @@ export default function InteractiveTerminal() {
           <p>&gt; 64 bytes from blr-edge: icmp_seq=2 ttl=64 time=10.8 ms</p>
           <p>&gt; 64 bytes from blr-edge: icmp_seq=3 ttl=64 time=12.1 ms</p>
           <p className="text-emerald-400">&gt; 3 packets transmitted, 0% packet loss, min/avg/max = 10.8/11.4/12.1 ms</p>
+        </div>
+      );
+    } else if (cmd === 'history') {
+      output = (
+        <div className="space-y-0.5 text-xs font-mono text-ink-200">
+          <p className="text-accent-400 font-bold">&gt; COMMAND EXECUTION LOG ({cmdHistory.length} entries):</p>
+          {cmdHistory.map((item, idx) => (
+            <p key={idx} className="text-ink-300">
+              <span className="text-ink-600 mr-2">{String(idx + 1).padStart(2, '0')}</span>
+              {item}
+            </p>
+          ))}
         </div>
       );
     } else if (cmd === 'about') {
