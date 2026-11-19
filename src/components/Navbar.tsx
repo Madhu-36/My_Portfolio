@@ -57,10 +57,10 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'border-b border-ink-800/80 bg-ink-950/80 backdrop-blur-xl'
-          : 'border-b border-transparent bg-transparent'
+          ? 'border-b border-ink-800/80 bg-ink-950/85 backdrop-blur-xl shadow-lg shadow-black/20'
+          : 'border-b border-transparent bg-transparent backdrop-blur-none'
       }`}
     >
       {/* Reading progress bar */}
