@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.3] - 2026-11-19
+
+### Added
+- **Terminal Commands**: Added `'ping'` (edge network latency probe), `'history'` (session execution log), `'socials'` (profile directory), and `'matrix'` (hacker mode alias) shell commands alongside subtle line number prompt indicators.
+- **React Hooks**: Introduced `usePageVisibility` (reactive tab visibility / blur detection) and `useWindowScroll` (window scroll coordinates tracking).
+- **Security & Color Utilities**: Added `safeJsonParse`, `sanitizeHtml`, `hexToRgba`, and perceived brightness calculation helper functions.
+- **Type Definitions**: Added `SecurityAuditReport` and `ASTScanResult` interfaces to support automated project vulnerability analysis.
+- **Command Palette Triggers**: Added quick-search triggers for terminal ping and session history inspection.
+- **SEO & PWA Enhancements**: Added `ProfilePage` & `Article` Schema.org JSON-LD structured schemas, external asset origin `dns-prefetch` hints, and service worker cache refresh update prompts.
+- **Architecture & Engineering Documentation**: Added comprehensive `TESTING.md`, `STYLEGUIDE.md`, `SECURITY_AUDIT.md`, and `ENVIRONMENT.md` specifications.
+
+### Changed
+- Added click scale pulse animation to `CustomCursor` for enhanced tactile feedback.
+- Added live repository status pulse indicator and keyboard navigation shortcut cues to `Projects`.
+- Added retry reconnection button and cyber border to `OfflineBanner`.
+- Added dynamic backdrop blur transition on scroll to desktop `Navbar`.
+- Added explicit `aria-label` accessibility attributes on social links in `Footer`.
+- Added `'cyber-pulse'` animated badge variant to `<Badge />`.
+- Optimized Vite Rollup output chunk and asset file naming patterns with hash fingerprints.
+
+---
+
 ## [1.2.2] - 2026-11-18
 
 ### Added
