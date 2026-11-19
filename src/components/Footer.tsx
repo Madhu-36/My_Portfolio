@@ -16,16 +16,17 @@ export default function Footer() {
 
           <div className="flex items-center gap-4">
             {[
-              { Icon: Github, href: 'https://github.com/Madhu-36', label: 'GitHub' },
-              { Icon: Linkedin, href: 'https://www.linkedin.com/in/madhu-s-/', label: 'LinkedIn' },
-              { Icon: Mail, href: '#contact', label: 'Email' },
+              { Icon: Github, href: 'https://github.com/Madhu-36', label: 'Visit Madhu S on GitHub' },
+              { Icon: Linkedin, href: 'https://www.linkedin.com/in/madhu-s-/', label: 'Connect with Madhu S on LinkedIn' },
+              { Icon: Mail, href: '#contact', label: 'Send Madhu S an email message' },
             ].map(({ Icon, href, label }) => (
               <a
                 key={label}
                 href={href}
-                target={label === 'Email' ? undefined : '_blank'}
-                rel="noopener noreferrer"
+                target={label.includes('email') ? undefined : '_blank'}
+                rel={label.includes('email') ? undefined : 'noopener noreferrer'}
                 aria-label={label}
+                title={label}
                 className="flex h-9 w-9 items-center justify-center rounded-lg border border-ink-700 text-ink-400 transition-all duration-300 hover:border-accent-500/50 hover:text-accent-400"
               >
                 <Icon size={16} />
