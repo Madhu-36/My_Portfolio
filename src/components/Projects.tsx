@@ -221,7 +221,9 @@ export default function Projects() {
                             e.stopPropagation();
                             setSelectedProject(project);
                           }}
-                          className="flex items-center gap-1 text-[11px] font-mono text-accent-400 hover:text-white transition-colors border border-accent-500/30 bg-accent-500/10 px-2 py-0.5 rounded"
+                          title="Open architectural deep-dive case study"
+                          aria-label={`Open architectural case study for ${project.title}`}
+                          className="flex items-center gap-1 text-[11px] font-mono text-accent-400 hover:text-white transition-colors border border-accent-500/30 bg-accent-500/10 px-2 py-0.5 rounded shadow-sm hover:border-accent-400"
                         >
                           <BookOpen size={11} />
                           <span>Case Study</span>
