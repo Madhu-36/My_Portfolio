@@ -11,7 +11,7 @@ type CommandLog = {
 
 const AVAILABLE_COMMANDS = [
   'help', 'whoami', 'skills', 'cat skills.txt', 'projects', 'experience', 'certs',
-  'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'stats', 'uptime', 'ping', 'history', 'echo', 'version', 'gui', 'date', 'time',
+  'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'socials', 'stats', 'uptime', 'ping', 'history', 'echo', 'version', 'gui', 'date', 'time',
   'about', 'portfolio', 'theme', 'clear', 'sudo'
 ];
 
@@ -71,6 +71,7 @@ export default function InteractiveTerminal() {
             <div><span className="text-white font-bold">linkedin</span> - Launch LinkedIn network</div>
             <div><span className="text-white font-bold">repo</span> - Inspect portfolio repo</div>
             <div><span className="text-white font-bold">contact</span> - Direct encrypted email</div>
+            <div><span className="text-white font-bold">socials</span> - Verified social profiles</div>
             <div><span className="text-white font-bold">stats</span> - Live system telemetry</div>
             <div><span className="text-white font-bold">uptime</span> - Session duration & ping</div>
             <div><span className="text-white font-bold">ping</span> - Latency probe to node</div>
@@ -175,6 +176,14 @@ export default function InteractiveTerminal() {
           </p>
           <p className="text-xs text-ink-400">&gt; Status: PGP / TLS encrypted inbox active.</p>
         </div>
+      );
+    } else if (cmd === 'socials') {
+      output = (
+        <ul className="text-ink-200 space-y-1 text-xs font-mono">
+          <li>- <span className="text-accent-400">GitHub:</span> <a href="https://github.com/Madhu-36" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">github.com/Madhu-36</a></li>
+          <li>- <span className="text-neural-400">LinkedIn:</span> <a href="https://www.linkedin.com/in/madhu-s-/" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">linkedin.com/in/madhu-s-</a></li>
+          <li>- <span className="text-emerald-400">Email:</span> <a href="mailto:madhu.s.3606@gmail.com" className="underline hover:text-white">madhu.s.3606@gmail.com</a></li>
+        </ul>
       );
     } else if (cmd === 'stats' || cmd === 'telemetry') {
       output = (
