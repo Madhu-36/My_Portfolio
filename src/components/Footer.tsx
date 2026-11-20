@@ -1,6 +1,26 @@
+import { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail, ArrowUp, Terminal } from 'lucide-react';
 
 export default function Footer() {
+  const [timeString, setTimeString] = useState<string>('');
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      setTimeString(
+        now.toLocaleTimeString('en-US', {
+          timeZone: 'Asia/Kolkata',
+          hour12: false,
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+        })
+      );
+    };
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
   return (
     <footer className="border-t border-ink-800 bg-ink-950">
       <div className="container-px mx-auto max-w-7xl py-12">
@@ -52,8 +72,14 @@ export default function Footer() {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
             <span>All systems operational · Node BLR</span>
+            {timeString && (
+              <>
+                <span className="hidden sm:inline text-ink-600">|</span>
+                <span className="hidden sm:inline text-neural-400">{timeString} IST</span>
+              </>
+            )}
             <span className="hidden md:inline text-ink-600">|</span>
-            <span className="hidden md:inline text-accent-400">v1.2.0</span>
+            <span className="hidden md:inline text-accent-400">v1.2.4</span>
           </div>
           <div className="flex items-center gap-3">
             <span className="text-[11px] text-ink-500 hidden sm:inline">
