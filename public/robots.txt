@@ -1,4 +1,19 @@
+# Robots.txt for Madhu S - AI, Cybersecurity & Systems Engineering Portfolio
+# Canonical: https://madhu-36.github.io/My_Portfolio/
+
 User-agent: *
 Allow: /
+Allow: /public/
+Allow: /assets/
+Disallow: /node_modules/
+Disallow: /dist/
 
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemap Index Reference
 Sitemap: https://madhu-36.github.io/My_Portfolio/sitemap.xml
+Host: https://madhu-36.github.io
