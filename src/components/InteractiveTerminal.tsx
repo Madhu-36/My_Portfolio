@@ -10,7 +10,7 @@ type CommandLog = {
 };
 
 const AVAILABLE_COMMANDS = [
-  'help', 'whoami', 'skills', 'cat skills.txt', 'projects', 'experience', 'certs',
+  'help', 'whoami', 'skills', 'cat skills.txt', 'stack', 'projects', 'experience', 'certs',
   'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'socials', 'stats', 'uptime', 'ping', 'history', 'matrix', 'echo', 'version', 'gui', 'date', 'time',
   'about', 'portfolio', 'theme', 'clear', 'sudo'
 ];
@@ -61,6 +61,7 @@ export default function InteractiveTerminal() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1 text-xs">
             <div><span className="text-white font-bold">whoami</span> - Print profile identity</div>
             <div><span className="text-white font-bold">skills</span> - Categorized skill matrix</div>
+            <div><span className="text-white font-bold">stack</span> - Full tech architecture</div>
             <div><span className="text-white font-bold">cat skills.txt</span> - Core skill summary</div>
             <div><span className="text-white font-bold">projects</span> - Open-source repos</div>
             <div><span className="text-white font-bold">experience</span> - Career internships</div>
@@ -121,6 +122,17 @@ export default function InteractiveTerminal() {
           <div><span className="text-accent-400 font-semibold">Cybersecurity:</span> Burp Suite, Nmap, Wireshark, Metasploit, OWASP Top 10, Kali</div>
           <div><span className="text-neural-400 font-semibold">AI &amp; Data:</span> PyTorch, TensorFlow, Scikit-learn, OpenCV, Local LLMs</div>
           <div><span className="text-gold-400 font-semibold">Game &amp; 3D:</span> Unity Engine, Three.js, React Three Fiber, GLSL</div>
+        </div>
+      );
+    } else if (cmd === 'stack') {
+      output = (
+        <div className="space-y-1 text-ink-200 text-xs font-mono">
+          <p className="text-accent-400 font-bold">&gt; FULL TECHNOLOGY STACK ARCHITECTURE:</p>
+          <div><span className="text-white font-semibold">&gt; Frontend &amp; 3D:</span> React 18, Vite, Three.js, R3F, Tailwind CSS, Framer Motion</div>
+          <div><span className="text-accent-400 font-semibold">&gt; Backend &amp; Cloud:</span> Node.js, Express, FastAPI, Python, REST, WebSockets, Supabase</div>
+          <div><span className="text-neural-400 font-semibold">&gt; AI &amp; Machine Learning:</span> PyTorch, Scikit-learn, OpenCV, Hugging Face, Local LLMs</div>
+          <div><span className="text-emerald-400 font-semibold">&gt; Security &amp; Systems:</span> Burp Suite, Nmap, Wireshark, Metasploit, OWASP Top 10, Kali</div>
+          <div><span className="text-gold-400 font-semibold">&gt; DevOps &amp; Tooling:</span> Docker, Git, GitHub Actions, Linux/Bash, ESLint, TypeScript</div>
         </div>
       );
     } else if (cmd === 'cat skills.txt') {
