@@ -81,3 +81,17 @@ export interface SecurityAuditReport {
   findings: ASTScanResult[];
 }
 
+export interface NetworkTelemetry {
+  downlinkSpeedMbps: number;
+  effectiveType: string;
+  roundTripTimeMs: number;
+  edgeLocation: string;
+}
+
+export interface SystemBenchmark {
+  fps: number;
+  domNodes: number;
+  jsHeapSizeMb: number;
+  lighthouseScore: number;
+}
+
