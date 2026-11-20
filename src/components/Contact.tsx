@@ -71,28 +71,30 @@ export default function Contact() {
               </p>
 
               <div className="mt-10 space-y-5">
-                <a
-                  href="mailto:madhu.s.3606@gmail.com"
-                  className="group flex items-center gap-4 text-ink-200 transition-colors hover:text-white"
-                >
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-ink-700 transition-colors group-hover:border-accent-500/50">
-                    <Mail size={18} className="text-accent-400" />
-                  </span>
-                  <div className="flex-1">
-                    <div className="text-xs uppercase tracking-widest text-ink-500">
-                      Email
+                <div className="flex items-center justify-between gap-4 rounded-xl border border-ink-800 bg-ink-900/40 p-3 pr-4 transition-colors hover:border-ink-700">
+                  <a
+                    href="mailto:madhu.s.3606@gmail.com"
+                    className="group flex items-center gap-4 text-ink-200 transition-colors hover:text-white flex-1 min-w-0"
+                  >
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-ink-700 transition-colors group-hover:border-accent-500/50">
+                      <Mail size={18} className="text-accent-400" />
+                    </span>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-xs uppercase tracking-widest text-ink-500">
+                        Email
+                      </div>
+                      <div className="text-sm sm:text-base font-medium truncate">madhu.s.3606@gmail.com</div>
                     </div>
-                    <div className="text-base font-medium">madhu.s.3606@gmail.com</div>
-                  </div>
-                </a>
-                <button
-                  onClick={() => copy('madhu.s.3606@gmail.com')}
-                  aria-label={copied ? 'Email copied!' : 'Copy email address'}
-                  title={copied ? 'Copied!' : 'Copy email'}
-                  className="ml-auto flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-ink-700 text-ink-400 transition-all hover:border-accent-500/50 hover:text-accent-400"
-                >
-                  {copied ? <Check size={15} className="text-accent-400" /> : <Copy size={15} />}
-                </button>
+                  </a>
+                  <button
+                    onClick={() => copy('madhu.s.3606@gmail.com')}
+                    aria-label={copied ? 'Email copied!' : 'Copy email address'}
+                    title={copied ? 'Copied!' : 'Copy email'}
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-ink-700 text-ink-400 transition-all hover:border-accent-500/50 hover:text-accent-400"
+                  >
+                    {copied ? <Check size={15} className="text-accent-400" /> : <Copy size={15} />}
+                  </button>
+                </div>
 
                 <div className="flex items-center gap-4 text-ink-200">
                   <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-ink-700">
