@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.4] - 2026-11-20
+
+### Added
+- **Modular Utility Libraries**: Added `math.ts` (`lerp`, `roundTo`, `inRange`, `randomInt`), `strings.ts` (`slugify`, `truncate`, `capitalize`, `wordCount`), `arrays.ts` (`chunk`, `unique`, `sample`, `groupBy`), `datetime.ts` (`formatRelativeTime`, `isToday`, `formatISODate`), and `storage.ts` (safe memory-fallback localStorage wrapper).
+- **Reactive Hooks**: Introduced `useEventListener`, `useMediaQuery`, `useIntersectionObserver`, `useToggle`, and `useNetworkSpeed`.
+- **Telemetry & Shell Types**: Added `NetworkTelemetry`, `SystemBenchmark`, `TerminalCommandDoc`, and `ShellMetadata` interfaces in `portfolio.ts`.
+- **Terminal Commands**: Added `'stack'` (technology architecture breakdown), `'whois'` (cryptographic identity lookup), `'quote'` (engineering philosophy), and `'dns'` (virtual nameserver records) shell commands.
+- **Command Palette Expansion**: Added one-click action triggers for full stack architecture and whois identity lookup.
+- **Search Engine Optimization**: Added production `robots.txt` crawler policies and updated XML sitemap with verified resume asset reference.
+- **Engineering Documentation**: Added `ACCESSIBILITY.md` (WCAG 2.1 AA conformance report & ARIA matrix) and `MONITORING.md` (Core Web Vitals SLOs & telemetry pipeline).
+
+### Changed
+- Added animated SVG circular scroll progress indicator ring to `BackToTop` component.
+- Added live IST / UTC clock and release version readout to `Footer` status bar.
+- Enhanced `Contact` email copy button with clean flex layout and truncation protection.
+- Integrated live network downlink telemetry into `LiveStatsHUD`.
+
+---
+
 ## [1.2.3] - 2026-11-19
 
 ### Added
