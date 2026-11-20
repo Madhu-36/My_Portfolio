@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Activity, Terminal, ChevronDown, ChevronUp } from 'lucide-react';
+import { Activity, Terminal, ChevronDown, ChevronUp, Wifi } from 'lucide-react';
 import { formatNumber, formatDateCompact } from '../utils/formatters';
+import { useNetworkSpeed } from '../hooks/useNetworkSpeed';
 
 interface GitHubStats {
   publicRepos: number;
@@ -12,6 +13,7 @@ interface GitHubStats {
 export default function LiveStatsHUD() {
   const [time, setTime] = useState(new Date());
   const [isExpanded, setIsExpanded] = useState(true);
+  const network = useNetworkSpeed();
   const [ghStats, setGhStats] = useState<GitHubStats>(() => {
     try {
       const cached = localStorage.getItem('madhu-gh-stats');
@@ -97,6 +99,14 @@ export default function LiveStatsHUD() {
               <div className="flex justify-between gap-8">
                 <span className="text-ink-500">Last Synced:</span>
                 <span className="text-gold-400">{ghStats.updatedAt}</span>
+              </div>
+              <div className="flex justify-between gap-8 pt-1 border-t border-ink-800/60">
+                <span className="text-ink-500 flex items-center gap-1">
+                  <Wifi size={10} className="text-accent-400" /> Net Link:
+                </span>
+                <span className="text-emerald-400">
+                  {network.supported && network.downlink ? `${network.downlink} Mbps` : 'Online'}
+                </span>
               </div>
             </div>
           </motion.div>
