@@ -10,7 +10,7 @@ type CommandLog = {
 };
 
 const AVAILABLE_COMMANDS = [
-  'help', 'whoami', 'skills', 'cat skills.txt', 'stack', 'projects', 'experience', 'certs',
+  'help', 'whoami', 'whois', 'skills', 'cat skills.txt', 'stack', 'projects', 'experience', 'certs',
   'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'socials', 'stats', 'uptime', 'ping', 'history', 'matrix', 'echo', 'version', 'gui', 'date', 'time',
   'about', 'portfolio', 'theme', 'clear', 'sudo'
 ];
@@ -60,6 +60,7 @@ export default function InteractiveTerminal() {
           <p className="text-accent-400 font-semibold">&gt; AVAILABLE TERMINAL COMMANDS:</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1 text-xs">
             <div><span className="text-white font-bold">whoami</span> - Print profile identity</div>
+            <div><span className="text-white font-bold">whois</span> - Cryptographic identity info</div>
             <div><span className="text-white font-bold">skills</span> - Categorized skill matrix</div>
             <div><span className="text-white font-bold">stack</span> - Full tech architecture</div>
             <div><span className="text-white font-bold">cat skills.txt</span> - Core skill summary</div>
@@ -105,6 +106,17 @@ export default function InteractiveTerminal() {
           <p className="text-accent-400 font-bold">&gt; UID: 0x36 [Madhu S]</p>
           <p>&gt; Role: AI &amp; Data Science Engineer · Cybersecurity Specialist</p>
           <p>&gt; Host: cyberearth-node-blr01 · Status: Active</p>
+        </div>
+      );
+    } else if (cmd === 'whois') {
+      output = (
+        <div className="space-y-0.5 text-xs font-mono text-ink-200">
+          <p className="text-accent-400 font-bold">&gt; WHOIS RECORD [Madhu S]:</p>
+          <p>&gt; Handle: <span className="text-white">Madhu-36</span></p>
+          <p>&gt; Domain: <span className="text-neural-400">madhu-36.github.io/My_Portfolio</span></p>
+          <p>&gt; Region: <span className="text-white">Bengaluru, KA, India</span></p>
+          <p>&gt; GPG Key: <span className="text-gold-400">0x36F4 9A1C 82D5 B4E0 [VERIFIED]</span></p>
+          <p>&gt; Status: <span className="text-emerald-400">Available for innovative engineering roles</span></p>
         </div>
       );
     } else if (cmd === 'date' || cmd === 'time') {
