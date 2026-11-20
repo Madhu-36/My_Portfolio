@@ -95,3 +95,18 @@ export interface SystemBenchmark {
   lighthouseScore: number;
 }
 
+export interface TerminalCommandDoc {
+  command: string;
+  usage: string;
+  description: string;
+  category: 'core' | 'network' | 'cyber' | 'info';
+}
+
+export interface ShellMetadata {
+  shellName: string;
+  version: string;
+  user: string;
+  host: string;
+  registeredCommands: string[];
+}
+
