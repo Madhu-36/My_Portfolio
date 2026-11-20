@@ -272,6 +272,42 @@ export function CommandPalette() {
         },
       },
       {
+        id: 'act-term-stack',
+        category: 'Actions',
+        title: 'Run Terminal: stack',
+        subtitle: 'Inspect full technology stack architecture',
+        icon: <Terminal size={15} className="text-accent-400" />,
+        action: () => {
+          const t = document.getElementById('terminal-input') as HTMLInputElement | null;
+          if (t) {
+            t.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => {
+              t.focus({ preventScroll: true });
+              t.value = 'stack';
+            }, 350);
+          }
+          setIsOpen(false);
+        },
+      },
+      {
+        id: 'act-term-whois',
+        category: 'Actions',
+        title: 'Run Terminal: whois',
+        subtitle: 'Cryptographic identity and GPG verification record',
+        icon: <Terminal size={15} className="text-gold-400" />,
+        action: () => {
+          const t = document.getElementById('terminal-input') as HTMLInputElement | null;
+          if (t) {
+            t.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => {
+              t.focus({ preventScroll: true });
+              t.value = 'whois';
+            }, 350);
+          }
+          setIsOpen(false);
+        },
+      },
+      {
         id: 'act-top',
         category: 'Actions',
         title: 'Scroll Back to Top',
