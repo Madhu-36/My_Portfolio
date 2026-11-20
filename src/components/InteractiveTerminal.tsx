@@ -10,7 +10,7 @@ type CommandLog = {
 };
 
 const AVAILABLE_COMMANDS = [
-  'help', 'whoami', 'whois', 'skills', 'cat skills.txt', 'stack', 'projects', 'experience', 'certs',
+  'help', 'whoami', 'whois', 'skills', 'cat skills.txt', 'stack', 'quote', 'projects', 'experience', 'certs',
   'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'socials', 'stats', 'uptime', 'ping', 'history', 'matrix', 'echo', 'version', 'gui', 'date', 'time',
   'about', 'portfolio', 'theme', 'clear', 'sudo'
 ];
@@ -63,6 +63,7 @@ export default function InteractiveTerminal() {
             <div><span className="text-white font-bold">whois</span> - Cryptographic identity info</div>
             <div><span className="text-white font-bold">skills</span> - Categorized skill matrix</div>
             <div><span className="text-white font-bold">stack</span> - Full tech architecture</div>
+            <div><span className="text-white font-bold">quote</span> - Engineering philosophy</div>
             <div><span className="text-white font-bold">cat skills.txt</span> - Core skill summary</div>
             <div><span className="text-white font-bold">projects</span> - Open-source repos</div>
             <div><span className="text-white font-bold">experience</span> - Career internships</div>
@@ -154,6 +155,13 @@ export default function InteractiveTerminal() {
           <p className="text-ink-200">&gt; Ethical Hacker</p>
           <p className="text-ink-200">&gt; Game Developer</p>
         </>
+      );
+    } else if (cmd === 'quote' || cmd === 'motto') {
+      output = (
+        <div className="space-y-1 text-xs font-mono text-ink-200 italic border-l-2 border-accent-400 pl-3 py-1">
+          <p className="text-white font-semibold">"Security is not a product, but a process. Build with intelligence, defend with vigilance."</p>
+          <p className="text-accent-400 not-italic">&gt; Engineering Philosophy · Madhu S</p>
+        </div>
       );
     } else if (cmd === 'github') {
       window.open('https://github.com/Madhu-36', '_blank');
