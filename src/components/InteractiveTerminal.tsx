@@ -10,7 +10,7 @@ type CommandLog = {
 };
 
 const AVAILABLE_COMMANDS = [
-  'help', 'whoami', 'whois', 'skills', 'cat skills.txt', 'stack', 'quote', 'projects', 'experience', 'certs',
+  'help', 'whoami', 'whois', 'skills', 'cat skills.txt', 'stack', 'quote', 'dns', 'projects', 'experience', 'certs',
   'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'socials', 'stats', 'uptime', 'ping', 'history', 'matrix', 'echo', 'version', 'gui', 'date', 'time',
   'about', 'portfolio', 'theme', 'clear', 'sudo'
 ];
@@ -78,6 +78,7 @@ export default function InteractiveTerminal() {
             <div><span className="text-white font-bold">stats</span> - Live system telemetry</div>
             <div><span className="text-white font-bold">uptime</span> - Session duration & ping</div>
             <div><span className="text-white font-bold">ping</span> - Latency probe to node</div>
+            <div><span className="text-white font-bold">dns</span> - Node nameserver records</div>
             <div><span className="text-white font-bold">history</span> - Command log history</div>
             <div><span className="text-white font-bold">theme</span> - Active palette tokens</div>
             <div><span className="text-white font-bold">echo</span> - Print string to console</div>
@@ -257,6 +258,16 @@ export default function InteractiveTerminal() {
           <p>&gt; 64 bytes from blr-edge: icmp_seq=2 ttl=64 time=10.8 ms</p>
           <p>&gt; 64 bytes from blr-edge: icmp_seq=3 ttl=64 time=12.1 ms</p>
           <p className="text-emerald-400">&gt; 3 packets transmitted, 0% packet loss, min/avg/max = 10.8/11.4/12.1 ms</p>
+        </div>
+      );
+    } else if (cmd === 'dns') {
+      output = (
+        <div className="space-y-0.5 text-xs font-mono text-ink-200">
+          <p className="text-accent-400 font-bold">&gt; RESOLVING DNS FOR madhu-36.github.io:</p>
+          <p>&gt; A RECORD: <span className="text-white">185.199.108.153 · 185.199.109.153</span></p>
+          <p>&gt; AAAA RECORD: <span className="text-neural-400">2606:50c0:8000::153</span></p>
+          <p>&gt; NAMESERVER: <span className="text-emerald-400">dns1.p01.nsone.net (Fast Anycast)</span></p>
+          <p>&gt; TLS STATUS: <span className="text-gold-400">TLSv1.3 · ECDHE-ECDSA-AES128-GCM-SHA256</span></p>
         </div>
       );
     } else if (cmd === 'history') {
