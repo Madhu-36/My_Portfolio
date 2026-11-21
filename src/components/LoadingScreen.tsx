@@ -54,12 +54,17 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
     >
       <div className="w-full max-w-lg rounded-lg border border-green-900 bg-black/80 shadow-2xl">
         {/* Title bar */}
-        <div className="flex items-center gap-2 border-b border-green-900 px-4 py-2">
-          <span className="h-3 w-3 rounded-full bg-red-500" />
-          <span className="h-3 w-3 rounded-full bg-yellow-500" />
-          <span className="h-3 w-3 rounded-full bg-green-500" />
-          <span className="ml-2 font-mono text-sm text-green-400">
-            madhu@boot:~$
+        <div className="flex items-center justify-between border-b border-green-900 px-4 py-2">
+          <div className="flex items-center gap-2">
+            <span className="h-3 w-3 rounded-full bg-red-500" />
+            <span className="h-3 w-3 rounded-full bg-yellow-500" />
+            <span className="h-3 w-3 rounded-full bg-green-500" />
+            <span className="ml-2 font-mono text-sm text-green-400">
+              madhu@boot:~$
+            </span>
+          </div>
+          <span className="font-mono text-xs text-green-500/80">
+            {Math.round((lines.length / BOOT_LINES.length) * 100)}%
           </span>
         </div>
 
