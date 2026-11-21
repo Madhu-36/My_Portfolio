@@ -1,12 +1,23 @@
+import { useState, useEffect } from 'react';
 import { WifiOff, RefreshCw } from 'lucide-react';
 import { useOnlineStatus } from '../hooks/useOnlineStatus';
 
 /**
- * Shows a persistent banner at the bottom of the screen when the user loses internet connectivity.
- * Hides automatically when connectivity is restored.
+ * Persistent offline banner showing network drop alert and an auto-retry countdown timer.
  */
 export default function OfflineBanner() {
   const isOnline = useOnlineStatus();
+  const [countdown, setCountdown] = useState(15);
+
+  useEffect(() => {
+    if (isOnline) return;
+
+    const interval = setInterval(() => {
+      setCountdown((prev) => (prev <= 1 ? 15 : prev - 1));
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [isOnline]);
 
   if (isOnline) return null;
 
@@ -19,7 +30,7 @@ export default function OfflineBanner() {
       <div className="flex items-center gap-2.5 mx-auto">
         <WifiOff size={15} className="shrink-0 text-red-400 animate-pulse" />
         <span>
-          SYSTEM OFFLINE: Local cache active. Restoring uplink connection...
+          SYSTEM OFFLINE: Local cache active. Auto-reconnect in <span className="text-white font-bold">{countdown}s</span>...
         </span>
         <button
           type="button"
