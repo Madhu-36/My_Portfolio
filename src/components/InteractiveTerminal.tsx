@@ -10,7 +10,7 @@ type CommandLog = {
 };
 
 const AVAILABLE_COMMANDS = [
-  'help', 'whoami', 'whois', 'skills', 'cat skills.txt', 'stack', 'quote', 'dns', 'battery', 'neofetch', 'calc', 'projects', 'experience', 'certs',
+  'help', 'whoami', 'whois', 'skills', 'cat skills.txt', 'stack', 'quote', 'dns', 'battery', 'neofetch', 'calc', 'alias', 'projects', 'experience', 'certs',
   'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'socials', 'stats', 'uptime', 'ping', 'history', 'matrix', 'echo', 'version', 'gui', 'date', 'time',
   'about', 'portfolio', 'theme', 'clear', 'sudo'
 ];
@@ -82,6 +82,7 @@ export default function InteractiveTerminal() {
             <div><span className="text-white font-bold">battery</span> - Client power telemetry</div>
             <div><span className="text-white font-bold">neofetch</span> - System specs & ASCII badge</div>
             <div><span className="text-white font-bold">calc</span> - Simple math evaluator</div>
+            <div><span className="text-white font-bold">alias</span> - Command shortcuts</div>
             <div><span className="text-white font-bold">history</span> - Command log history</div>
             <div><span className="text-white font-bold">theme</span> - Active palette tokens</div>
             <div><span className="text-white font-bold">echo</span> - Print string to console</div>
@@ -338,10 +339,19 @@ export default function InteractiveTerminal() {
       }
     } else if (cmd === 'calc') {
       output = <span className="text-ink-400 font-mono">Usage: calc [math expression] (e.g. calc 42 * 8)</span>;
+    } else if (cmd === 'alias' || cmd === 'aliases') {
+      output = (
+        <div className="space-y-0.5 text-xs font-mono text-ink-200">
+          <p className="text-accent-400 font-bold">&gt; REGISTERED SHELL ALIASES:</p>
+          <p>&gt; <span className="text-white">v</span> → version · <span className="text-white">sysinfo</span> → neofetch</p>
+          <p>&gt; <span className="text-white">telemetry</span> → stats · <span className="text-white">motto</span> → quote</p>
+          <p>&gt; <span className="text-white">source</span> → repo · <span className="text-white">power</span> → battery</p>
+        </div>
+      );
     } else if (cmd === 'version' || cmd === 'v') {
       output = (
         <div className="space-y-0.5 text-xs font-mono text-ink-200">
-          <p className="text-accent-400 font-bold">&gt; Madhu S Portfolio — v1.2.0</p>
+          <p className="text-accent-400 font-bold">&gt; Madhu S Portfolio — v1.2.5</p>
           <p className="text-ink-400">&gt; Engine: React 18.3 · Vite 5.4 · Tailwind 3.4</p>
           <p className="text-ink-400">&gt; WebGL: Three.js r160 · Fiber 8.15</p>
           <p className="text-emerald-400">&gt; Status: Production Verified (All Systems Green)</p>
