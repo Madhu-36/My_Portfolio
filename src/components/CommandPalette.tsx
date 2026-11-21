@@ -308,6 +308,42 @@ export function CommandPalette() {
         },
       },
       {
+        id: 'act-term-battery',
+        category: 'Actions',
+        title: 'Run Terminal: battery',
+        subtitle: 'Inspect client power & battery subsystem telemetry',
+        icon: <Terminal size={15} className="text-emerald-400" />,
+        action: () => {
+          const t = document.getElementById('terminal-input') as HTMLInputElement | null;
+          if (t) {
+            t.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => {
+              t.focus({ preventScroll: true });
+              t.value = 'battery';
+            }, 350);
+          }
+          setIsOpen(false);
+        },
+      },
+      {
+        id: 'act-term-neofetch',
+        category: 'Actions',
+        title: 'Run Terminal: neofetch',
+        subtitle: 'Display system specs & retro ASCII terminal badge',
+        icon: <Terminal size={15} className="text-accent-400" />,
+        action: () => {
+          const t = document.getElementById('terminal-input') as HTMLInputElement | null;
+          if (t) {
+            t.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => {
+              t.focus({ preventScroll: true });
+              t.value = 'neofetch';
+            }, 350);
+          }
+          setIsOpen(false);
+        },
+      },
+      {
         id: 'act-top',
         category: 'Actions',
         title: 'Scroll Back to Top',
