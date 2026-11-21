@@ -31,13 +31,11 @@ export default function AIAssistant() {
     }
   }, [messages, isTyping]);
 
-  const handleSend = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim()) return;
+  const submitMessage = (userMsg: string) => {
+    if (!userMsg.trim()) return;
 
-    const userMsg = input.trim();
     setInput('');
-    setMessages((prev) => [...prev, { id: Date.now().toString(), role: 'user', content: userMsg }]);
+    setMessages((prev) => [...prev, { id: Date.now().toString(), role: 'user', content: userMsg.trim() }]);
     setIsTyping(true);
 
     // Mock AI response logic
@@ -53,7 +51,7 @@ export default function AIAssistant() {
         botResponse = "Madhu creates games using C# and Unity. Check out 'Game Complex' in the projects section! He also holds a Unity Junior Programmer certification.";
       } else if (lower.includes('ai') || lower.includes('machine learning')) {
         botResponse = "Madhu is an AI & Data Science Engineering student. He built an Adaptive Firewall using AI, and holds an AI Fluency certification from Claude/Anthropic!";
-      } else if (lower.includes('cyber') || lower.includes('hack') || lower.includes('security')) {
+      } else if (lower.includes('cyber') || lower.includes('hack') || lower.includes('security') || lower.includes('skill')) {
         botResponse = "Cybersecurity is his core strength! He interned as an Ethical Hacker at Jutrm Career Academy and ACMEGRADE, mastering tools like Burp Suite, Nmap, and Metasploit. He also completed job simulations with Forage and Deloitte.";
       } else if (lower.includes('education') || lower.includes('college') || lower.includes('university')) {
         botResponse = "Madhu is pursuing a B.E. in Artificial Intelligence and Data Science at East West Institute of Technology (EWIT), Bengaluru, expecting to graduate in 2027.";
@@ -67,7 +65,12 @@ export default function AIAssistant() {
 
       setMessages((prev) => [...prev, { id: Date.now().toString(), role: 'assistant', content: botResponse }]);
       setIsTyping(false);
-    }, 1500);
+    }, 1000);
+  };
+
+  const handleSend = (e: React.FormEvent) => {
+    e.preventDefault();
+    submitMessage(input);
   };
 
   return (
@@ -123,6 +126,24 @@ export default function AIAssistant() {
                   </div>
                 </div>
               ))}
+              {messages.length <= 1 && (
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                  {[
+                    'Core engineering skills',
+                    'Tell me about CodeShield',
+                    'Contact & hire Madhu',
+                  ].map((chip) => (
+                    <button
+                      key={chip}
+                      type="button"
+                      onClick={() => submitMessage(chip)}
+                      className="rounded-full border border-ink-700 bg-ink-800/80 px-2.5 py-1 text-[11px] text-ink-300 hover:border-accent-500/50 hover:text-white transition-colors"
+                    >
+                      {chip}
+                    </button>
+                  ))}
+                </div>
+              )}
               {isTyping && (
                 <div className="flex justify-start">
                   <div className="bg-ink-800 rounded-2xl rounded-bl-sm px-4 py-3 flex gap-1">
