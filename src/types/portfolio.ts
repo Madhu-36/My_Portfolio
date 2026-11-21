@@ -124,3 +124,17 @@ export interface RuntimePerformanceReport {
   renderDurationMs: number;
 }
 
+export interface FilterTag {
+  id: string;
+  name: string;
+  count: number;
+  colorHex?: string;
+}
+
+export interface ProjectArchitectureMetrics {
+  linesOfCode: number;
+  testCoveragePercent: number;
+  dockerized: boolean;
+  ciPassed: boolean;
+}
+
