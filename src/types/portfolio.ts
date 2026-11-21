@@ -110,3 +110,17 @@ export interface ShellMetadata {
   registeredCommands: string[];
 }
 
+export interface BatteryTelemetry {
+  charging: boolean;
+  level: number;
+  chargingTimeMinutes?: number;
+  dischargingTimeMinutes?: number;
+}
+
+export interface RuntimePerformanceReport {
+  timestamp: number;
+  memoryUsageMb: number;
+  domNodeCount: number;
+  renderDurationMs: number;
+}
+
