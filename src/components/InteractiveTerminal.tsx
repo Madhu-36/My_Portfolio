@@ -10,7 +10,7 @@ type CommandLog = {
 };
 
 const AVAILABLE_COMMANDS = [
-  'help', 'whoami', 'whois', 'skills', 'cat skills.txt', 'stack', 'quote', 'dns', 'battery', 'projects', 'experience', 'certs',
+  'help', 'whoami', 'whois', 'skills', 'cat skills.txt', 'stack', 'quote', 'dns', 'battery', 'neofetch', 'projects', 'experience', 'certs',
   'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'socials', 'stats', 'uptime', 'ping', 'history', 'matrix', 'echo', 'version', 'gui', 'date', 'time',
   'about', 'portfolio', 'theme', 'clear', 'sudo'
 ];
@@ -80,6 +80,7 @@ export default function InteractiveTerminal() {
             <div><span className="text-white font-bold">ping</span> - Latency probe to node</div>
             <div><span className="text-white font-bold">dns</span> - Node nameserver records</div>
             <div><span className="text-white font-bold">battery</span> - Client power telemetry</div>
+            <div><span className="text-white font-bold">neofetch</span> - System specs & ASCII badge</div>
             <div><span className="text-white font-bold">history</span> - Command log history</div>
             <div><span className="text-white font-bold">theme</span> - Active palette tokens</div>
             <div><span className="text-white font-bold">echo</span> - Print string to console</div>
@@ -279,6 +280,26 @@ export default function InteractiveTerminal() {
           <p>&gt; Charge Level: <span className="text-white">Optimal (~95-100%)</span></p>
           <p>&gt; Energy Profile: <span className="text-accent-400">High-Performance Cyberspace Mode</span></p>
           <p>&gt; Thermal Status: <span className="text-emerald-400">Nominal · 0 throttled frames</span></p>
+        </div>
+      );
+    } else if (cmd === 'neofetch' || cmd === 'sysinfo') {
+      output = (
+        <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-4 text-xs font-mono text-ink-200 py-1">
+          <pre className="text-accent-400 leading-none">
+{`   /\\_/\\  
+  ( o.o ) 
+   > ^ <  
+ [CYBER]`}
+          </pre>
+          <div className="space-y-0.5">
+            <p><span className="text-accent-400 font-bold">madhu</span>@<span className="text-white font-bold">cyberearth-blr</span></p>
+            <p className="text-ink-600">----------------------</p>
+            <p>&gt; OS: <span className="text-white">CyberOS 6.1 x86_64</span></p>
+            <p>&gt; Host: <span className="text-white">Bengaluru Edge Gateway</span></p>
+            <p>&gt; Kernel: <span className="text-neural-400">Linux 6.11.2-cyber</span></p>
+            <p>&gt; Shell: <span className="text-gold-400">madhu-sh v1.2.5</span></p>
+            <p>&gt; Theme: <span className="text-emerald-400">Neon Cyan &amp; Neural Indigo</span></p>
+          </div>
         </div>
       );
     } else if (cmd === 'history') {
