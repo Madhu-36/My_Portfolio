@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.5] - 2026-11-21
+
+### Added
+- **DOM & Performance Utilities**: Added `dom.ts` (`scrollToElement`, `isInViewport`, `copyToClipboard`), `validation.ts` (`isValidEmail`, `isAlphanumeric`, `sanitizeInput`), `performance.ts` (`measureExecutionTime`, `createThrottledCallback`), and `async.ts` (`sleep`, `retryWithBackoff`, `timeoutPromise`).
+- **Reactive Hooks**: Introduced `useBattery` (hardware power telemetry), `useClickOutside` (click dismissal), `useInterval` (declarative interval), `usePrevious` (previous state tracking), and `useClipboardState` (copy state with timeout).
+- **Type Definitions**: Added `BatteryTelemetry`, `RuntimePerformanceReport`, `FilterTag`, and `ProjectArchitectureMetrics` interfaces in `portfolio.ts`.
+- **Terminal Capabilities**: Added `'battery'` (power status), `'neofetch'` (hardware specs & ASCII badge), `'calc'` (arithmetic expression evaluator), and `'alias'` (shell shortcuts directory).
+- **Command Palette Expansion**: Added one-click actions for battery telemetry and neofetch hardware inspection.
+- **Engineering Documentation**: Added `TROUBLESHOOTING.md` (WebGL recovery & cache resets), `API.md` (external integrations & GitHub REST sync), `INTERNATIONALIZATION.md` (locale roadmap), and `TESTING_MATRIX.md` (cross-platform verification).
+
+### Changed
+- Added percentage progress indicator to `LoadingScreen` terminal title bar.
+- Added keyboard `Escape` listener to close mobile navigation drawer in `Navbar`.
+- Added predefined question suggestion chips in `AIAssistant` drawer.
+- Added auto-reconnect countdown timer to `OfflineBanner`.
+
+---
+
 ## [1.2.4] - 2026-11-20
 
 ### Added
