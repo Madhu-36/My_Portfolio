@@ -25,6 +25,9 @@ export default function Navbar() {
   const scrollProgress = useScrollProgress();
   const { muted, toggleMute } = useSoundEffects();
 
+  // Dismiss mobile menu when Escape key is pressed
+  useKeyPress('Escape', () => setOpen(false), { enabled: open });
+
   // Dynamic document title based on active section in viewport
   const sectionTitle = useMemo(() => {
     switch (activeSection) {
