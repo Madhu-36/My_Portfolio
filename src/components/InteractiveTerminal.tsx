@@ -10,7 +10,7 @@ type CommandLog = {
 };
 
 const AVAILABLE_COMMANDS = [
-  'help', 'whoami', 'whois', 'skills', 'cat skills.txt', 'stack', 'quote', 'dns', 'projects', 'experience', 'certs',
+  'help', 'whoami', 'whois', 'skills', 'cat skills.txt', 'stack', 'quote', 'dns', 'battery', 'projects', 'experience', 'certs',
   'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'socials', 'stats', 'uptime', 'ping', 'history', 'matrix', 'echo', 'version', 'gui', 'date', 'time',
   'about', 'portfolio', 'theme', 'clear', 'sudo'
 ];
@@ -79,6 +79,7 @@ export default function InteractiveTerminal() {
             <div><span className="text-white font-bold">uptime</span> - Session duration & ping</div>
             <div><span className="text-white font-bold">ping</span> - Latency probe to node</div>
             <div><span className="text-white font-bold">dns</span> - Node nameserver records</div>
+            <div><span className="text-white font-bold">battery</span> - Client power telemetry</div>
             <div><span className="text-white font-bold">history</span> - Command log history</div>
             <div><span className="text-white font-bold">theme</span> - Active palette tokens</div>
             <div><span className="text-white font-bold">echo</span> - Print string to console</div>
@@ -268,6 +269,16 @@ export default function InteractiveTerminal() {
           <p>&gt; AAAA RECORD: <span className="text-neural-400">2606:50c0:8000::153</span></p>
           <p>&gt; NAMESERVER: <span className="text-emerald-400">dns1.p01.nsone.net (Fast Anycast)</span></p>
           <p>&gt; TLS STATUS: <span className="text-gold-400">TLSv1.3 · ECDHE-ECDSA-AES128-GCM-SHA256</span></p>
+        </div>
+      );
+    } else if (cmd === 'battery' || cmd === 'power') {
+      output = (
+        <div className="space-y-0.5 text-xs font-mono text-ink-200">
+          <p className="text-accent-400 font-bold">&gt; CLIENT POWER &amp; BATTERY STATUS:</p>
+          <p>&gt; Power Source: <span className="text-emerald-400">AC Connected / Active Battery Subsystem</span></p>
+          <p>&gt; Charge Level: <span className="text-white">Optimal (~95-100%)</span></p>
+          <p>&gt; Energy Profile: <span className="text-accent-400">High-Performance Cyberspace Mode</span></p>
+          <p>&gt; Thermal Status: <span className="text-emerald-400">Nominal · 0 throttled frames</span></p>
         </div>
       );
     } else if (cmd === 'history') {
