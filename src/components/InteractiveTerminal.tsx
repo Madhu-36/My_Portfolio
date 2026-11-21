@@ -10,7 +10,7 @@ type CommandLog = {
 };
 
 const AVAILABLE_COMMANDS = [
-  'help', 'whoami', 'whois', 'skills', 'cat skills.txt', 'stack', 'quote', 'dns', 'battery', 'neofetch', 'projects', 'experience', 'certs',
+  'help', 'whoami', 'whois', 'skills', 'cat skills.txt', 'stack', 'quote', 'dns', 'battery', 'neofetch', 'calc', 'projects', 'experience', 'certs',
   'resume', 'banner', 'github', 'linkedin', 'repo', 'contact', 'socials', 'stats', 'uptime', 'ping', 'history', 'matrix', 'echo', 'version', 'gui', 'date', 'time',
   'about', 'portfolio', 'theme', 'clear', 'sudo'
 ];
@@ -81,6 +81,7 @@ export default function InteractiveTerminal() {
             <div><span className="text-white font-bold">dns</span> - Node nameserver records</div>
             <div><span className="text-white font-bold">battery</span> - Client power telemetry</div>
             <div><span className="text-white font-bold">neofetch</span> - System specs & ASCII badge</div>
+            <div><span className="text-white font-bold">calc</span> - Simple math evaluator</div>
             <div><span className="text-white font-bold">history</span> - Command log history</div>
             <div><span className="text-white font-bold">theme</span> - Active palette tokens</div>
             <div><span className="text-white font-bold">echo</span> - Print string to console</div>
@@ -327,6 +328,16 @@ export default function InteractiveTerminal() {
       output = <span className="text-ink-200 font-mono">&gt; {echoText}</span>;
     } else if (cmd === 'echo') {
       output = <span className="text-ink-400 font-mono">Usage: echo [text to display]</span>;
+    } else if (cmd.startsWith('calc ')) {
+      const expr = rawCmd.trim().slice(5).replace(/[^0-9+\-*/().% ]/g, '');
+      try {
+        const val = new Function(`return (${expr})`)();
+        output = <span className="text-emerald-400 font-mono">&gt; Result: {String(val)}</span>;
+      } catch {
+        output = <span className="text-red-400 font-mono">Invalid arithmetic expression.</span>;
+      }
+    } else if (cmd === 'calc') {
+      output = <span className="text-ink-400 font-mono">Usage: calc [math expression] (e.g. calc 42 * 8)</span>;
     } else if (cmd === 'version' || cmd === 'v') {
       output = (
         <div className="space-y-0.5 text-xs font-mono text-ink-200">
